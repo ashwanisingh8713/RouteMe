@@ -14,18 +14,21 @@ import retrofit2.http.Path;
 public interface ServiceAPIs {
 
     @GET("/dbs")
-    Observable<JsonElement> getAllDatabase(@Header("authorization") String authorization,
+    Observable<JsonElement> getAllDatabase(@Header("content-type") String accept,
+                            @Header("Authorization") String authorization,
                             @Header("x-ms-date") String date,
                             @Header("x-ms-version") String xms_version);
 
     @GET("/dbs/{database}/colls")
-    Call<JsonElement> getAllCollection(@Path("database") String database, @Header("authorization") String authorization,
+    Observable<JsonElement> getAllCollection(@Path("database") String database, @Header("content-type") String accept,
+                                             @Header("Authorization") String authorization,
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
 
     @GET("/dbs/{database}/colls/{collection}/docs")
     Observable<RoutesData> getDocument(@Path("database") String database, @Path("collection") String collection,
-                                       @Header("authorization") String authorization,
+                                       @Header("content-type") String accept,
+                                       @Header("Authorization") String authorization,
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
 
