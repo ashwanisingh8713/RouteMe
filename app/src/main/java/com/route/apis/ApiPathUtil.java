@@ -286,6 +286,9 @@ public class ApiPathUtil {
                 +resourceId+"\n"
                 +date.toLowerCase()+"\n"
                 +""+"\n";
+
+        Log.i("Payload", payload);
+
         Mac sha256_HMAC;
         try {
             sha256_HMAC = Mac.getInstance("HmacSHA256");

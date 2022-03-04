@@ -32,6 +32,13 @@ public interface ServiceAPIs {
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
 
+    @GET("/dbs/{database}/colls/{collection}/docs")
+    Observable<JsonElement> getDocumentJson(@Path("database") String database, @Path("collection") String collection,
+                                       @Header("content-type") String accept,
+                                       @Header("Authorization") String authorization,
+                                       @Header("x-ms-date") String date,
+                                       @Header("x-ms-version") String xms_version);
+
 
 
 }
