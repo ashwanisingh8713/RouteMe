@@ -4,6 +4,7 @@
   android:targetSandboxVersion="2">
 
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA" />
 
   <!-- The following declaration enables this module to be served instantly -->
   <dist:module
@@ -57,6 +58,10 @@
           android:scheme="https" />
       </intent-filter>
     </activity>
+
+
+    <activity android:name=".BarcodeScannerActivity"
+        android:exported="true"/>
 
   </application>
 

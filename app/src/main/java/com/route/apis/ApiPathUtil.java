@@ -19,7 +19,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class ApiPathUtil {
 
     public static final String DATABASE_NAME = "RouteMeData";
-    public static final String COLLECTION_NAME = "RoutesData";
+    public static final String COLLECTION_ROUTES_DATA = "RoutesData";
+    public static final String COLLECTION_QRCODES_DATA = "QRCodesData";
     public static final String XMS_VERSION = "2016-07-11";
 
     private static final int COSMOS_PORT_NUM = 443;
@@ -277,8 +278,7 @@ public class ApiPathUtil {
     }
 
 
-    public static String generate2(String verb, String resourceType, String resourceId, String key, String keyType, String tokenVersion, String date)
-    {
+    public static String generate2(String verb, String resourceType, String resourceId, String key, String keyType, String tokenVersion, String date) {
         String authorization = null;
         System.out.println(date);
         String payload=verb.toLowerCase()+"\n"

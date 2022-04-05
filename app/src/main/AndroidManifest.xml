@@ -3,6 +3,7 @@
     package="com.route.routeme">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".JavaBarCodeActivity"
+            android:exported="true"/>
+
+        <activity android:name=".RouteDetail"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

@@ -7,6 +7,13 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/barcodeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Barcode Scanner"
+        />
+
+    <Button
         android:id="@+id/databaseBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

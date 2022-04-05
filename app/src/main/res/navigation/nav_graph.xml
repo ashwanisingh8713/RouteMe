@@ -7,22 +7,38 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.route.routeme.FirstFragment"
+        android:name="com.route.fragment.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_DocumentFragment"
+            app:destination="@id/DocumentFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.route.routeme.SecondFragment"
+        android:name="com.route.fragment.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DocumentFragment"
+        android:name="com.route.fragment.DocumentFragment"
+        android:label="@string/document_fragment_label"
+        tools:layout="@layout/fragment_documents">
+        <!--<action
+            app:popUpToInclusive="true"/>-->
+        <argument
+            android:name="argName"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

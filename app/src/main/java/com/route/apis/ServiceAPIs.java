@@ -2,6 +2,7 @@ package com.route.apis;
 
 
 import com.google.gson.JsonElement;
+import com.route.modal.QRCodes;
 import com.route.modal.RoutesData;
 
 import io.reactivex.Observable;
@@ -31,6 +32,20 @@ public interface ServiceAPIs {
                                        @Header("Authorization") String authorization,
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
+
+    @GET("/dbs/{database}/colls/{collection}/docs")
+    Observable<QRCodes> getQRCodesDocument(@Path("database") String database, @Path("collection") String collection,
+                                    @Header("content-type") String accept,
+                                    @Header("Authorization") String authorization,
+                                    @Header("x-ms-date") String date,
+                                    @Header("x-ms-version") String xms_version);
+
+    @GET("/dbs/{database}/colls/{collection}/docs")
+    Observable<JsonElement> getQRCodesDocumentJ(@Path("database") String database, @Path("collection") String collection,
+                                           @Header("content-type") String accept,
+                                           @Header("Authorization") String authorization,
+                                           @Header("x-ms-date") String date,
+                                           @Header("x-ms-version") String xms_version);
 
     @GET("/dbs/{database}/colls/{collection}/docs")
     Observable<JsonElement> getDocumentJson(@Path("database") String database, @Path("collection") String collection,

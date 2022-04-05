@@ -1,8 +1,7 @@
 package com.route.apis;
 
-import android.util.Log;
-
 import com.google.gson.JsonElement;
+import com.route.modal.QRCodes;
 import com.route.modal.RoutesData;
 
 import io.reactivex.Observable;
@@ -22,10 +21,7 @@ public class ApiManager {
                 .getAllDatabase("application/json",
                         ApiPathUtil.genAuthDatabase(method, UTCstring, url), UTCstring, xmsVersion)
                 .subscribeOn(Schedulers.newThread())
-                .map(value->{
-
-                    return value;
-                });
+                .map(value-> value);
     }
 
     public static Observable<JsonElement> getAllCollection() {
@@ -37,9 +33,7 @@ public class ApiManager {
                 .getAllCollection(ApiPathUtil.DATABASE_NAME, "application/json",
                         generate, UTCstring, ApiPathUtil.XMS_VERSION)
                 .subscribeOn(Schedulers.newThread())
-                .map(value->{
-                    return value;
-                });
+                .map(value-> value);
     }
 
     public static Observable<RoutesData> getDocument() {
@@ -48,13 +42,46 @@ public class ApiManager {
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
 
         return ServiceFactory.getServiceAPIs()
-                .getDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_NAME, "application/json",
+                .getDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_ROUTES_DATA, "application/json",
                         generate, UTCstring, ApiPathUtil.XMS_VERSION)
         .subscribeOn(Schedulers.newThread())
-        .map(value->{
+        .map(value-> value);
+    }
 
-            return value;
-        });
+    public static Observable<RoutesData> loadAppClipCodesDocument() {
+        final String UTCstring = ApiPathUtil.headerDate();
+        String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
+                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
+
+        return ServiceFactory.getServiceAPIs()
+                .getDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_ROUTES_DATA, "application/json",
+                        generate, UTCstring, ApiPathUtil.XMS_VERSION)
+                .subscribeOn(Schedulers.newThread())
+                .map(value-> value);
+    }
+
+    public static Observable<QRCodes> loadQRCodesDocument() {
+        final String UTCstring = ApiPathUtil.headerDate();
+        String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/QRCodesData",
+                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
+
+        return ServiceFactory.getServiceAPIs()
+                .getQRCodesDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_QRCODES_DATA, "application/json",
+                        generate, UTCstring, ApiPathUtil.XMS_VERSION)
+                .subscribeOn(Schedulers.newThread())
+                .map(value-> value);
+    }
+
+    public static Observable<JsonElement> loadQRCodesDocumentJ() {
+        final String UTCstring = ApiPathUtil.headerDate();
+        String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/QRCodesData",
+                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
+
+        return ServiceFactory.getServiceAPIs()
+                .getQRCodesDocumentJ(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_QRCODES_DATA, "application/json",
+                        generate, UTCstring, ApiPathUtil.XMS_VERSION)
+                .subscribeOn(Schedulers.newThread())
+                .map(value-> value);
     }
 
     public static Observable<JsonElement> getDocumentJson() {
@@ -63,13 +90,10 @@ public class ApiManager {
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
 
         return ServiceFactory.getServiceAPIs()
-                .getDocumentJson(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_NAME, "application/json",
+                .getDocumentJson(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_ROUTES_DATA, "application/json",
                         generate, UTCstring, ApiPathUtil.XMS_VERSION)
                 .subscribeOn(Schedulers.newThread())
-                .map(value->{
-
-                    return value;
-                });
+                .map(value-> value);
     }
 
 
