@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    //id 'com.google.ar.sceneform.plugin'
 }
 
 android {
@@ -7,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.route.routeme"
-        minSdk 26
+        minSdk 28
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -86,4 +87,25 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    api project(":ux1")
+
+    // Provides ARCore Session and related resources.
+    /*implementation 'com.google.ar:core:1.30.0'
+    // Provides ArFragment, and other UX resources.
+    //implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.17.1'
+    implementation "com.google.ar.sceneform:animation:1.17.1"
+    // Alternatively, use ArSceneView without the UX dependency.
+    implementation 'com.google.ar.sceneform:core:1.17.1'*/
+
 }
+
+/*sceneform.asset('sampledata/footp.obj',
+        'default',
+        'sampledata/footp.sfa',
+        'src/main/assets/footp')
+
+sceneform.asset('sampledata/model.obj',
+        'default',
+        'sampledata/model.sfa',
+        'src/main/assets/model')*/
+

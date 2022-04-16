@@ -115,10 +115,15 @@ public class FirstFragment extends Fragment {
         DocumentFragment.s_URL = requiredValue;
         navController.setGraph(R.navigation.nav_graph, bundle);
         navController.navigate(R.id.action_FirstFragment_to_DocumentFragment);
+        binding.title.setText("List of Routes");
 
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.title.setText("Scan The Bar Code");
+    }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -131,11 +136,13 @@ public class FirstFragment extends Fragment {
                         String requiredValue = data.getStringExtra("key");
                         Log.i("Response", ""+requiredValue);
 
-                        /*NavController navController = NavHostFragment.findNavController(FirstFragment.this);
+                        NavController navController = NavHostFragment.findNavController(FirstFragment.this);
                         Bundle bundle = new Bundle();
                         bundle.putString("Url", requiredValue);
-                        navController.setGraph(R.id.action_FirstFragment_to_DocumentFragment, bundle);*/
-                        //navController.navigate(R.id.action_FirstFragment_to_DocumentFragment);
+                        DocumentFragment.s_URL = requiredValue;
+                        navController.setGraph(R.navigation.nav_graph, bundle);
+                        navController.navigate(R.id.action_FirstFragment_to_DocumentFragment);
+                        binding.title.setText("List of Routes");
                     }
                 }});
 

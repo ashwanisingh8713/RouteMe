@@ -1,6 +1,7 @@
 package com.route.modal;
 
 import java.util.List;
+import java.util.Objects;
 
 public class RoutesDocuments {
 
@@ -21,7 +22,7 @@ public class RoutesDocuments {
     public int tu;
     public int td;
     public Double ud;
-    public List<Integer> pts;
+    public List<Double> pts;
     public String _rid;
     public String _self;
     public String _etag;
@@ -31,4 +32,18 @@ public class RoutesDocuments {
     public int lc;
     public int SomethingElse;
     public int Misleading;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RoutesDocuments)) return false;
+        RoutesDocuments that = (RoutesDocuments) o;
+        return that.id.equals(id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
