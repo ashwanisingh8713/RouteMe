@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/shape_rectangle.xml" value="0.2305" />
+        <entry key="app/src/main/res/layout/activity_barcode_scanner.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main_btn.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_route_ar_path.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_route_detail.xml" value="0.1852355072463768" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.2171875" />
+        <entry key="app/src/main/res/layout/fragment_documents.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_document_recycler.xml" value="0.19610507246376813" />
+        <entry key="ux1/src/main/res/layout/sceneform_ux_fragment_layout.xml" value="0.12552083333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
