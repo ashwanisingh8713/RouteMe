@@ -1,5 +1,6 @@
 package com.route.routeme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.route.data.UpdatedPoints;
 import com.route.modal.RoutesDocuments;
 import com.route.routeme.databinding.ActivityMainBinding;
 import com.route.routeme.databinding.ActivityRouteDetailBinding;
@@ -51,26 +53,32 @@ public class RouteDetail extends AppCompatActivity {
                 RoutesDocuments selectedRouteItem = routes.get(index);
                 Double ud = selectedRouteItem.ud;
                 List<Double> arrowPoints = selectedRouteItem.pts;
-                List<Double> newArrowPoints = new ArrayList<>();
+                UpdatedPoints newArrowPoints = new UpdatedPoints(arrowPoints.size());
+                int count = 0 ;
                 for(Double in : arrowPoints) {
                     Log.i("Check", "in :: "+in);
                     Log.i("Check", "ud :: "+ud);
                     double temp = in*ud;
                     Log.i("Check", "temp :: "+temp);
-                    newArrowPoints.add(temp);
+                    newArrowPoints.addPoints(count, temp);
+                    count++;
 
 
-                    TextView textView = new TextView(this);
+                    /*TextView textView = new TextView(this);
                     textView.setTextColor(getColor(android.R.color.darker_gray));
                     textView.setText(""+temp+"      =  ("+in+"*"+ud+")");
                     textView.setPadding(20, 20, 10, 20);
                     textView.setBackground(getDrawable(R.drawable.shape_rectangle));
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 100);
                     textView.setLayoutParams(params);
-                    activityRouteDetailBinding.itemParent.addView(textView);
-
+                    activityRouteDetailBinding.itemParent.addView(textView);*/
                 }
                 Log.i("", "");
+                Intent intent = new Intent(RouteDetail.this, RouteArPath.class);
+                intent.putExtra("Points", newArrowPoints);
+                intent.putExtra("selectedRouteItem", selectedRouteItem);
+                startActivity(intent);
+                finish();
 
             }
 

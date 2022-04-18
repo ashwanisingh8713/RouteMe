@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/curve_background.xml" value="0.2305" />
+        <entry key="app/src/main/res/drawable/curve_background_dim.xml" value="0.2305" />
+        <entry key="app/src/main/res/drawable/custom_spinner_bg.xml" value="0.2305" />
+        <entry key="app/src/main/res/drawable/ic_rocket.xml" value="0.2305" />
         <entry key="app/src/main/res/drawable/shape_rectangle.xml" value="0.2305" />
         <entry key="app/src/main/res/layout/activity_barcode_scanner.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />

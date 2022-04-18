@@ -88,6 +88,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     api project(":ux1")
+    implementation project(":library")
 
     // Provides ARCore Session and related resources.
     /*implementation 'com.google.ar:core:1.30.0'

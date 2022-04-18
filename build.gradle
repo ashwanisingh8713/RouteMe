@@ -1,7 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-plugins {
-    id 'com.android.application' version '7.1.2' apply false
-    id 'com.android.library' version '7.1.2' apply false
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.2"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+
+        classpath 'com.google.firebase:firebase-plugins:2.0.0'
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath "io.realm:realm-gradle-plugin:10.8.0"
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
+
+        //Required for Realm DB
+        //classpath 'io.realm:realm-gradle-plugin:3.3.1'
+//        classpath "io.realm:realm-gradle-plugin:10.8.0"
+    }
+}
+
+allprojects {
+    repositories {
+
+    }
 }
 
 task clean(type: Delete) {
