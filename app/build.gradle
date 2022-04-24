@@ -88,6 +88,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     api project(":ux1")
+
+
+    // Ruler
     implementation project(":library")
 
     // Provides ARCore Session and related resources.

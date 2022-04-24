@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <string name="clear_drawing">Clear drawing</string>
+    <string name="select_color">Select color</string>
+    <string name="undo_last_drawing_element">Undo last drawing element</string>
+    <string name="white_color">White color</string>
+    <string name="red_color">Red color</string>
+    <string name="green_color">Green color</string>
+    <string name="blue_color">Blue color</string>
+    <string name="black_color">Black color</string>
+    <string name="rainbow_color">Rainbow color</string>
+</resources>

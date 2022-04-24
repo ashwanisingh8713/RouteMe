@@ -44,6 +44,9 @@
         <activity android:name=".RouteArPath"
             android:exported="true"/>
 
+        <activity android:name=".Sample1"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

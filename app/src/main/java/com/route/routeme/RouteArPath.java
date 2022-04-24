@@ -16,17 +16,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.ar.core.Anchor;
+import com.google.ar.core.Frame;
 import com.google.ar.core.Pose;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.collision.Ray;
 import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.TransformableNode;
+import com.google.ar.sceneform.ux.TransformationSystem;
 import com.route.data.UpdatedPoints;
 import com.route.fragment.CustomArFragment;
 import com.route.modal.RoutesDocuments;
 
+import java.nio.IntBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -36,7 +42,14 @@ import ke.tang.ruler.OnMarkerClickListener;
 import ke.tang.ruler.RulerView;
 
 
-public class RouteArPath extends AppCompatActivity {
+public class RouteArPath extends AppCompatActivity implements CustomArFragment.OnCompleteListener {
+
+    public static final String TAG = "RouteTag";
+
+    @Override
+    public void onComplete() {
+        Log.i(TAG, "onComplete");
+    }
 
     private enum AppAnchorState {
         NONE,
@@ -51,13 +64,13 @@ public class RouteArPath extends AppCompatActivity {
     private TextView destinationValue;
     private TextView destinationBelongTo;
     private RulerView mRuler;
-    private DefaultState mState;
     private RoutesDocuments selectedRouteItem;
 
-    private ArrayList anchorList;
-    private Anchor anchor;
-    private AnchorNode anchorNode;
     private AppAnchorState appAnchorState = AppAnchorState.NONE;
+
+    List<Double[]> vertexList;
+
+    ModelRenderable modelRenderable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +79,27 @@ public class RouteArPath extends AppCompatActivity {
 
         updatedPoints = getIntent().getExtras().getParcelable("Points");
         selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
+
+        vertexList = new ArrayList<>();
+        double[] arPoints = updatedPoints.getPoints();
+        int totalVertex = arPoints.length/3;
+        int index = 0;
+        for(int i = 0; i<totalVertex; i++) {
+            int temp = index+3;
+            Double[] ver = new Double[3];
+            ver[0] = arPoints[temp-3];//0 //3
+            ver[1] = arPoints[temp-2];//1 //4
+            ver[2] = arPoints[temp-1];//2 //5
+            vertexList.add(ver);
+            index = temp;
+        }
+
+        //Collections.reverse(vertexList);
+
+        createRenderable();
+
+        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        arFragment.setOnCompleteListener(this);
 
         mRuler = findViewById(R.id.ruler);
 
@@ -77,7 +111,6 @@ public class RouteArPath extends AppCompatActivity {
         destinationBelongTo.setText(selectedRouteItem.loc);
 
 
-        mState = new DefaultState(mRuler);
         mRuler.setMaxValue(18);
         mRuler.setValue(0);
 
@@ -96,89 +129,98 @@ public class RouteArPath extends AppCompatActivity {
 
         Log.i("", "");
 
-        List<Double[]> vertexList = new ArrayList<>();
-        double[] arPoints = updatedPoints.getPoints();
-        int totalVertex = arPoints.length/3;
-        int index = 0;
-        for(int i = 0; i<totalVertex; i++) {
-            int temp = index+3;
-            Double[] ver = new Double[3];
-            ver[0] = arPoints[temp-3];//0 //3
-            ver[1] = arPoints[temp-2];//1 //4
-            ver[2] = arPoints[temp-1];//2 //5
-            vertexList.add(ver);
-            index = temp;
-        }
 
-
-        Log.i("", "");
-
-
-        anchorList = new ArrayList();
-        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-
-
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                for(Double[] dob : vertexList) {
-
-                    try {
-
-                        Thread.sleep(1000);
-                    } catch (InterruptedException ex) {
-                        //do stuff
-                    }
-
-                    double[] unboxed = Stream.of(dob).mapToDouble(Double::doubleValue).toArray();
-                    Message msg = new Message();
-                    Bundle bundle = new Bundle();
-                    bundle.putDoubleArray("vertex", unboxed);
-                    msg.setData(bundle);
-                    handler.sendMessageDelayed(msg, 2000);
-
-                }
-
-            }
-        }, 10000);*/
-
-//        double[] unboxed = Stream.of(vertexList.get(0)).mapToDouble(Double::doubleValue).toArray();
-//        Message msg = new Message();
-//        Bundle bundle = new Bundle();
-//        bundle.putDoubleArray("vertex", unboxed);
-//        msg.setData(bundle);
-//        handler.sendMessageDelayed(msg, 2000);
-
-        double[] unboxed1 = Stream.of(vertexList.get(0)).mapToDouble(Double::doubleValue).toArray();
-        Message msg1 = new Message();
-        Bundle bundle1 = new Bundle();
-        bundle1.putDoubleArray("vertex", unboxed1);
-        msg1.setData(bundle1);
-        //handler.sendMessageDelayed(msg1, 5000);
 
 
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             //Active only in Admin Mode
                 Log.d("HIT_RESULT:", hitResult.toString());
-                anchor = arFragment.getArSceneView().getSession().hostCloudAnchor(hitResult.createAnchor());
+
+                //anchor = arFragment.getArSceneView().getSession().hostCloudAnchor(hitResult.createAnchor());
                 appAnchorState = AppAnchorState.HOSTING;
 
-                Log.i("Test", anchor.getCloudAnchorId());
+                //Log.i("Test", anchor.getCloudAnchorId());
 
                 //showToast("Hosting...");
-                createCloudAnchorModel(anchor);
+                //createCloudAnchorModel(anchor);
 
         });
 
 
         arFragment.getArSceneView().getScene().addOnUpdateListener(frameTime -> {
 
-            if (appAnchorState != AppAnchorState.HOSTING)
-                return;
-            Anchor.CloudAnchorState cloudAnchorState = anchor.getCloudAnchorState();
+            Frame frame = arFragment.getArSceneView().getArFrame();
+            IntBuffer intBuffer = frame.acquirePointCloud().getIds();
+            boolean hasDisplayGeometryChanged = frame.hasDisplayGeometryChanged();
+            Pose pose = frame.getAndroidSensorPose();
+            float[] xp = pose.getXAxis();
+            float[] yp = pose.getYAxis();
 
-            if (cloudAnchorState.isError()) {
+            Log.i("UpdateTest", "" + hasDisplayGeometryChanged);
+            Log.i("UpdateTest", "x" + xp.toString() +"   ::   y   "+yp.toString());
+
+            if(intBuffer == null) {
+                Log.i("UpdateTest", "intBuffer is NUll");
+            } else {
+                int[] intArray = toArray(intBuffer);
+                if (intArray == null) {
+                    Log.i("UpdateTest", "intArray is NUll");
+                } else {
+                    Log.i("UpdateTest", "intArray length is " + intArray.length);
+
+                    if(intArray.length > 100) {
+                        if(appAnchorState != AppAnchorState.HOSTED) {
+                            appAnchorState = AppAnchorState.HOSTING;
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+            if (appAnchorState == AppAnchorState.NONE || appAnchorState == AppAnchorState.HOSTED)
+                return;
+
+
+            appAnchorState = AppAnchorState.HOSTED;
+
+
+            for (Double[] updatedPoint : vertexList ) {
+                Quaternion camQ = arFragment.getArSceneView().getScene().getCamera().getWorldRotation();
+                float x = updatedPoint[0].floatValue();
+                float y = updatedPoint[1].floatValue();
+                float z = updatedPoint[2].floatValue();
+                float[] f1 = new float[]{x, y, z};
+                float[] f2 = new float[]{camQ.x, camQ.y, camQ.z, camQ.w};
+//                Pose anchorPose = new Pose(f1, f2);
+                Pose anchorPose = Pose.makeTranslation(x, y, z);
+
+                // make an ARCore Anchor
+                Anchor anchor = arFragment.getArSceneView().getSession().createAnchor(anchorPose);
+
+                AnchorNode anchorNode = new AnchorNode(anchor);
+
+                anchorNode.setRenderable(modelRenderable);
+                modelRenderable.setShadowCaster(false);
+                modelRenderable.setShadowReceiver(false);
+                //adding this to the scene
+                arFragment.getArSceneView().getScene().addChild(anchorNode);
+            }
+
+
+            ///////
+
+
+
+            ////// Ash
+
+
+
+            //Anchor.CloudAnchorState cloudAnchorState = anchor.getCloudAnchorState();
+
+            /*if (cloudAnchorState.isError()) {
                 //showToast(cloudAnchorState.toString());
             } else if (cloudAnchorState == Anchor.CloudAnchorState.SUCCESS) {
                 appAnchorState = AppAnchorState.HOSTED;
@@ -187,78 +229,60 @@ public class RouteArPath extends AppCompatActivity {
                 System.out.println(anchorId);
                 anchorList.add(anchorId);
 
-                /*if (FROM.equalsIgnoreCase(LauncherActivity.ELECTRONICS)) {
-                    tinydb.putListString(ELECTRONICS, anchorList);
-                } else if (FROM.equalsIgnoreCase(LauncherActivity.TOYS)) {
-                    tinydb.putListString(TOYS, anchorList);
-                } else if (FROM.equalsIgnoreCase(LauncherActivity.TV_APPLIANCES)) {
-                    tinydb.putListString(TV_APPLIANCES, anchorList);
-                } else if (FROM.equalsIgnoreCase(LauncherActivity.CLOTHING)) {
-                    tinydb.putListString(CLOTHING, anchorList);
-                }*/
-
-                //showToast("Anchor hosted successfully. Anchor Id: " + anchorId);
-            }
+            }*/
         });
 
     }
 
-
-    Handler handler = new Handler(Looper.myLooper()) {
-
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            super.handleMessage(msg);
-
-            Bundle bundle = msg.getData();
-
-            double[] unboxed = bundle.getDoubleArray("vertex");
-            double x = unboxed[0];
-            double y = unboxed[1];
-            double z = unboxed[2];
-
-            Log.i("Test", ""+x);
-            Log.i("Test", ""+y);
-            Log.i("Test", ""+z);
-
-            // t:[x:-0.266, y:-0.082, z:-0.672], q:[x:0.00, y:0.09, z:0.00, w:1.00]
-            Quaternion camQ = arFragment.getArSceneView().getScene().getCamera().getWorldRotation();
-//                float[] f1 = new float[]{-0.266f, -0.082f, -0.672f};
-            float[] f1 = new float[]{(float) x,(float) y, (float)z};
-            float[] f2 = new float[]{camQ.x, camQ.y, camQ.z, camQ.w};
-            Pose anchorPose = new Pose(f1, f2);
-
-            // make an ARCore Anchor
-            Anchor anchor = arFragment.getArSceneView().getSession().createAnchor(anchorPose);
-            createCloudAnchorModel(anchor);
-
-        }
+    private void createRenderable() {
+        ModelRenderable
+                .builder()
+                .setSource(this, Uri.parse("model.sfb"))
+                .build()
+                .thenAccept(modelRenderable -> {
+                    this.modelRenderable = modelRenderable;
+                });
+    }
 
 
-    };
-
-
-
-    private void createCloudAnchorModel(Anchor anchor) {
+    /*private void createCloudAnchorModel(Anchor anchor) {
         ModelRenderable
                 .builder()
                 .setSource(this, Uri.parse("model.sfb"))
                 .build()
                 .thenAccept(modelRenderable -> placeCloudAnchorModel(anchor, modelRenderable));
 
-    }
+    }*/
 
-    private void placeCloudAnchorModel(Anchor anchor, ModelRenderable modelRenderable) {
+    /*private void placeCloudAnchorModel(Anchor anchor, ModelRenderable modelRenderable) {
+        *//*if(anchorNode == null) {
+            anchorNode = new AnchorNode(anchor);
+        } else {
+            anchorNode.setAnchor(anchor);
+        }*//*
+
         anchorNode = new AnchorNode(anchor);
-        /*AnchorNode cannot be zoomed in or moved
-        So we create a TransformableNode with AnchorNode as the parent*/
+
+        *//*AnchorNode cannot be zoomed in or moved
+        So we create a TransformableNode with AnchorNode as the parent*//*
         float x = (float) updatedPoints.getPoints()[0];
         float y = (float)updatedPoints.getPoints()[1];
         float z = (float)updatedPoints.getPoints()[2];
+        *//*Vector3 vector3 = new Vector3(x, y, z);*//*
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-        transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(x, y, z), 180));
+        transformableNode.setParent(anchorNode);
+
+
+
+        //transformableNode.setLocalPosition(vector3);
+
+        //anchorNode.setLocalPosition(vector3);
+
+        //
+        //transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(x, y, z), 225));
+
 //        transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 180));
-        /*if (modelOptionsSpinner.getSelectedItem().toString().equals("Straight Arrow")) {
+        *//*if (modelOptionsSpinner.getSelectedItem().toString().equals("Straight Arrow")) {
             transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 225));
         }
         if (modelOptionsSpinner.getSelectedItem().toString().equals("Right Arrow")) {
@@ -266,15 +290,15 @@ public class RouteArPath extends AppCompatActivity {
         }
         if (modelOptionsSpinner.getSelectedItem().toString().equals("Left Arrow")) {
             transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 315));
-        }*/
-        transformableNode.setParent(anchorNode);
+        }*//*
+//        transformableNode.setParent(anchorNode);
         //adding the model to the transformable node
         transformableNode.setRenderable(modelRenderable);
         modelRenderable.setShadowCaster(false);
         modelRenderable.setShadowReceiver(false);
         //adding this to the scene
         arFragment.getArSceneView().getScene().addChild(anchorNode);
-    }
+    }*/
 
 
 
@@ -296,88 +320,21 @@ public class RouteArPath extends AppCompatActivity {
 
     }
 
-    private class DefaultState {
-        private int mStepWidth;
-        private ColorStateList mScaleColor;
-        private ColorStateList mRulerColor;
-        private int mSectionScaleCount;
-        private Drawable mIndicator;
-        private int mScaleMinHeight;
-        private int mScaleMaxHeight;
-        private int mScaleSize;
-        private int mMaxValue;
-        private int mMinValue;
-        private int mValue;
-        private float mTextSize;
-        private ColorStateList mTextColor;
 
-        public DefaultState(RulerView ruler) {
-            mStepWidth = ruler.getStepWidth();
-            mScaleColor = ruler.getScaleColor();
-            mRulerColor = ruler.getRulerColor();
-            mSectionScaleCount = ruler.getSectionScaleCount();
-            mIndicator = ruler.getIndicator();
-            mScaleMinHeight = ruler.getScaleMinHeight();
-            mScaleMaxHeight = ruler.getScaleMaxHeight();
-            mScaleSize = ruler.getScaleSize();
-            mMaxValue = ruler.getMaxValue();
-            mMinValue = ruler.getMinValue();
-            mValue = ruler.getValue();
-            mTextSize = ruler.getTextSize();
-            mTextColor = ruler.getTextColor();
+
+    public int[] toArray(IntBuffer b) {
+        if(b.hasArray()) {
+            if(b.arrayOffset() == 0)
+                return b.array();
+
+            return Arrays.copyOfRange(b.array(), b.arrayOffset(), b.array().length);
         }
 
-        public int getStepWidth() {
-            return mStepWidth;
-        }
+        b.rewind();
+        int[] foo = new int[b.remaining()];
+        b.get(foo);
 
-        public ColorStateList getScaleColor() {
-            return mScaleColor;
-        }
-
-        public ColorStateList getRulerColor() {
-            return mRulerColor;
-        }
-
-        public int getSectionScaleCount() {
-            return mSectionScaleCount;
-        }
-
-        public Drawable getIndicator() {
-            return mIndicator;
-        }
-
-        public int getScaleMinHeight() {
-            return mScaleMinHeight;
-        }
-
-        public int getScaleMaxHeight() {
-            return mScaleMaxHeight;
-        }
-
-        public int getScaleSize() {
-            return mScaleSize;
-        }
-
-        public int getMaxValue() {
-            return mMaxValue;
-        }
-
-        public int getMinValue() {
-            return mMinValue;
-        }
-
-        public int getValue() {
-            return mValue;
-        }
-
-        public float getTextSize() {
-            return mTextSize;
-        }
-
-        public ColorStateList getTextColor() {
-            return mTextColor;
-        }
+        return foo;
     }
 
 }
