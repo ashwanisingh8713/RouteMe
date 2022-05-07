@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Frame;
 import com.google.ar.core.Pose;
+import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.collision.Ray;
 import com.google.ar.sceneform.math.Quaternion;
@@ -51,7 +52,7 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
         Log.i(TAG, "onComplete");
     }
 
-    private enum AppAnchorState {
+    public enum AppAnchorState {
         NONE,
         HOSTING,
         HOSTED
@@ -80,6 +81,12 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
         updatedPoints = getIntent().getExtras().getParcelable("Points");
         selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
 
+        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+        arFragment.setOnCompleteListener(this);
+        // hiding the plane discovery
+        arFragment.getPlaneDiscoveryController().hide();
+        arFragment.getPlaneDiscoveryController().setInstructionView(null);
+
         vertexList = new ArrayList<>();
         double[] arPoints = updatedPoints.getPoints();
         int totalVertex = arPoints.length/3;
@@ -98,8 +105,7 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
 
         createRenderable();
 
-        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-        arFragment.setOnCompleteListener(this);
+
 
         mRuler = findViewById(R.id.ruler);
 
@@ -156,6 +162,11 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
             float[] xp = pose.getXAxis();
             float[] yp = pose.getYAxis();
 
+            // If there is no frame or ARCore is not tracking yet, just return.
+            if (frame == null || frame.getCamera().getTrackingState() != TrackingState.TRACKING) {
+                return;
+            }
+
             Log.i("UpdateTest", "" + hasDisplayGeometryChanged);
             Log.i("UpdateTest", "x" + xp.toString() +"   ::   y   "+yp.toString());
 
@@ -177,15 +188,10 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
             }
 
 
-
-
-
             if (appAnchorState == AppAnchorState.NONE || appAnchorState == AppAnchorState.HOSTED)
                 return;
 
-
             appAnchorState = AppAnchorState.HOSTED;
-
 
             for (Double[] updatedPoint : vertexList ) {
                 Quaternion camQ = arFragment.getArSceneView().getScene().getCamera().getWorldRotation();
@@ -210,26 +216,7 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
             }
 
 
-            ///////
 
-
-
-            ////// Ash
-
-
-
-            //Anchor.CloudAnchorState cloudAnchorState = anchor.getCloudAnchorState();
-
-            /*if (cloudAnchorState.isError()) {
-                //showToast(cloudAnchorState.toString());
-            } else if (cloudAnchorState == Anchor.CloudAnchorState.SUCCESS) {
-                appAnchorState = AppAnchorState.HOSTED;
-
-                String anchorId = anchor.getCloudAnchorId();
-                System.out.println(anchorId);
-                anchorList.add(anchorId);
-
-            }*/
         });
 
     }
@@ -238,6 +225,7 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
         ModelRenderable
                 .builder()
                 .setSource(this, Uri.parse("model.sfb"))
+//                .setSource(this, Uri.parse("file:///android_asset/arrow.png"))
                 .build()
                 .thenAccept(modelRenderable -> {
                     this.modelRenderable = modelRenderable;

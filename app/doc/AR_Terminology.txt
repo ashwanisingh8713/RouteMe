@@ -1,0 +1,27 @@
+Reference Terminologies ############
+Trackable: A Trackable is an interface which can be followed by ARCore and something from which Anchors can be connected to.
+
+Anchor:  It describes a fixed location and orientation in the real world. To stay at a fixed location in physical space,
+the numerical description of this position will update as ARCore’s understanding of the space improves. Anchors are hashable
+and may for example be used as keys in HashMaps.
+
+Pose: At the point when you need to state wherein the scene you need to put the object and you need to specify the location
+in terms of the scene’s coordinates. The Pose is the means by which you state this.
+
+Session: Deals with the AR framework state and handles the session lifecycle. This class offers the primary passage to the
+ARCore API. This class permits the user to make a session, configure it, start or stop it and, above all, receive frames
+that allow access to the camera image and device pose.
+
+Textures: Textures are especially helpful for Augmented Faces. This permits you to make a light overlay that lines up with
+the locales of the identified face(s) to add to your experience.
+
+ArFragment: ARCore utilizes an ArFragment that provides a lot of features, for example, plane finding,
+permission handling, and camera set up. You can utilize the fragment legitimately in your activity, however at
+whatever point you need custom features, for example, Augmented Faces, you should extend the ArFragment and set
+the proper settings. This fragment is the layer that conceals all the compound stuff (like OpenGL, rendering models, etc)
+and gives high-level APIs to load and render 3D models.
+
+ModelRenderable: ModelRenderable renders a 3D Model by attaching it to a Node.
+
+Sceneform SDK: Sceneform SDK is another library for Android that empowers the quick creation and mix of AR
+experiences in your application. It joins ARCore and an amazing physically-based 3D renderer.

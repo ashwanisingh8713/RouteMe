@@ -1,0 +1,59 @@
+
+It has uses of ModelRenderable, ViewRenderable, ModelRenderable
+
+- https://developers.google.com/sceneform/develop/getting-started
+- https://developers.google.com/sceneform/develop/create-renderables
+- https://github.com/google-ar/sceneform-android-sdk/issues/574
+- https://github.com/google-ar/sceneform-android-sdk/issues/98
+- https://stackoverflow.com/questions/59745896/displaying-png-or-jpeg-images-in-arcore-mobile-application
+- https://stackoverflow.com/questions/68441017/how-to-display-render-a-2d-image-with-arcore-native-android
+- https://stackoverflow.com/questions/52251070/how-to-display-png-image-in-arcore
+- https://github.com/google-ar/arcore-android-sdk/issues/1272
+- https://stackoverflow.com/questions/69475600/view-renderable-build-causes-program-to-crash
+
+
+
+https://developers.google.com/sceneform/develop/getting-started
+https://developers.google.com/sceneform/develop/create-renderables
+
+Good Doc
+https://github.com/swarmnyc/arcore-augmented-image-swarm
+
+
+
+How to add UI elements to AR scene in ARCore
+https://kristisimakova.medium.com/how-to-add-ui-elements-to-ar-scene-in-arcore-d2ba64454478
+
+
+// Git Repo Search
+https://github.com/search?l=Java&q=arcore+image&type=Repositories
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -34,5 +34,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.20'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10'
 }

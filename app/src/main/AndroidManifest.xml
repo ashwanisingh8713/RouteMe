@@ -44,7 +44,7 @@
         <activity android:name=".RouteArPath"
             android:exported="true"/>
 
-        <activity android:name=".Sample1"
+        <activity android:name=".SamplePng"
             android:exported="true"/>
 
     </application>

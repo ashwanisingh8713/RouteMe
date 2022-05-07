@@ -75,7 +75,7 @@ public class RouteDetail extends AppCompatActivity {
                 }
                 Log.i("", "");
                 Intent intent = new Intent(RouteDetail.this, RouteArPath.class);
-//                Intent intent = new Intent(RouteDetail.this, Sample1.class);
+//                Intent intent = new Intent(RouteDetail.this, SamplePng.class);
                 intent.putExtra("Points", newArrowPoints);
                 intent.putExtra("selectedRouteItem", selectedRouteItem);
                 startActivity(intent);
