@@ -7,12 +7,11 @@
     tools:context=".MainActivity"
     tools:viewBindingIgnore="true">
 
-
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.route.fragment.CustomArFragment"
+    <android.opengl.GLSurfaceView
+        android:id="@+id/surfaceview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_gravity="top"/>
 
     <LinearLayout
         android:id="@+id/modelOptions"

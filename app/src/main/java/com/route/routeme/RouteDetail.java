@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.route.ar.HelloArActivity;
 import com.route.data.UpdatedPoints;
 import com.route.modal.RoutesDocuments;
 import com.route.routeme.databinding.ActivityMainBinding;
@@ -74,8 +75,8 @@ public class RouteDetail extends AppCompatActivity {
                     activityRouteDetailBinding.itemParent.addView(textView);*/
                 }
                 Log.i("", "");
-                Intent intent = new Intent(RouteDetail.this, RouteArPath.class);
-//                Intent intent = new Intent(RouteDetail.this, SamplePng.class);
+//                Intent intent = new Intent(RouteDetail.this, RouteArPath.class);
+                Intent intent = new Intent(RouteDetail.this, HelloArActivity.class);
                 intent.putExtra("Points", newArrowPoints);
                 intent.putExtra("selectedRouteItem", selectedRouteItem);
                 startActivity(intent);

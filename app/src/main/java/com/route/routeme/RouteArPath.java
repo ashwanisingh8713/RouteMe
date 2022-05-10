@@ -1,41 +1,23 @@
 package com.route.routeme;
 
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.ar.core.Anchor;
-import com.google.ar.core.Frame;
-import com.google.ar.core.Pose;
-import com.google.ar.core.TrackingState;
-import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.collision.Ray;
-import com.google.ar.sceneform.math.Quaternion;
-import com.google.ar.sceneform.math.Vector3;
-import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.ux.TransformableNode;
-import com.google.ar.sceneform.ux.TransformationSystem;
+import com.google.ar.core.Config;
+import com.google.ar.core.Session;
+import com.google.ar.core.exceptions.UnavailableApkTooOldException;
+import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
+import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
+import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 import com.route.data.UpdatedPoints;
-import com.route.fragment.CustomArFragment;
 import com.route.modal.RoutesDocuments;
-
-import java.nio.IntBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Stream;
 
 import ke.tang.ruler.DrawableMarker;
 import ke.tang.ruler.Marker;
@@ -43,14 +25,9 @@ import ke.tang.ruler.OnMarkerClickListener;
 import ke.tang.ruler.RulerView;
 
 
-public class RouteArPath extends AppCompatActivity implements CustomArFragment.OnCompleteListener {
+public class RouteArPath extends AppCompatActivity  {
 
     public static final String TAG = "RouteTag";
-
-    @Override
-    public void onComplete() {
-        Log.i(TAG, "onComplete");
-    }
 
     public enum AppAnchorState {
         NONE,
@@ -58,34 +35,32 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
         HOSTED
     }
 
-    private CustomArFragment arFragment;
     private UpdatedPoints updatedPoints;
+    private RoutesDocuments selectedRouteItem;
+    private AppAnchorState appAnchorState = AppAnchorState.NONE;
+    private List<Double[]> vertexList;
 
     private TextView destinationTo;
     private TextView destinationValue;
     private TextView destinationBelongTo;
     private RulerView mRuler;
-    private RoutesDocuments selectedRouteItem;
+    // Rendering. The Renderers are created here, and initialized when the GL surface is created.
+    private GLSurfaceView surfaceView;
 
-    private AppAnchorState appAnchorState = AppAnchorState.NONE;
 
-    List<Double[]> vertexList;
-
-    ModelRenderable modelRenderable;
+    private Session session;
+    private boolean shouldConfigureSession = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route_ar_path);
 
+        surfaceView = findViewById(R.id.surfaceview);
+
+
         updatedPoints = getIntent().getExtras().getParcelable("Points");
         selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
-
-        arFragment = (CustomArFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-        arFragment.setOnCompleteListener(this);
-        // hiding the plane discovery
-        arFragment.getPlaneDiscoveryController().hide();
-        arFragment.getPlaneDiscoveryController().setInstructionView(null);
 
         vertexList = new ArrayList<>();
         double[] arPoints = updatedPoints.getPoints();
@@ -101,12 +76,6 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
             index = temp;
         }
 
-        //Collections.reverse(vertexList);
-
-        createRenderable();
-
-
-
         mRuler = findViewById(R.id.ruler);
 
         destinationTo = findViewById(R.id.destinationTo);
@@ -115,7 +84,6 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
 
         destinationValue.setText(selectedRouteItem.ept);
         destinationBelongTo.setText(selectedRouteItem.loc);
-
 
         mRuler.setMaxValue(18);
         mRuler.setValue(0);
@@ -129,200 +97,45 @@ public class RouteArPath extends AppCompatActivity implements CustomArFragment.O
         });
         mRuler.addMarker(marker);
 
-
         mRuler.setValue(9);
         mRuler.setIndicator(null);
 
-        Log.i("", "");
+
+    }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-
-        arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
-            //Active only in Admin Mode
-                Log.d("HIT_RESULT:", hitResult.toString());
-
-                //anchor = arFragment.getArSceneView().getSession().hostCloudAnchor(hitResult.createAnchor());
-                appAnchorState = AppAnchorState.HOSTING;
-
-                //Log.i("Test", anchor.getCloudAnchorId());
-
-                //showToast("Hosting...");
-                //createCloudAnchorModel(anchor);
-
-        });
-
-
-        arFragment.getArSceneView().getScene().addOnUpdateListener(frameTime -> {
-
-            Frame frame = arFragment.getArSceneView().getArFrame();
-            IntBuffer intBuffer = frame.acquirePointCloud().getIds();
-            boolean hasDisplayGeometryChanged = frame.hasDisplayGeometryChanged();
-            Pose pose = frame.getAndroidSensorPose();
-            float[] xp = pose.getXAxis();
-            float[] yp = pose.getYAxis();
-
-            // If there is no frame or ARCore is not tracking yet, just return.
-            if (frame == null || frame.getCamera().getTrackingState() != TrackingState.TRACKING) {
-                return;
-            }
-
-            Log.i("UpdateTest", "" + hasDisplayGeometryChanged);
-            Log.i("UpdateTest", "x" + xp.toString() +"   ::   y   "+yp.toString());
-
-            if(intBuffer == null) {
-                Log.i("UpdateTest", "intBuffer is NUll");
-            } else {
-                int[] intArray = toArray(intBuffer);
-                if (intArray == null) {
-                    Log.i("UpdateTest", "intArray is NUll");
-                } else {
-                    Log.i("UpdateTest", "intArray length is " + intArray.length);
-
-                    if(intArray.length > 100) {
-                        if(appAnchorState != AppAnchorState.HOSTED) {
-                            appAnchorState = AppAnchorState.HOSTING;
-                        }
-                    }
+        if(session == null) {
+            try {
+                session = new Session(this);
+                if (shouldConfigureSession) {
+                    configureSession();
+                    shouldConfigureSession = false;
                 }
+            } catch (UnavailableArcoreNotInstalledException e) {
+                e.printStackTrace();
+            } catch (UnavailableApkTooOldException e) {
+                e.printStackTrace();
+            } catch (UnavailableSdkTooOldException e) {
+                e.printStackTrace();
+            } catch (UnavailableDeviceNotCompatibleException e) {
+                e.printStackTrace();
             }
-
-
-            if (appAnchorState == AppAnchorState.NONE || appAnchorState == AppAnchorState.HOSTED)
-                return;
-
-            appAnchorState = AppAnchorState.HOSTED;
-
-            for (Double[] updatedPoint : vertexList ) {
-                Quaternion camQ = arFragment.getArSceneView().getScene().getCamera().getWorldRotation();
-                float x = updatedPoint[0].floatValue();
-                float y = updatedPoint[1].floatValue();
-                float z = updatedPoint[2].floatValue();
-                float[] f1 = new float[]{x, y, z};
-                float[] f2 = new float[]{camQ.x, camQ.y, camQ.z, camQ.w};
-//                Pose anchorPose = new Pose(f1, f2);
-                Pose anchorPose = Pose.makeTranslation(x, y, z);
-
-                // make an ARCore Anchor
-                Anchor anchor = arFragment.getArSceneView().getSession().createAnchor(anchorPose);
-
-                AnchorNode anchorNode = new AnchorNode(anchor);
-
-                anchorNode.setRenderable(modelRenderable);
-                modelRenderable.setShadowCaster(false);
-                modelRenderable.setShadowReceiver(false);
-                //adding this to the scene
-                arFragment.getArSceneView().getScene().addChild(anchorNode);
-            }
-
-
-
-        });
+        }
 
     }
 
-    private void createRenderable() {
-        ModelRenderable
-                .builder()
-                .setSource(this, Uri.parse("model.sfb"))
-//                .setSource(this, Uri.parse("file:///android_asset/arrow.png"))
-                .build()
-                .thenAccept(modelRenderable -> {
-                    this.modelRenderable = modelRenderable;
-                });
-    }
-
-
-    /*private void createCloudAnchorModel(Anchor anchor) {
-        ModelRenderable
-                .builder()
-                .setSource(this, Uri.parse("model.sfb"))
-                .build()
-                .thenAccept(modelRenderable -> placeCloudAnchorModel(anchor, modelRenderable));
-
-    }*/
-
-    /*private void placeCloudAnchorModel(Anchor anchor, ModelRenderable modelRenderable) {
-        *//*if(anchorNode == null) {
-            anchorNode = new AnchorNode(anchor);
-        } else {
-            anchorNode.setAnchor(anchor);
-        }*//*
-
-        anchorNode = new AnchorNode(anchor);
-
-        *//*AnchorNode cannot be zoomed in or moved
-        So we create a TransformableNode with AnchorNode as the parent*//*
-        float x = (float) updatedPoints.getPoints()[0];
-        float y = (float)updatedPoints.getPoints()[1];
-        float z = (float)updatedPoints.getPoints()[2];
-        *//*Vector3 vector3 = new Vector3(x, y, z);*//*
-        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-        transformableNode.setParent(anchorNode);
-
-
-
-        //transformableNode.setLocalPosition(vector3);
-
-        //anchorNode.setLocalPosition(vector3);
-
-        //
-        //transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(x, y, z), 225));
-
-//        transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 180));
-        *//*if (modelOptionsSpinner.getSelectedItem().toString().equals("Straight Arrow")) {
-            transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 225));
-        }
-        if (modelOptionsSpinner.getSelectedItem().toString().equals("Right Arrow")) {
-            transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 135));
-        }
-        if (modelOptionsSpinner.getSelectedItem().toString().equals("Left Arrow")) {
-            transformableNode.setLocalRotation(Quaternion.axisAngle(new Vector3(0, 1f, 0), 315));
-        }*//*
-//        transformableNode.setParent(anchorNode);
-        //adding the model to the transformable node
-        transformableNode.setRenderable(modelRenderable);
-        modelRenderable.setShadowCaster(false);
-        modelRenderable.setShadowReceiver(false);
-        //adding this to the scene
-        arFragment.getArSceneView().getScene().addChild(anchorNode);
-    }*/
-
-
-
-    private void cc() {
-
-        float x = (float) updatedPoints.getPoints()[0];
-        float y = (float)updatedPoints.getPoints()[1];
-        float z = (float)updatedPoints.getPoints()[2];
-
-        // prepare an anchor position
-        Quaternion camQ = arFragment.getArSceneView().getScene().getCamera().getWorldRotation();
-        float[] f1 = new float[]{x, y, z};
-        float[] f2 = new float[]{camQ.x, camQ.y, camQ.z, camQ.w};
-        Pose anchorPose = new Pose(f1, f2);
-
-        // make an ARCore Anchor
-        Anchor anchor = arFragment.getArSceneView().getSession().createAnchor(anchorPose);
-        // Node that is automatically positioned in world space based on the ARCore Anchor.
-
-    }
-
-
-
-    public int[] toArray(IntBuffer b) {
-        if(b.hasArray()) {
-            if(b.arrayOffset() == 0)
-                return b.array();
-
-            return Arrays.copyOfRange(b.array(), b.arrayOffset(), b.array().length);
-        }
-
-        b.rewind();
-        int[] foo = new int[b.remaining()];
-        b.get(foo);
-
-        return foo;
+    private void configureSession() {
+        Config config = new Config(session);
+        config.setFocusMode(Config.FocusMode.AUTO);
+        /*if (!mARDB.setupAugmentedImageDatabase(config)) {
+            //messageSnackbarHelper.showError(this, "Could not setup augmented image database");
+            Toast.makeText(this, "Could not setup augmented image database", Toast.LENGTH_LONG).show();
+        }*/
+        session.configure(config);
     }
 
 }
