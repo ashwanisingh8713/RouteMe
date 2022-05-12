@@ -9,20 +9,19 @@ import java.util.List;
 public class UpdatedPoints implements Parcelable {
 
 
-    double[] points;
+    float[] points;
 
     public UpdatedPoints(int size){
-        points = new double[size];
+        points = new float[size];
     };
 
     protected UpdatedPoints(Parcel in) {
-//        this.newArrowPoints = in.createTypedArrayList(MeBean.CREATOR);
-        this.points = in.createDoubleArray();
+        this.points = in.createFloatArray();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDoubleArray(this.points);
+        dest.writeFloatArray(this.points);
     }
 
     @Override
@@ -42,11 +41,11 @@ public class UpdatedPoints implements Parcelable {
         }
     };
 
-    public double[] getPoints() {
+    public float[] getPoints() {
         return points;
     }
 
-    public void addPoints(int index, double point) {
+    public void addPoints(int index, float point) {
         this.points[index] = point;
     }
 }

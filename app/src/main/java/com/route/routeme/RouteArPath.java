@@ -37,8 +37,8 @@ public class RouteArPath extends AppCompatActivity  {
 
     private UpdatedPoints updatedPoints;
     private RoutesDocuments selectedRouteItem;
+    private List<float[]> vertexList;
     private AppAnchorState appAnchorState = AppAnchorState.NONE;
-    private List<Double[]> vertexList;
 
     private TextView destinationTo;
     private TextView destinationValue;
@@ -63,12 +63,12 @@ public class RouteArPath extends AppCompatActivity  {
         selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
 
         vertexList = new ArrayList<>();
-        double[] arPoints = updatedPoints.getPoints();
+        float[] arPoints = updatedPoints.getPoints();
         int totalVertex = arPoints.length/3;
         int index = 0;
         for(int i = 0; i<totalVertex; i++) {
             int temp = index+3;
-            Double[] ver = new Double[3];
+            float[] ver = new float[3];
             ver[0] = arPoints[temp-3];//0 //3
             ver[1] = arPoints[temp-2];//1 //4
             ver[2] = arPoints[temp-1];//2 //5

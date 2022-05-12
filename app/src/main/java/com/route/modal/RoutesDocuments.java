@@ -25,8 +25,8 @@ public class RoutesDocuments implements Parcelable {
     public int len;
     public int tu;
     public int td;
-    public Double ud;
-    public List<Double> pts;
+    public float ud;
+    public List<Float> pts;
     public String _rid;
     public String _self;
     public String _etag;
@@ -105,8 +105,8 @@ public class RoutesDocuments implements Parcelable {
         this.len = source.readInt();
         this.tu = source.readInt();
         this.td = source.readInt();
-        this.ud = (Double) source.readValue(Double.class.getClassLoader());
-        this.pts = new ArrayList<Double>();
+        this.ud = (float) source.readValue(float.class.getClassLoader());
+        this.pts = new ArrayList<>();
         source.readList(this.pts, Double.class.getClassLoader());
         this._rid = source.readString();
         this._self = source.readString();
@@ -139,8 +139,8 @@ public class RoutesDocuments implements Parcelable {
         this.len = in.readInt();
         this.tu = in.readInt();
         this.td = in.readInt();
-        this.ud = (Double) in.readValue(Double.class.getClassLoader());
-        this.pts = new ArrayList<Double>();
+        this.ud = (float) in.readValue(float.class.getClassLoader());
+        this.pts = new ArrayList<>();
         in.readList(this.pts, Double.class.getClassLoader());
         this._rid = in.readString();
         this._self = in.readString();

@@ -23,6 +23,7 @@ import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -48,6 +49,7 @@ import com.google.ar.core.Plane;
 import com.google.ar.core.Point;
 import com.google.ar.core.Point.OrientationMode;
 import com.google.ar.core.PointCloud;
+import com.google.ar.core.Pose;
 import com.google.ar.core.Session;
 import com.google.ar.core.Trackable;
 import com.google.ar.core.TrackingFailureReason;
@@ -77,7 +79,10 @@ import com.route.ar.common.samplerender.VertexBuffer;
 import com.route.ar.common.samplerender.arcore.BackgroundRenderer;
 import com.route.ar.common.samplerender.arcore.PlaneRenderer;
 import com.route.ar.common.samplerender.arcore.SpecularCubemapFilter;
+import com.route.data.UpdatedPoints;
+import com.route.modal.RoutesDocuments;
 import com.route.routeme.R;
+import com.route.routeme.RouteArPath;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -111,6 +116,8 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
     -0.273137f,
     0.136569f,
   };
+
+  private RouteArPath.AppAnchorState appAnchorState = RouteArPath.AppAnchorState.NONE;
 
   private static final float Z_NEAR = 0.1f;
   private static final float Z_FAR = 100f;
@@ -180,6 +187,10 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
   private final float[] worldLightDirection = {0.0f, 0.0f, 0.0f, 0.0f};
   private final float[] viewLightDirection = new float[4]; // view x world light direction
 
+  private UpdatedPoints updatedPoints;
+  private RoutesDocuments selectedRouteItem;
+  private List<float[]> vertexList;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -209,6 +220,30 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
             popup.show();
           }
         });
+
+
+
+
+
+
+    updatedPoints = getIntent().getExtras().getParcelable("Points");
+    selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
+
+    vertexList = new ArrayList<>();
+    float[] arPoints = updatedPoints.getPoints();
+    int totalVertex = arPoints.length/3;
+    int index = 0;
+    for(int i = 0; i<totalVertex; i++) {
+      int temp = index+3;
+      float[] ver = new float[3];
+      ver[0] = arPoints[temp-3];//0 //3
+      ver[1] = arPoints[temp-2];//1 //4
+      ver[2] = arPoints[temp-1];//2 //5
+      vertexList.add(ver);
+      index = temp;
+    }
+
+
   }
 
   /** Menu button to launch feature specific settings. */
@@ -305,6 +340,13 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
 
     surfaceView.onResume();
     displayRotationHelper.onResume();
+
+
+    new Handler().postDelayed(() -> {
+      routeMePath();
+    }, 5000);
+
+
   }
 
   @Override
@@ -509,7 +551,7 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
     }
 
     // Handle one tap per frame.
-    handleTap(frame, camera);
+    //handleTap(frame, camera);
 
     // Keep the screen unlocked while tracking, but allow it to lock when tracking stops.
     trackingStateHelper.updateKeepScreenOnFlag(camera.getTrackingState());
@@ -583,35 +625,38 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
 
     // Visualize anchors created by touch.
     render.clear(virtualSceneFramebuffer, 0f, 0f, 0f, 0f);
-    for (WrappedAnchor wrappedAnchor : wrappedAnchors) {
-      Anchor anchor = wrappedAnchor.getAnchor();
-      Trackable trackable = wrappedAnchor.getTrackable();
-      if (anchor.getTrackingState() != TrackingState.TRACKING) {
-        continue;
+    if(appAnchorState == RouteArPath.AppAnchorState.HOSTING) {
+      for (WrappedAnchor wrappedAnchor : wrappedAnchors) {
+        Anchor anchor = wrappedAnchor.getAnchor();
+        Trackable trackable = wrappedAnchor.getTrackable();
+        if (anchor.getTrackingState() != TrackingState.TRACKING) {
+          continue;
+        }
+
+        // Get the current pose of an Anchor in world space. The Anchor pose is updated
+        // during calls to session.update() as ARCore refines its estimate of the world.
+        anchor.getPose().toMatrix(modelMatrix, 0);
+
+        // Calculate model/view/projection matrices
+        Matrix.multiplyMM(modelViewMatrix, 0, viewMatrix, 0, modelMatrix, 0);
+        Matrix.multiplyMM(modelViewProjectionMatrix, 0, projectionMatrix, 0, modelViewMatrix, 0);
+
+        // Update shader properties and draw
+        virtualObjectShader.setMat4("u_ModelView", modelViewMatrix);
+        virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix);
+
+        if (trackable instanceof InstantPlacementPoint
+                && ((InstantPlacementPoint) trackable).getTrackingMethod()
+                == InstantPlacementPoint.TrackingMethod.SCREENSPACE_WITH_APPROXIMATE_DISTANCE) {
+          virtualObjectShader.setTexture(
+                  "u_AlbedoTexture", virtualObjectAlbedoInstantPlacementTexture);
+        } else {
+          virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture);
+        }
+
+        render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer);
+        appAnchorState = RouteArPath.AppAnchorState.HOSTED;
       }
-
-      // Get the current pose of an Anchor in world space. The Anchor pose is updated
-      // during calls to session.update() as ARCore refines its estimate of the world.
-      anchor.getPose().toMatrix(modelMatrix, 0);
-
-      // Calculate model/view/projection matrices
-      Matrix.multiplyMM(modelViewMatrix, 0, viewMatrix, 0, modelMatrix, 0);
-      Matrix.multiplyMM(modelViewProjectionMatrix, 0, projectionMatrix, 0, modelViewMatrix, 0);
-
-      // Update shader properties and draw
-      virtualObjectShader.setMat4("u_ModelView", modelViewMatrix);
-      virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix);
-
-      if (trackable instanceof InstantPlacementPoint
-          && ((InstantPlacementPoint) trackable).getTrackingMethod()
-              == InstantPlacementPoint.TrackingMethod.SCREENSPACE_WITH_APPROXIMATE_DISTANCE) {
-        virtualObjectShader.setTexture(
-            "u_AlbedoTexture", virtualObjectAlbedoInstantPlacementTexture);
-      } else {
-        virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture);
-      }
-
-      render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer);
     }
 
     // Compose the virtual scene with the background.
@@ -792,12 +837,12 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
 
   private void updateMainLight(float[] direction, float[] intensity, float[] viewMatrix) {
     // We need the direction in a vec4 with 0.0 as the final component to transform it to view space
-    /*worldLightDirection[0] = direction[0];
+    worldLightDirection[0] = direction[0];
     worldLightDirection[1] = direction[1];
     worldLightDirection[2] = direction[2];
     Matrix.multiplyMV(viewLightDirection, 0, viewMatrix, 0, worldLightDirection, 0);
     virtualObjectShader.setVec4("u_ViewLightDirection", viewLightDirection);
-    virtualObjectShader.setVec3("u_LightIntensity", intensity);*/
+    virtualObjectShader.setVec3("u_LightIntensity", intensity);
   }
 
   private void updateSphericalHarmonicsCoefficients(float[] coefficients) {
@@ -844,6 +889,37 @@ public class HelloArActivity extends AppCompatActivity implements SampleRender.R
     }
     session.configure(config);
   }
+
+
+
+  private void createSampleAnchor() {
+
+    //https://stackoverflow.com/questions/53587165/arcore-how-to-create-an-anchor-from-a-session-object-without-plane-tracking
+//    wrappedAnchors
+//    Anchor anchor = new Anchor();
+
+//    Pose pose = Pose.makeTranslation(-0.41058916f, -0.6668466f, 0.04225248f);
+
+    float[] pos = { 0,0,-1 };
+    float[] rotation = {0,0,0,1};
+    Anchor anchor =  session.createAnchor(new Pose(pos, rotation));
+    WrappedAnchor wrappedAnchor = new WrappedAnchor(anchor, null);
+    wrappedAnchors.add(wrappedAnchor);
+
+  }
+
+
+  private void routeMePath() {
+    float[] rotation = {0,0,0,1};
+    for(float[] pos : vertexList) {
+      Anchor anchor =  session.createAnchor(new Pose(pos, rotation));
+      WrappedAnchor wrappedAnchor = new WrappedAnchor(anchor, null);
+      wrappedAnchors.add(wrappedAnchor);
+    }
+
+    appAnchorState = RouteArPath.AppAnchorState.HOSTING;
+  }
+
 }
 
 

@@ -52,14 +52,14 @@ public class RouteDetail extends AppCompatActivity {
             int index = routes.indexOf(routesItem);
             if(index != -1) {
                 RoutesDocuments selectedRouteItem = routes.get(index);
-                Double ud = selectedRouteItem.ud;
-                List<Double> arrowPoints = selectedRouteItem.pts;
+                Float ud = selectedRouteItem.ud;
+                List<Float> arrowPoints = selectedRouteItem.pts;
                 UpdatedPoints newArrowPoints = new UpdatedPoints(arrowPoints.size());
                 int count = 0 ;
-                for(Double in : arrowPoints) {
+                for(Float in : arrowPoints) {
                     Log.i("Check", "in :: "+in);
                     Log.i("Check", "ud :: "+ud);
-                    double temp = in*ud;
+                    float temp = in*ud;
                     Log.i("Check", "temp :: "+temp);
                     newArrowPoints.addPoints(count, temp);
                     count++;
