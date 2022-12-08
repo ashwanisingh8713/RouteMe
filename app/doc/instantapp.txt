@@ -1,0 +1,19 @@
+Instant App Bundle  (Raywenderlich)
+
+
+Instant App
+https://www.raywenderlich.com/9519-instant-apps-getting-started
+
+App Bundle
+https://www.raywenderlich.com/9043-android-app-bundles-getting-started
+
+####################################################################################################
+Appbundletool jar
+
+java -jar bundletool-all-1.8.2.jar build-apks --bundle=app-instant-release.aab --output=app.apks --connected-device --ks=/Users/apple/Desktop/FTTD/instant_keystore_fttd --ks-pass=pass:ashwani123 --ks-key-alias=ashwani123 --key-pass=pass:ashwani123
+
+To Run Instant APK from Command line.
+$ANDROID_HOME/extras/google/instantapps/ia run app.apks
+
+
+java -jar bundletool-all-1.8.2.jar build-apks --bundle=app-instant-release.aab --output=app.apks --connected-device --ks=instant_keystore_fttd.keystore --ks-pass=pass:ashwani123 --ks-key-alias=ashwani123 --key-pass=pass:ashwani123

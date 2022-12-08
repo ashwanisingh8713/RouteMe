@@ -1,0 +1,70 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.route.routeme"
+    android:targetSandboxVersion="2">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA" />
+
+  <!-- The following declaration enables this module to be served instantly -->
+  <dist:module
+    dist:instant="true">
+  </dist:module>
+
+  <application
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme"
+      tools:replace="android:theme"
+      android:networkSecurityConfig="@xml/network_security_config">
+    <activity
+      android:name="com.route.routeme.MainActivity"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.DEFAULT" />
+
+        <data
+          android:scheme="http"
+          android:host="example.com"
+          android:pathPrefix="/main" />
+
+        <data
+          android:scheme="https" />
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".RouteDetail"
+        android:exported="true">
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.DEFAULT" />
+
+        <data
+          android:scheme="http"
+          android:host="example.com"
+          android:pathPrefix="/routedetail" />
+
+        <data
+          android:scheme="https" />
+      </intent-filter>
+    </activity>
+
+
+    <activity android:name=".BarcodeScannerActivity"
+        android:exported="true"/>
+
+  </application>
+
+</manifest>
