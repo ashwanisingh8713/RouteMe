@@ -1,0 +1,3 @@
+url: rtme.pl
+login: ftp@rtme.pl
+password: !@#RouteMe^%$

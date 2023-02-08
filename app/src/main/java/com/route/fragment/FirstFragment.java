@@ -108,14 +108,14 @@ public class FirstFragment extends Fragment {
             binding.resText.setText(error);
         });
 
-        String requiredValue = "http://routemeapp.com/TestCode01";
+        /*String requiredValue = "http://routemeapp.com/TestCode01";
         NavController navController = NavHostFragment.findNavController(FirstFragment.this);
         Bundle bundle = new Bundle();
         bundle.putString("Url", requiredValue);
         DocumentFragment.s_URL = requiredValue;
         navController.setGraph(R.navigation.nav_graph, bundle);
         navController.navigate(R.id.action_FirstFragment_to_DocumentFragment);
-        binding.title.setText("List of Routes");
+        binding.title.setText("List of Routes");*/
 
     }
 

@@ -36,7 +36,7 @@
 
         <data
           android:scheme="http"
-          android:host="example.com"
+          android:host="rtme.pl"
           android:pathPrefix="/main" />
 
         <data
