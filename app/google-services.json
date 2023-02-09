@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "845183034104",
+    "project_id": "routeme-8f543",
+    "storage_bucket": "routeme-8f543.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845183034104:android:e2a4b9c07d544a3d1b510d",
+        "android_client_info": {
+          "package_name": "com.route.routeme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845183034104-pmdfq1j6lgcukmpge18tnnc0cj90l8qt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.route.routeme",
+            "certificate_hash": "5b9df5715814f2ba0f2bfc4dcaf7038b2c5a816f"
+          }
+        },
+        {
+          "client_id": "845183034104-olldq2adv0r7d6v4cl529i79o3ao4ko4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO8JZ4_XoI8Jx-iO5lW4Z1pJBMfGbM9vY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845183034104-olldq2adv0r7d6v4cl529i79o3ao4ko4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "845183034104-0eppu2eej9tdipokghgagic171k6a5i9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.infiniteloop.routeme"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -77,15 +77,10 @@ public class QrCodeAnalyzer implements ImageAnalysis.Analyzer {
             this.scaleX = this.previewViewWidth / (float)img.getHeight();
             this.scaleY = this.previewViewHeight / (float)img.getWidth();
             ImageInfo var10001 = image.getImageInfo();
-            Intrinsics.checkNotNullExpressionValue(var10001, "image.imageInfo");
             InputImage var10000 = InputImage.fromMediaImage(img, var10001.getRotationDegrees());
-            Intrinsics.checkNotNullExpressionValue(var10000, "InputImage.fromMediaImag…mageInfo.rotationDegrees)");
             InputImage inputImage = var10000;
-            BarcodeScannerOptions var6 = (new BarcodeScannerOptions.Builder()).build();
-            Intrinsics.checkNotNullExpressionValue(var6, "BarcodeScannerOptions.Bu…\n                .build()");
-            BarcodeScannerOptions options = var6;
+            BarcodeScannerOptions options = (new BarcodeScannerOptions.Builder()).build();
             BarcodeScanner var7 = BarcodeScanning.getClient(options);
-            Intrinsics.checkNotNullExpressionValue(var7, "BarcodeScanning.getClient(options)");
             BarcodeScanner scanner = var7;
             scanner.process(inputImage).addOnSuccessListener(new OnSuccessListener() {
                 // $FF: synthetic method
@@ -122,7 +117,6 @@ public class QrCodeAnalyzer implements ImageAnalysis.Analyzer {
                     }
 
                 }
-//            })).addOnFailureListener((OnFailureListener)null.INSTANCE);
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {

@@ -42,6 +42,9 @@
         <data
           android:scheme="https" />
       </intent-filter>
+      <meta-data
+          android:name="default-url"
+          android:value="https://rtme.page.link/eNh4" />
     </activity>
 
     <activity android:name=".RouteDetail"
@@ -51,13 +54,6 @@
         <category android:name="android.intent.category.BROWSABLE" />
         <category android:name="android.intent.category.DEFAULT" />
 
-        <data
-          android:scheme="http"
-          android:host="example.com"
-          android:pathPrefix="/routedetail" />
-
-        <data
-          android:scheme="https" />
       </intent-filter>
     </activity>
 
