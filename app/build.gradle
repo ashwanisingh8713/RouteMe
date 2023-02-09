@@ -16,12 +16,12 @@ android {
     flavorDimensions "RouteExperience"
     productFlavors {
         instant {
-            versionCode 3008
-            versionName "instant_3008"
+            versionCode 3010
+            versionName "instant_3010"
         }
         installed {
-            versionCode 3009
-            versionName "installed_3009"
+            versionCode 3011
+            versionName "installed_3011"
         }
     }
 
@@ -82,7 +82,6 @@ dependencies {
 
     // Barcode scanning API
 //    implementation 'com.google.mlkit:barcode-scanning:17.0.3'
-
     implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:18.1.0'
 
 
