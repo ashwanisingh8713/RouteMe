@@ -37,7 +37,9 @@ public class RouteArPath extends AppCompatActivity  {
         selectedRouteItem = getIntent().getExtras().getParcelable("selectedRouteItem");
 
         vertexList = new ArrayList<>();
-        double[] arPoints = updatedPoints.getPoints();
+        // Uncomment Below commented code
+        // Commented for Route Path UI Creation
+       /* double[] arPoints = updatedPoints.getPoints();
         int totalVertex = arPoints.length/3;
         int index = 0;
         for(int i = 0; i<totalVertex; i++) {
@@ -48,7 +50,7 @@ public class RouteArPath extends AppCompatActivity  {
             ver[2] = arPoints[temp-1];//2 //5
             vertexList.add(ver);
             index = temp;
-        }
+        }*/
 
         //Collections.reverse(vertexList);
 
@@ -58,8 +60,13 @@ public class RouteArPath extends AppCompatActivity  {
         destinationValue = findViewById(R.id.destinationValue);
         destinationBelongTo = findViewById(R.id.destinationBelongTo);
 
-        destinationValue.setText(selectedRouteItem.ept);
-        destinationBelongTo.setText(selectedRouteItem.loc);
+        // Uncomment Below commented code
+        // Commented for Route Path UI Creation
+//        destinationValue.setText(selectedRouteItem.ept);
+//        destinationBelongTo.setText(selectedRouteItem.loc);
+
+        destinationValue.setText("EPT Value");
+        destinationBelongTo.setText("LOC Value");
 
 
         mRuler.setMaxValue(18);

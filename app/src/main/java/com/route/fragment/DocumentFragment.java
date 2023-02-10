@@ -1,5 +1,6 @@
 package com.route.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +19,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.route.adapter.DocumentRecyclerAdapter;
 import com.route.modal.RoutesDocuments;
+import com.route.routeme.RouteArPath;
+import com.route.routeme.RouteDetail;
 import com.route.routeme.databinding.FragmentDocumentsBinding;
 import com.route.viewmodel.DocumentDataViewModel;
 
 import java.util.List;
+
 
 public class DocumentFragment extends Fragment {
 
@@ -54,9 +58,14 @@ public class DocumentFragment extends Fragment {
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(mAdapter);
 
-//        model.loadRoutesDocument();
-        model.loadQRCodesDocument();
+//        Intent intent = new Intent(requireActivity(), RouteDetail.class);
+//        Intent intent = new Intent(requireActivity(), RouteArPath.class);
+//        intent.putExtra("id", "test_anchor_id");
+//        startActivity(intent);
 
+
+        // Older - 1
+        model.loadQRCodesDocument();
         model.getQRCodesDocument().observe(requireActivity(), routesBeans -> {
             // update UI
             mAdapter.setDocumentList(routesBeans);
@@ -64,18 +73,21 @@ public class DocumentFragment extends Fragment {
             binding.progressBar.setVisibility(View.GONE);
         });
 
+//        model.loadRoutesDocument();
         model.getRoutesDocument().observe(requireActivity(), routesData -> {
             // update UI
-            /*List<RoutesDocuments> routes = routesData.getDocuments();
-            mAdapter.setDocumentList(routes);
-            mAdapter.notifyDataSetChanged();
-            binding.progressBar.setVisibility(View.GONE);*/
+            Log.i("", "");
+//            List<RoutesDocuments> routes = routesData.getDocuments();
+//            mAdapter.setDocumentList(routes);
+//            mAdapter.notifyDataSetChanged();
+            binding.progressBar.setVisibility(View.GONE);
         });
 
         model.getRoutesError().observe(requireActivity(), routeError -> {
+            Log.i("", "");
             binding.progressBar.setVisibility(View.GONE);
             binding.errorTxt.setVisibility(View.VISIBLE);
-            binding.errorTxt.setText("Error Occurred!!  "+routeError);
+            binding.errorTxt.setText(routeError);
         });
     }
 }

@@ -83,7 +83,9 @@ public class DocumentDataViewModel extends ViewModel {
                     List<RoutesBean> routesBeans = new ArrayList<>();
                     if(qrCodes.getDocuments() != null && qrCodes.getDocuments().size() > 0 ){
                         for(QRCodesDocuments qrCodesDocuments : qrCodes.getDocuments()) {
-                            anchorsBeans.addAll(qrCodesDocuments.getAnchors());
+                            if(qrCodesDocuments.getAnchors() != null) {
+                                anchorsBeans.addAll(qrCodesDocuments.getAnchors());
+                            }
                         }
                     }
                     if(anchorsBeans.size() > 0) {
@@ -95,11 +97,13 @@ public class DocumentDataViewModel extends ViewModel {
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(routesBeans->{
-//                    QRCodes qrCodes = new QRCodes();
-//                    qrCodesDocument.postValue(qrCodes);
+                if(routesBeans.size()>0) {
                     qrCodesDocument.postValue(routesBeans);
+                } else {
+                    error.postValue("Error! Anchor List is not available.");
+                }
                 }, throwable -> {
-                    error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
+                    error.postValue("Error! "+throwable.getMessage());
                 }, () -> {
 
                 }));
