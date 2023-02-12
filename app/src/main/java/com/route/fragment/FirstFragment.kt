@@ -1,5 +1,6 @@
 package com.route.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonElement
 import com.route.modal.RoutesData
 import com.route.routeme.R
+import com.route.routeme.RouteArPath
+import com.route.routeme.RouteArPath_v2
 import com.route.routeme.databinding.FragmentFirstBinding
 import com.route.viewmodel.RoutesDataViewModel
 import io.github.g00fy2.quickie.QRResult
@@ -43,6 +46,12 @@ class FirstFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
         model = ViewModelProvider(requireActivity())[RoutesDataViewModel::class.java]
         model.clearDisposable()
+
+
+//        Intent intent = new Intent(requireActivity(), RouteDetail.class);
+        val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
+        intent.putExtra("id", "test_anchor_id")
+        startActivity(intent)
 
         binding.barcodeBtn.setOnClickListener{
             scanQrCode.launch(null)

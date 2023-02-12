@@ -1,30 +1,28 @@
 package com.route.routeme;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.route.data.UpdatedPoints;
 import com.route.modal.RoutesDocuments;
-import com.route.routeme.databinding.ActivityMainBinding;
-import com.route.routeme.databinding.ActivityRouteArPathBinding;
 import com.route.routeme.databinding.ActivityRouteArPathV2Binding;
-import com.route.routeme.databinding.ActivityRouteDetailBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import ke.tang.ruler.DrawableMarker;
 import ke.tang.ruler.Marker;
 import ke.tang.ruler.OnMarkerClickListener;
-import ke.tang.ruler.RulerView;
 
 
-public class RouteArPath extends AppCompatActivity  {
+public class RouteArPath_v2 extends AppCompatActivity  {
 
     public static final String TAG = "RouteTag";
 
-    private ActivityRouteArPathBinding binding;
+    private ActivityRouteArPathV2Binding binding;
     private UpdatedPoints updatedPoints;
 
     private RoutesDocuments selectedRouteItem;
@@ -34,7 +32,7 @@ public class RouteArPath extends AppCompatActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityRouteArPathBinding.inflate(getLayoutInflater());
+        binding = ActivityRouteArPathV2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         updatedPoints = getIntent().getExtras().getParcelable("Points");
@@ -75,7 +73,7 @@ public class RouteArPath extends AppCompatActivity  {
         marker.setOnMarkerClickListener(new OnMarkerClickListener() {
             @Override
             public void onMarkerClick(Marker m) {
-                Toast.makeText(RouteArPath.this, "Marker is clicked : ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RouteArPath_v2.this, "Marker is clicked : ", Toast.LENGTH_SHORT).show();
             }
         });
         binding.ruler.addMarker(marker);

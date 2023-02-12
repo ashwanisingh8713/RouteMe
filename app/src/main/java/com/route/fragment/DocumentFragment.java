@@ -58,12 +58,6 @@ public class DocumentFragment extends Fragment {
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(mAdapter);
 
-//        Intent intent = new Intent(requireActivity(), RouteDetail.class);
-//        Intent intent = new Intent(requireActivity(), RouteArPath.class);
-//        intent.putExtra("id", "test_anchor_id");
-//        startActivity(intent);
-
-
         // Older - 1
         model.loadQRCodesDocument();
         model.getQRCodesDocument().observe(requireActivity(), routesBeans -> {
