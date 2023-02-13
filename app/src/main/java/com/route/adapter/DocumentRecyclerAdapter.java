@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.route.modal.RoutesBean;
 import com.route.modal.RoutesDocuments;
 import com.route.routeme.R;
+import com.route.routeme.RouteArPath_v2;
 import com.route.routeme.RouteDetail;
 
 import java.util.ArrayList;
@@ -41,7 +42,8 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
 
         holder.itemView.setOnClickListener(click->{
             //Toast.makeText(holder.itemView.getContext(), "mkdkdkkd", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(holder.itemView.getContext(), RouteDetail.class);
+//            Intent intent = new Intent(holder.itemView.getContext(), RouteDetail.class);
+            Intent intent = new Intent(holder.itemView.getContext(), RouteArPath_v2.class);
             intent.putExtra("id", documents.getId());
             holder.itemView.getContext().startActivity(intent);
 

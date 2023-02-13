@@ -50,8 +50,8 @@ class FirstFragment:Fragment() {
 
 //        Intent intent = new Intent(requireActivity(), RouteDetail.class);
         val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
-        intent.putExtra("id", "test_anchor_id")
-        startActivity(intent)
+//        intent.putExtra("id", "test_anchor_id")
+//        startActivity(intent)
 
         binding.barcodeBtn.setOnClickListener{
             scanQrCode.launch(null)

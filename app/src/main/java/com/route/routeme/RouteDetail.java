@@ -74,7 +74,7 @@ public class RouteDetail extends AppCompatActivity {
                     activityRouteDetailBinding.itemParent.addView(textView);*/
                 }
                 Log.i("", "");
-                Intent intent = new Intent(RouteDetail.this, RouteArPath.class);
+                Intent intent = new Intent(RouteDetail.this, RouteArPath_v2.class);
 //                Intent intent = new Intent(RouteDetail.this, Sample1.class);
                 intent.putExtra("Points", newArrowPoints);
                 intent.putExtra("selectedRouteItem", selectedRouteItem);
