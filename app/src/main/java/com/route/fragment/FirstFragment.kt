@@ -48,7 +48,6 @@ class FirstFragment:Fragment() {
         model.clearDisposable()
 
 
-//        Intent intent = new Intent(requireActivity(), RouteDetail.class);
         val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
 //        intent.putExtra("id", "test_anchor_id")
 //        startActivity(intent)

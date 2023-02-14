@@ -11,8 +11,6 @@ android {
     defaultConfig {
         minSdk 28
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
     }
     buildTypes {
         release {
@@ -21,13 +19,14 @@ android {
         }
     }
 
-    lintOptions {
-        abortOnError false
-    }
 
     buildFeatures {
         viewBinding true
     }
+    lint {
+        abortOnError false
+    }
+    namespace 'ke.tang.ruler'
 }
 
 
