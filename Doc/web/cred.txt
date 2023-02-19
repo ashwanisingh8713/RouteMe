@@ -1,3 +1,13 @@
-url: rtme.pl
-login: ftp@rtme.pl
-password: !@#RouteMe^%$
+FTP Site Login :
+    url: rtme.pl
+    login: ftp@rtme.pl
+    password: !@#RouteMe^%$
+
+
+Privacy Policy
+    https://www.routemeapp.com/privacy-policy
+
+Play Store Cred
+    Alias Name : RouteMe
+    Key Password : rtmeRouteMe^%$
+    Alias Password : rtmeRouteMe^%$

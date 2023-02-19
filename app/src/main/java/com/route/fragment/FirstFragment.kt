@@ -41,19 +41,23 @@ class FirstFragment:Fragment() {
         return binding.root
     }
 
+    private fun openRouteScreen() {
+        val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
+        intent.putExtra("id", "202204190137151835938906")
+        startActivity(intent)
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         model = ViewModelProvider(requireActivity())[RoutesDataViewModel::class.java]
         model.clearDisposable()
 
-
-        val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
-//        intent.putExtra("id", "test_anchor_id")
-//        startActivity(intent)
+//        openRouteScreen()
 
         binding.barcodeBtn.setOnClickListener{
             scanQrCode.launch(null)
+//            openRouteScreen()
         }
 
         binding.databaseBtn.setOnClickListener {

@@ -33,6 +33,7 @@ public interface ServiceAPIs {
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
 
+
     @GET("/dbs/{database}/colls/{collection}/docs")
     Observable<QRCodes> getQRCodesDocument(@Path("database") String database, @Path("collection") String collection,
                                     @Header("content-type") String accept,

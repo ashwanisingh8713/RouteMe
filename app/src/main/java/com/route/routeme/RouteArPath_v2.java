@@ -3,7 +3,6 @@ package com.route.routeme;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,14 +12,11 @@ import com.route.alert.ErrorDialog;
 import com.route.data.UpdatedPoints;
 import com.route.modal.RoutesDocuments;
 import com.route.routeme.databinding.ActivityRouteArPathV2Binding;
+import com.route.util.DestinationUtil;
+import com.route.util.Vector3;
 import com.route.viewmodel.RoutesDataViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import ke.tang.ruler.DrawableMarker;
-import ke.tang.ruler.Marker;
-import ke.tang.ruler.OnMarkerClickListener;
 
 
 public class RouteArPath_v2 extends AppCompatActivity  {
@@ -39,6 +35,7 @@ public class RouteArPath_v2 extends AppCompatActivity  {
         setContentView(binding.getRoot());
         model = new ViewModelProvider(this).get(RoutesDataViewModel.class);
 
+        // Init Making API Request
         model.loadRoutesDocument();
 
         String id = getIntent().getExtras().getString("id");
@@ -68,8 +65,18 @@ public class RouteArPath_v2 extends AppCompatActivity  {
                 }
                 // Show Data on UI
                 showDataOnUI(selectedRouteItem);
-                // Make Vertex to draw the path
-                makeVertexData(updatedPoints);
+
+                float distance_point = DestinationUtil.distanceFromPoints(selectedRouteItem);
+                Log.i("Distance", "distance_point :: "+distance_point);
+
+                List<Double[]> vertexList = DestinationUtil.makeVertexData_double(updatedPoints);
+                float distance_vertex = DestinationUtil.distanceFromVertex(vertexList);
+                Log.i("Distance", "distance_vertex :: "+distance_vertex);
+
+                List<Vector3> vertexList_v3 = DestinationUtil.makeVertexData(updatedPoints);
+                float distance_vector = DestinationUtil.distanceFromVectoreV3(vertexList_v3);
+                Log.i("Distance", "distance_vector :: "+distance_vector);
+
             } else {
                 ErrorDialog.showErrorDialog(getSupportFragmentManager(), "Sorry!", "Route doesn't exist");
             }
@@ -83,35 +90,22 @@ public class RouteArPath_v2 extends AppCompatActivity  {
             ErrorDialog.showErrorDialog(getSupportFragmentManager(), "Error!", "Kindly try again");
         });
 
-
-
-
-
     }
 
-    private List<Double[]> makeVertexData(UpdatedPoints updatedPoints) {
-        List<Double[]> vertexList = new ArrayList<>();
-        double[] arPoints = updatedPoints.getPoints();
-        int totalVertex = arPoints.length/3;
-        int index = 0;
-        for(int i = 0; i<totalVertex; i++) {
-            int temp = index+3;
-            Double[] ver = new Double[3];
-            ver[0] = arPoints[temp-3];//0 //3
-            ver[1] = arPoints[temp-2];//1 //4
-            ver[2] = arPoints[temp-1];//2 //5
-            vertexList.add(ver);
-            index = temp;
-        }
 
-        //Collections.reverse(vertexList);
-        return vertexList;
-    }
 
     private void showDataOnUI(RoutesDocuments selectedRouteItem) {
         binding.destinationValue.setText(selectedRouteItem.ept);
         binding.destinationBelongTo.setText(selectedRouteItem.loc);
+        if(selectedRouteItem.len > 1) {
+            binding.txtDistance.setText(selectedRouteItem.len+" meters");
+        } else if(selectedRouteItem.len == 1) {
+            binding.txtDistance.setText(selectedRouteItem.len + " meter");
+        }
+
     }
+
+
 
 
     /*private void cc() {
