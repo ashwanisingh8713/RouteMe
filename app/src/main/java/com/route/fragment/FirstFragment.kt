@@ -57,7 +57,6 @@ class FirstFragment:Fragment() {
 
         binding.barcodeBtn.setOnClickListener{
             scanQrCode.launch(null)
-//            openRouteScreen()
         }
 
         binding.databaseBtn.setOnClickListener {

@@ -17,11 +17,11 @@ android {
     flavorDimensions "RouteExperience"
     productFlavors {
         instant {
-            versionCode 3014
+            versionCode 3016
             versionName "instant_3014"
         }
         installed {
-            versionCode 3015
+            versionCode 3017
             versionName "installed_3015"
         }
     }
