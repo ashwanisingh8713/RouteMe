@@ -125,7 +125,6 @@ class FirstFragment:Fragment() {
                 val navController = NavHostFragment.findNavController(this@FirstFragment)
                 val bundle = Bundle()
                 bundle.putString("Url", requiredValue)
-                DocumentFragment.s_URL = requiredValue
                 navController.setGraph(R.navigation.nav_graph, bundle)
                 navController.navigate(R.id.action_FirstFragment_to_DocumentFragment)
                 binding.title.text = "List of Routes"

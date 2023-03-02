@@ -33,8 +33,6 @@ public class DocumentFragment extends Fragment {
     private DocumentRecyclerAdapter mAdapter;
     private DocumentDataViewModel model;
 
-    public static String s_URL ;
-
     @Override
     public void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);

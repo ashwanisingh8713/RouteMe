@@ -1,0 +1,15 @@
+Manually constructing a Dynamic Link URL
+    https://firebase.google.com/docs/dynamic-links/create-manually?authuser=0#general-params
+
+Create App Links for Instant Apps
+    https://developer.android.com/training/app-links/instant-app-links
+
+Create Deep Links to App Content
+    https://developer.android.com/training/app-links/deep-linking
+
+Allow specific URL patterns
+    https://support.google.com/firebase/answer/9021429
+
+
+    https://developers.google.com/digital-asset-links/tools/generator
+    https://developers.google.com/digital-asset-links/v1/getting-started#quick-usage-example

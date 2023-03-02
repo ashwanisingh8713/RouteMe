@@ -17,12 +17,12 @@ android {
     flavorDimensions "RouteExperience"
     productFlavors {
         instant {
-            versionCode 3016
-            versionName "instant_3014"
+            versionCode 305
+            versionName "instant_305"
         }
         installed {
-            versionCode 3017
-            versionName "installed_3015"
+            versionCode 3023
+            versionName "installed_3023"
         }
     }
 
@@ -30,7 +30,13 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled true
+            shrinkResources true
         }
     }
     compileOptions {
@@ -73,6 +79,7 @@ dependencies {
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:31.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx:21.0.1'
 
     // RX-Java
     implementation "io.reactivex.rxjava2:rxjava:2.2.21"
@@ -89,6 +96,7 @@ dependencies {
 
     // Ruler
     implementation project(":library")
+
 
 
 }
