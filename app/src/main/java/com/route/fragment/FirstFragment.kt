@@ -16,6 +16,7 @@ import com.route.routeme.R
 import com.route.routeme.RouteArPath
 import com.route.routeme.RouteArPath_v2
 import com.route.routeme.databinding.FragmentFirstBinding
+import com.route.util.FileUtil
 import com.route.viewmodel.RoutesDataViewModel
 import io.github.g00fy2.quickie.QRResult
 import io.github.g00fy2.quickie.ScanQRCode
@@ -53,10 +54,15 @@ class FirstFragment:Fragment() {
         model = ViewModelProvider(requireActivity())[RoutesDataViewModel::class.java]
         model.clearDisposable()
 
+        binding.title.setOnClickListener{
+            FileUtil.shareLogFile(requireActivity())
+        }
+
 //        openRouteScreen()
 
         binding.barcodeBtn.setOnClickListener{
             scanQrCode.launch(null)
+            FileUtil.writeFile("Opened QR Scanner")
         }
 
         binding.databaseBtn.setOnClickListener {
@@ -110,6 +116,7 @@ class FirstFragment:Fragment() {
     override fun onResume() {
         super.onResume()
         binding.title.text = "Scan The Bar Code"
+        FileUtil.writeFile("Launched First Fragment")
     }
 
     override fun onDestroyView() {
@@ -121,22 +128,28 @@ class FirstFragment:Fragment() {
     private fun listenBarCodeResult(result: QRResult) {
         when (result) {
             is QRResult.QRSuccess -> {
+                FileUtil.writeFile("Success QR Scanner")
                 var requiredValue = result.content.rawValue
                 val navController = NavHostFragment.findNavController(this@FirstFragment)
                 val bundle = Bundle()
-                bundle.putString("Url", requiredValue)
+                //bundle.putString("Url", requiredValue)
                 navController.setGraph(R.navigation.nav_graph, bundle)
                 navController.navigate(R.id.action_FirstFragment_to_DocumentFragment)
                 binding.title.text = "List of Routes"
+
             }
             QRResult.QRUserCanceled -> {
                 showSnackBar("User canceled")
+                FileUtil.writeFile("User Cancelled QR Scanner")
             }
-            QRResult.QRMissingPermission ->
+            QRResult.QRMissingPermission -> {
                 showSnackBar("Missing permission")
+                FileUtil.writeFile("Camera Permission is missing for QR Scanner")
+            }
 
             is QRResult.QRError -> {
                 val msg = "${result.exception.javaClass.simpleName}: ${result.exception.localizedMessage}"
+                FileUtil.writeFile("Error QR Scanner :: $msg")
                 showSnackBar(msg)
             }
         }
