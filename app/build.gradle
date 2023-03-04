@@ -17,8 +17,8 @@ android {
     flavorDimensions "RouteExperience"
     productFlavors {
         instant {
-            versionCode 305
-            versionName "instant_305"
+            versionCode 307
+            versionName "instant_307"
         }
         installed {
             versionCode 3023
@@ -95,7 +95,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     // Ruler
-    implementation project(":library")
+//    implementation project(":library")
 
 
 

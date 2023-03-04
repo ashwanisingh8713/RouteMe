@@ -13,7 +13,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonElement
 import com.route.modal.RoutesData
 import com.route.routeme.R
-import com.route.routeme.RouteArPath
 import com.route.routeme.RouteArPath_v2
 import com.route.routeme.databinding.FragmentFirstBinding
 import com.route.util.FileUtil

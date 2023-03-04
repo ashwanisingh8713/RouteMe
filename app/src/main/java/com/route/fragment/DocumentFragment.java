@@ -19,14 +19,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.route.adapter.DocumentRecyclerAdapter;
-import com.route.modal.RoutesDocuments;
-import com.route.routeme.RouteArPath;
-import com.route.routeme.RouteDetail;
 import com.route.routeme.databinding.FragmentDocumentsBinding;
 import com.route.util.FileUtil;
 import com.route.viewmodel.DocumentDataViewModel;
 
-import java.util.List;
 
 
 public class DocumentFragment extends Fragment {
