@@ -46,7 +46,7 @@ object FileUtil {
             share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             share.type = "application/txt"
             share.putExtra(Intent.EXTRA_STREAM, uri)
-            share.setPackage("com.whatsapp")
+//            share.setPackage("com.whatsapp")
             activity.startActivity(share)
         }
     }

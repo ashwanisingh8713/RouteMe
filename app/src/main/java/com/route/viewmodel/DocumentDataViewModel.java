@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.route.apis.ApiManager;
 import com.route.modal.AnchorsBean;
-import com.route.modal.QRCodes;
 import com.route.modal.QRCodesDocuments;
 import com.route.modal.RoutesBean;
 import com.route.modal.RoutesData;
@@ -17,16 +16,15 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class DocumentDataViewModel extends ViewModel {
     protected final CompositeDisposable mDisposable = new CompositeDisposable();
-    private MutableLiveData<RoutesData> routesDocument;
+    private MutableLiveData<List<RoutesBean>> routesDocument;
     private MutableLiveData<List<RoutesBean>> qrCodesDocument;
     private MutableLiveData<String> error;
 
-    public LiveData<RoutesData> getRoutesDocument() {
+    public LiveData<List<RoutesBean>> getAppClipCodesDocument() {
         if (routesDocument == null) {
             routesDocument = new MutableLiveData<>();
             error = new MutableLiveData<>();
@@ -49,7 +47,7 @@ public class DocumentDataViewModel extends ViewModel {
         return error;
     }
 
-    public void loadRoutesDocument() {
+    /*public void loadRoutesDocument() {
         mDisposable.add(ApiManager.getDocument()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -60,20 +58,40 @@ public class DocumentDataViewModel extends ViewModel {
                 }, () -> {
 
                 }));
-    }
+    }*/
 
     public void loadAppClipCodesDocument() {
         mDisposable.add(ApiManager.loadAppClipCodesDocument()
                 .subscribeOn(Schedulers.io())
+                .map(qrCodes -> {
+                    List<AnchorsBean> anchorsBeans = new ArrayList<>();
+                    List<RoutesBean> routesBeans = new ArrayList<>();
+                    /*if(qrCodes.getDocuments() != null && qrCodes.getDocuments().size() > 0 ){
+                        for(QRCodesDocuments qrCodesDocuments : qrCodes.getDocuments()) {
+                            if(qrCodesDocuments.getAnchors() != null) {
+                                anchorsBeans.addAll(qrCodesDocuments.getAnchors());
+                            }
+                        }
+                    }
+                    if(anchorsBeans.size() > 0) {
+                        for(AnchorsBean anchorsBean : anchorsBeans) {
+                            routesBeans.addAll(anchorsBean.getRoutes());
+                        }
+                    }*/
+                    return routesBeans;
+                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(value->{
-                    routesDocument.postValue(value);
+//                    routesDocument.postValue(value);
+                    qrCodesDocument.postValue(value);
                 }, throwable -> {
                     error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
                 }, () -> {
 
                 }));
     }
+
+    /////////////////////////////////
 
     public void loadQRCodesDocument() {
         mDisposable.add(ApiManager.loadQRCodesDocument()

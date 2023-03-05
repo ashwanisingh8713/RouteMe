@@ -48,13 +48,13 @@ public class ApiManager {
         .map(value-> value);
     }
 
-    public static Observable<RoutesData> loadAppClipCodesDocument() {
+    public static Observable<JsonElement> loadAppClipCodesDocument() {
         final String UTCstring = ApiPathUtil.headerDate();
         String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
 
         return ServiceFactory.getServiceAPIs()
-                .getDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_ROUTES_DATA, "application/json",
+                .getDocumentAppClip(ApiPathUtil.DATABASE_NAME, "AppClipCodesData", "application/json",
                         generate, UTCstring, ApiPathUtil.XMS_VERSION)
                 .subscribeOn(Schedulers.newThread())
                 .map(value-> value);

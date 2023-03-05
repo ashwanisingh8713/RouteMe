@@ -6,7 +6,9 @@ import com.route.modal.QRCodes;
 import com.route.modal.RoutesData;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
@@ -25,6 +27,7 @@ public interface ServiceAPIs {
                                              @Header("Authorization") String authorization,
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
+
 
     @GET("/dbs/{database}/colls/{collection}/docs")
     Observable<RoutesData> getDocument(@Path("database") String database, @Path("collection") String collection,
@@ -54,6 +57,17 @@ public interface ServiceAPIs {
                                        @Header("Authorization") String authorization,
                                        @Header("x-ms-date") String date,
                                        @Header("x-ms-version") String xms_version);
+
+
+    /////////////////////////////
+    @GET("/dbs/{database}/colls/{collection}/docs")
+    Observable<JsonElement> getDocumentAppClip(@Path("database") String database,
+                                              @Path("collection") String collection,
+                                              @Header("content-type") String accept,
+                                              @Header("Authorization") String authorization,
+                                              @Header("x-ms-date") String date,
+                                              @Header("x-ms-version") String xms_version
+    );
 
 
 

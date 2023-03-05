@@ -3,11 +3,16 @@ package com.route.modal;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class RoutesDocuments implements Parcelable {
+
+    @SerializedName("Documents")
+    private List<QRCodesDocuments> documents;
 
     public String id;
     public int ver;

@@ -6,6 +6,7 @@ package com.route.apis;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -40,6 +41,9 @@ public class ServiceFactory {
                 new OkHttpClient.Builder();
         httpClient.readTimeout(40, TimeUnit.SECONDS);
         httpClient.connectTimeout(40, TimeUnit.SECONDS);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        httpClient.interceptors().add(interceptor);
         return httpClient.build();
     }
 

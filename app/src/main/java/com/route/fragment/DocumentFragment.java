@@ -1,6 +1,5 @@
 package com.route.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,17 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavArgs;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.route.adapter.DocumentRecyclerAdapter;
+import com.route.modal.RoutesDocuments;
 import com.route.routeme.databinding.FragmentDocumentsBinding;
 import com.route.util.FileUtil;
 import com.route.viewmodel.DocumentDataViewModel;
 
+import java.util.List;
 
 
 public class DocumentFragment extends Fragment {
@@ -56,9 +54,10 @@ public class DocumentFragment extends Fragment {
 
         FileUtil.writeFile("Launch Document Fragment");
         // Older - 1
-        model.loadQRCodesDocument();
         FileUtil.writeFile("Request sent to Server");
         showToast("Send request to Server");
+        // Working code of static data for android
+        /*model.loadQRCodesDocument();
         model.getQRCodesDocument().observe(requireActivity(), routesBeans -> {
             // update UI
             showToast("Success Count :: "+routesBeans.size());
@@ -66,17 +65,15 @@ public class DocumentFragment extends Fragment {
             mAdapter.setDocumentList(routesBeans);
             mAdapter.notifyDataSetChanged();
             binding.progressBar.setVisibility(View.GONE);
-        });
+        });*/
 
-//        model.loadRoutesDocument();
-//        model.getRoutesDocument().observe(requireActivity(), routesData -> {
-            // update UI
-//            Log.i("", "");
-//            List<RoutesDocuments> routes = routesData.getDocuments();
-//            mAdapter.setDocumentList(routes);
-//            mAdapter.notifyDataSetChanged();
-//            binding.progressBar.setVisibility(View.GONE);
-//        });
+        model.loadAppClipCodesDocument();
+        model.getAppClipCodesDocument().observe(requireActivity(), routesBeans -> {
+            Log.i("", "");
+            mAdapter.setDocumentList(routesBeans);
+            mAdapter.notifyDataSetChanged();
+            binding.progressBar.setVisibility(View.GONE);
+        });
 
         model.getRoutesError().observe(requireActivity(), routeError -> {
             showToast("Request Failed :: "+routeError);
