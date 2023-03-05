@@ -3,6 +3,8 @@ package com.route.apis;
 import com.google.gson.JsonElement;
 import com.route.modal.QRCodes;
 import com.route.modal.RoutesData;
+import com.route.modal.ktM2.KtResM2;
+import com.route.modal.m2.ResM2;
 
 import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
@@ -48,13 +50,25 @@ public class ApiManager {
         .map(value-> value);
     }
 
-    public static Observable<RoutesData> loadAppClipCodesDocument() {
+    /*public static Observable<RoutesData> loadAppClipCodesDocument() {
         final String UTCstring = ApiPathUtil.headerDate();
         String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
 
         return ServiceFactory.getServiceAPIs()
                 .getDocument(ApiPathUtil.DATABASE_NAME, ApiPathUtil.COLLECTION_ROUTES_DATA, "application/json",
+                        generate, UTCstring, ApiPathUtil.XMS_VERSION)
+                .subscribeOn(Schedulers.newThread())
+                .map(value-> value);
+    }*/
+
+    public static Observable<KtResM2> loadAppClipCodesDocument() {
+        final String UTCstring = ApiPathUtil.headerDate();
+        String generate = ApiPathUtil.generate2("get", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
+                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
+
+        return ServiceFactory.getServiceAPIs()
+                .getDocumentAppClip(ApiPathUtil.DATABASE_NAME, "AppClipCodesData", "application/json",
                         generate, UTCstring, ApiPathUtil.XMS_VERSION)
                 .subscribeOn(Schedulers.newThread())
                 .map(value-> value);

@@ -49,8 +49,8 @@ public class ServiceFactory {
     private static Retrofit createRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(ApiPathUtil.CONNECTION_HOST)
-                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .client(createOkHttpClient())
                 .build();
     }

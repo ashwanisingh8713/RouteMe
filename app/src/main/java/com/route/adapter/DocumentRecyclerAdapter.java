@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.route.modal.RoutesBean;
 import com.route.modal.RoutesDocuments;
+import com.route.modal.ktM2.Anchor;
+import com.route.modal.ktM2.Route;
 import com.route.routeme.R;
 import com.route.routeme.RouteArPath_v2;
 import com.route.routeme.RouteDetail;
@@ -20,7 +22,7 @@ import java.util.List;
 
 public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecyclerAdapter.MyViewHolder> {
 
-    private List<RoutesBean> documentList;
+    private List<Anchor> documentList;
 
     public DocumentRecyclerAdapter() {
         documentList = new ArrayList<>();
@@ -35,16 +37,13 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
 
     @Override
     public void onBindViewHolder(MyViewHolder holder,int position) {
-        RoutesBean documents = documentList.get(position);
-        holder.title.setText(documents.getName());
-//        holder.subtitle.setText(documents.loc);
-//        holder.pts.setText(documents.pts.toString());
+        Anchor documents = documentList.get(position);
+        Route route = documents.getRoutes().get(0);
+        holder.title.setText(route.getName());
 
         holder.itemView.setOnClickListener(click->{
-            //Toast.makeText(holder.itemView.getContext(), "mkdkdkkd", Toast.LENGTH_LONG).show();
-//            Intent intent = new Intent(holder.itemView.getContext(), RouteDetail.class);
             Intent intent = new Intent(holder.itemView.getContext(), RouteArPath_v2.class);
-            intent.putExtra("id", documents.getId());
+            intent.putExtra("id", route.getId());
             holder.itemView.getContext().startActivity(intent);
 
 
@@ -56,7 +55,7 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
         return documentList.size();
     }
 
-    public void setDocumentList(List<RoutesBean> documentList) {
+    public void setDocumentList(List<Anchor> documentList) {
         this.documentList = documentList;
     }
 

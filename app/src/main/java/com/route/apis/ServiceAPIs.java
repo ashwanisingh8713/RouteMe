@@ -4,6 +4,8 @@ package com.route.apis;
 import com.google.gson.JsonElement;
 import com.route.modal.QRCodes;
 import com.route.modal.RoutesData;
+import com.route.modal.ktM2.KtResM2;
+import com.route.modal.m2.ResM2;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -56,5 +58,13 @@ public interface ServiceAPIs {
                                        @Header("x-ms-version") String xms_version);
 
 
+
+    @GET("/dbs/{database}/colls/{collection}/docs")
+    Observable<KtResM2> getDocumentAppClip(@Path("database") String database,
+                                           @Path("collection") String collection,
+                                           @Header("content-type") String accept,
+                                           @Header("Authorization") String authorization,
+                                           @Header("x-ms-date") String date,
+                                           @Header("x-ms-version") String xms_version);
 
 }

@@ -116,6 +116,13 @@ class FirstFragment:Fragment() {
         super.onResume()
         binding.title.text = "Scan The Bar Code"
         FileUtil.writeFile("Launched First Fragment")
+
+        val navController = NavHostFragment.findNavController(this@FirstFragment)
+        val bundle = Bundle()
+        //bundle.putString("Url", requiredValue)
+        navController.setGraph(R.navigation.nav_graph, bundle)
+        navController.navigate(R.id.action_FirstFragment_to_DocumentFragment)
+        binding.title.text = "List of Routes"
     }
 
     override fun onDestroyView() {

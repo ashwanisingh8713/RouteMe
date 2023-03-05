@@ -55,10 +55,10 @@ public class DocumentFragment extends Fragment {
         binding.recyclerView.setAdapter(mAdapter);
 
         FileUtil.writeFile("Launch Document Fragment");
-        // Older - 1
-        model.loadQRCodesDocument();
         FileUtil.writeFile("Request sent to Server");
         showToast("Send request to Server");
+        // Older - 1
+        /*model.loadQRCodesDocument();
         model.getQRCodesDocument().observe(requireActivity(), routesBeans -> {
             // update UI
             showToast("Success Count :: "+routesBeans.size());
@@ -66,17 +66,17 @@ public class DocumentFragment extends Fragment {
             mAdapter.setDocumentList(routesBeans);
             mAdapter.notifyDataSetChanged();
             binding.progressBar.setVisibility(View.GONE);
-        });
+        });*/
 
-//        model.loadRoutesDocument();
-//        model.getRoutesDocument().observe(requireActivity(), routesData -> {
+        model.loadAppClipCodesDocument();
+        model.getRoutesDocument().observe(requireActivity(), routesData -> {
             // update UI
-//            Log.i("", "");
+            Log.i("", "");
 //            List<RoutesDocuments> routes = routesData.getDocuments();
-//            mAdapter.setDocumentList(routes);
-//            mAdapter.notifyDataSetChanged();
-//            binding.progressBar.setVisibility(View.GONE);
-//        });
+            mAdapter.setDocumentList(routesData);
+            mAdapter.notifyDataSetChanged();
+            binding.progressBar.setVisibility(View.GONE);
+        });
 
         model.getRoutesError().observe(requireActivity(), routeError -> {
             showToast("Request Failed :: "+routeError);

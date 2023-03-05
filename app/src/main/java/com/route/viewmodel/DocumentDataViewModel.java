@@ -1,6 +1,8 @@
 package com.route.viewmodel;
 
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,6 +13,9 @@ import com.route.modal.QRCodes;
 import com.route.modal.QRCodesDocuments;
 import com.route.modal.RoutesBean;
 import com.route.modal.RoutesData;
+import com.route.modal.ktM2.Anchor;
+import com.route.modal.ktM2.Document;
+import com.route.modal.ktM2.Route;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +27,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DocumentDataViewModel extends ViewModel {
     protected final CompositeDisposable mDisposable = new CompositeDisposable();
-    private MutableLiveData<RoutesData> routesDocument;
+    private MutableLiveData<List<Anchor>> routesDocument;
     private MutableLiveData<List<RoutesBean>> qrCodesDocument;
     private MutableLiveData<String> error;
 
-    public LiveData<RoutesData> getRoutesDocument() {
+    public LiveData<List<Anchor>> getRoutesDocument() {
         if (routesDocument == null) {
             routesDocument = new MutableLiveData<>();
             error = new MutableLiveData<>();
@@ -49,65 +54,37 @@ public class DocumentDataViewModel extends ViewModel {
         return error;
     }
 
-    public void loadRoutesDocument() {
-        mDisposable.add(ApiManager.getDocument()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(value->{
-                    routesDocument.postValue(value);
-                }, throwable -> {
-                    error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
-                }, () -> {
-
-                }));
-    }
 
     public void loadAppClipCodesDocument() {
         mDisposable.add(ApiManager.loadAppClipCodesDocument()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(value->{
-                    routesDocument.postValue(value);
-                }, throwable -> {
-                    error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
-                }, () -> {
+                .map(value -> {
+                    List<Anchor> anchorsBeans = new ArrayList<>();
+                    String selectedId = "TgtHills02";
 
-                }));
-    }
-
-    public void loadQRCodesDocument() {
-        mDisposable.add(ApiManager.loadQRCodesDocument()
-                .subscribeOn(Schedulers.io())
-                .map(qrCodes -> {
-                    List<AnchorsBean> anchorsBeans = new ArrayList<>();
-                    List<RoutesBean> routesBeans = new ArrayList<>();
-                    if(qrCodes.getDocuments() != null && qrCodes.getDocuments().size() > 0 ){
-                        for(QRCodesDocuments qrCodesDocuments : qrCodes.getDocuments()) {
-                            if(qrCodesDocuments.getAnchors() != null) {
+                    if (value.getDocuments() != null && value.getDocuments().size() > 0) {
+                        for (Document qrCodesDocuments : value.getDocuments()) {
+                            if (qrCodesDocuments.getAnchors() != null  && qrCodesDocuments.getId().equals(selectedId)) {
                                 anchorsBeans.addAll(qrCodesDocuments.getAnchors());
                             }
                         }
                     }
-                    if(anchorsBeans.size() > 0) {
-                        for(AnchorsBean anchorsBean : anchorsBeans) {
-                            routesBeans.addAll(anchorsBean.getRoutes());
-                        }
-                    }
-                    return routesBeans;
+
+                    return anchorsBeans;
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(routesBeans->{
-                if(routesBeans.size()>0) {
-                    qrCodesDocument.postValue(routesBeans);
-                } else {
-                    error.postValue("Error! Anchor List is not available.");
-                }
+
+                .subscribe(value -> {
+                    Log.i("", "");
+                    routesDocument.postValue(value);
+
                 }, throwable -> {
-                    error.postValue("Error! "+throwable.getMessage());
+                    error.postValue("Failed to load Routes Document :: " + throwable.getMessage());
                 }, () -> {
 
                 }));
     }
+
 
 
     public void clearDisposable() {
