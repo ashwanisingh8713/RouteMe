@@ -20,4 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+-keep public class com.route.modal.** {*;}
+-keep public class com.route.modal.ktM2.** {*;}
+
 

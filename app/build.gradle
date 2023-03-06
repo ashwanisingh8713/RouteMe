@@ -5,6 +5,20 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storePassword 'rtmeRouteMe^%$'
+            storeFile file('/Users/ashwani/AndroidSample/RouteMe/Doc/signing/routeme.keystore')
+            keyAlias 'RouteMe'
+            keyPassword 'rtmeRouteMe^%$'
+        }
+        release {
+            storeFile file('/Users/ashwani/AndroidSample/RouteMe/Doc/signing/routeme.keystore')
+            storePassword 'rtmeRouteMe^%$'
+            keyAlias 'RouteMe'
+            keyPassword 'rtmeRouteMe^%$'
+        }
+    }
     compileSdk 33
 
     defaultConfig {
@@ -21,8 +35,8 @@ android {
             versionName "instant_307"
         }
         installed {
-            versionCode 3023
-            versionName "installed_3023"
+            versionCode 3024
+            versionName "installed_3024"
         }
     }
 
@@ -32,11 +46,13 @@ android {
             shrinkResources true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             debuggable true
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -49,20 +65,20 @@ android {
     }
     namespace 'com.route.routeme'
 
-//    signingConfigs {
-//        release {
-//            storeFile file("instant_keystore_fttd.keystore")
-//            storePassword 'ashwani123'
-//            keyAlias 'ashwani123'
-//            keyPassword 'ashwani123'
-//        }
-//        debug {
-//            storeFile file("instant_keystore_fttd.keystore")
-//            storePassword 'ashwani123'
-//            keyAlias 'ashwani123'
-//            keyPassword 'ashwani123'
-//        }
-//    }
+    signingConfigs {
+        release {
+            storeFile file("/Users/ashwani/AndroidSample/RouteMe/Doc/signing/routeme.keystore")
+            storePassword 'rtmeRouteMe^%$'
+            keyAlias 'RouteMe'
+            keyPassword 'rtmeRouteMe^%$'
+        }
+        debug {
+            storeFile file("/Users/ashwani/AndroidSample/RouteMe/Doc/signing/routeme.keystore")
+            storePassword 'rtmeRouteMe^%$'
+            keyAlias 'RouteMe'
+            keyPassword 'rtmeRouteMe^%$'
+        }
+    }
 
 
 
