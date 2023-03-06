@@ -1,6 +1,5 @@
 package com.route.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,18 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavArgs;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.route.adapter.DocumentRecyclerAdapter;
 import com.route.routeme.databinding.FragmentDocumentsBinding;
-import com.route.util.FileUtil;
 import com.route.viewmodel.DocumentDataViewModel;
-
-
 
 public class DocumentFragment extends Fragment {
 
@@ -54,8 +47,6 @@ public class DocumentFragment extends Fragment {
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(mAdapter);
 
-        FileUtil.writeFile("Launch Document Fragment");
-        FileUtil.writeFile("Request sent to Server");
         showToast("Send request to Server");
         // Older - 1
         /*model.loadQRCodesDocument();
@@ -80,7 +71,6 @@ public class DocumentFragment extends Fragment {
 
         model.getRoutesError().observe(requireActivity(), routeError -> {
             showToast("Request Failed :: "+routeError);
-            FileUtil.writeFile("Failed :: Request from Server :: "+routeError);
             binding.progressBar.setVisibility(View.GONE);
             binding.errorTxt.setVisibility(View.VISIBLE);
             binding.errorTxt.setText(routeError);
