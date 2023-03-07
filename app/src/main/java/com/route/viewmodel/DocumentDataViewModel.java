@@ -55,12 +55,16 @@ public class DocumentDataViewModel extends ViewModel {
     }
 
 
-    public void loadAppClipCodesDocument() {
+    public void loadAppClipCodesDocument(String url) {
         mDisposable.add(ApiManager.loadAppClipCodesDocument()
                 .subscribeOn(Schedulers.io())
                 .map(value -> {
+                    final String[] paths = url.split("/");
+                    String selectedId = "";
+                    if(paths.length>0) {
+                        selectedId = paths[paths.length-1];
+                    }
                     List<Anchor> anchorsBeans = new ArrayList<>();
-                    String selectedId = "TgtHills02";
 
                     if (value.getDocuments() != null && value.getDocuments().size() > 0) {
                         for (Document qrCodesDocuments : value.getDocuments()) {

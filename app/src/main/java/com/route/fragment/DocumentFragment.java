@@ -24,9 +24,12 @@ public class DocumentFragment extends Fragment {
     private DocumentRecyclerAdapter mAdapter;
     private DocumentDataViewModel model;
 
+    private String mUrl;
+
     @Override
     public void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
+        mUrl = getArguments().getString("Url");
     }
 
     @Override
@@ -42,8 +45,7 @@ public class DocumentFragment extends Fragment {
         model = new ViewModelProvider(requireActivity()).get(DocumentDataViewModel.class);
         mAdapter = new DocumentRecyclerAdapter();
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        binding.recyclerView.setLayoutManager(mLayoutManager);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.recyclerView.setAdapter(mAdapter);
 
@@ -59,19 +61,21 @@ public class DocumentFragment extends Fragment {
             binding.progressBar.setVisibility(View.GONE);
         });*/
 
-        model.loadAppClipCodesDocument();
+        model.loadAppClipCodesDocument(mUrl);
         model.getRoutesDocument().observe(requireActivity(), routesData -> {
             // update UI
             Log.i("", "");
-//            List<RoutesDocuments> routes = routesData.getDocuments();
             mAdapter.setDocumentList(routesData);
             mAdapter.notifyDataSetChanged();
             binding.progressBar.setVisibility(View.GONE);
+            binding.recyclerView.setVisibility(View.VISIBLE);
+            binding.errorTxt.setVisibility(View.GONE);
         });
 
         model.getRoutesError().observe(requireActivity(), routeError -> {
             showToast("Request Failed :: "+routeError);
             binding.progressBar.setVisibility(View.GONE);
+            binding.recyclerView.setVisibility(View.GONE);
             binding.errorTxt.setVisibility(View.VISIBLE);
             binding.errorTxt.setText(routeError);
         });
