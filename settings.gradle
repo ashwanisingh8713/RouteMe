@@ -14,9 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RouteMe"
 include ':app'
-//include ':sceneform'
-//include ':ux'
-//include ':scene'
-//include ':ux1'
-//include ':library'
-//include ':lighting'
+include ':QRCode'

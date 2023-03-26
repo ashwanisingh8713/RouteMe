@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="quickie_scan_qr_code">Hover your camera over the code</string>
+  <string name="quickie_please_wait">Please wait…</string>
+</resources>

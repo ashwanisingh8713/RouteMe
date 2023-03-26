@@ -53,13 +53,8 @@ class FirstFragment:Fragment() {
         model.clearDisposable()
 
 
-//        val navController = NavHostFragment.findNavController(this@FirstFragment)
-//        navController.navigate(R.id.action_FirstFragment_to_DocumentFragment, bundleOf("Url" to "https://rtme.pl/TgtHills02") )
-//        binding.title.text = "List of Routes"
-
-        binding.barcodeBtn.setOnClickListener{
-            scanQrCode.launch(null)
-        }
+        // Launch Camera to scan QR
+        scanQrCode.launch(null)
 
         binding.databaseBtn.setOnClickListener {
             model.loadDatabaseList()
