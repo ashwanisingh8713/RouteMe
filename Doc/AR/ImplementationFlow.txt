@@ -1,0 +1,20 @@
+1. First Need to get Camera Position
+2. Get Distance between Camera and First coordinate of Server.
+3. Find the direction of Next coordinate with respect to Camera's coordinate
+4. Make next coordinates in Plane using Distance.
+
+on each frame,
+    1. Camera's distance should be calculated with next coordinates
+    2. If next coordinate is straight it should show
+    3. If next coordinate is positioning at left/right direction it should now be shown until distance is less than 1 meter.
+
+
+
+if(x1==x2 && y1==y2 && z1 != z2) {
+    if(z1>z2) {
+        // Moving backward
+    }
+    else if(z2>z1) {
+        // Moving forward
+    }
+}

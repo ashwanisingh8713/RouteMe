@@ -1,0 +1,5 @@
+
+// Create Sample Anchor
+float[] position = { 0, 0, -2.2 };      //  { x, y, z } position
+float[] rotation = { 0, 0, 0, 1 };      //  { x, y, z, w } quaternion rotation
+Anchor myAnchor = session.createAnchor(new Pose(position, rotation));

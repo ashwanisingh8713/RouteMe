@@ -1,0 +1,3 @@
+Q. How to render Anchor after specific distance from the camera position?
+
+Q. If we have first coordinates (x1, y1, z1) then how to get second coordinate which should have distance of after 2 meters?

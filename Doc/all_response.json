@@ -1,0 +1,2872 @@
+{
+  "_rid": "icRZANX8hKU=",
+  "Documents": [
+    {
+      "id": "KlifGdynia02",
+      "locId": "gdynia_klif",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "2d27cb40-4c4d-4736-b091-0ccd456512c8",
+          "offsets": [
+            -0.05,
+            -0.71,
+            -1.27
+          ],
+          "rotations": [
+            266.797
+          ],
+          "sizes": [
+            0.18
+          ],
+          "routes": [
+            {
+              "name": "Route 1",
+              "id": "ifubgf9uvyguvbooijvy"
+            },
+            {
+              "name": "Route 2",
+              "id": "rcuroivyroiuvgorgiy"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKUGAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUGAAAAAAAAAA==/",
+      "_etag": "\"370077f8-0000-0700-0000-63dcd3090000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675416329
+    },
+    {
+      "id": "KlifGdynia03",
+      "locId": "gdynia_klif",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "b82b9e36-1a38-44fd-a2ab-0851f741f2ea",
+          "offsets": [
+            0.13,
+            -0.61,
+            -2.2
+          ],
+          "rotations": [
+            310.26
+          ],
+          "sizes": [
+            0.18
+          ],
+          "routes": []
+        }
+      ],
+      "_rid": "icRZANX8hKUHAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUHAAAAAAAAAA==/",
+      "_etag": "\"3700c7f9-0000-0700-0000-63dcd3120000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675416338
+    },
+    {
+      "id": "Klif02",
+      "part": "none",
+      "locId": "gdynia_klif",
+      "anchors": [
+        {
+          "id": "2d27cb40-4c4d-4736-b091-0ccd456512c8",
+          "offsets": [
+            -0.05,
+            -0.71,
+            -1.27
+          ],
+          "rotations": [
+            270
+          ],
+          "sizes": [
+            0.18
+          ],
+          "routes": [
+            {
+              "name": "Akacjowa 58 Exit",
+              "id": "202203061605459123966183"
+            }
+          ]
+        },
+        {
+          "id": "9228e443-0b35-403d-8386-41cd82704481",
+          "offsets": [
+            -0.05,
+            -0.71,
+            -1.27
+          ],
+          "rotations": [
+            270
+          ],
+          "sizes": [
+            0.18
+          ],
+          "routes": [
+            {
+              "name": "Akacjowa 58 Garage",
+              "id": "202202101445031256086488"
+            }
+          ]
+        },
+        {
+          "id": "54dd66f4-6867-42b3-af06-89715af0ee6b",
+          "offsets": [
+            -0.05,
+            -0.71,
+            -1.27
+          ],
+          "rotations": [
+            270
+          ],
+          "sizes": [
+            0.18
+          ],
+          "routes": [
+            {
+              "name": "Dimas Mini Bar",
+              "id": "202202180235163867936896"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKUIAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUIAAAAAAAAAA==/",
+      "_etag": "\"37005bfa-0000-0700-0000-63dcd3170000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675416343
+    },
+    {
+      "id": "KlifGdynia04",
+      "part": "none",
+      "locId": "gdynia_klif",
+      "anchors": [
+        {
+          "id": "1983d87c-899a-4a69-a30e-c394971b57cb",
+          "offsets": [
+            -0.92,
+            -0.88,
+            -1.08
+          ],
+          "rotations": [
+            296.567
+          ],
+          "sizes": [
+            0.244
+          ],
+          "routes": []
+        }
+      ],
+      "_rid": "icRZANX8hKULAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKULAAAAAAAAAA==/",
+      "_etag": "\"3700befa-0000-0700-0000-63dcd31c0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675416348
+    },
+    {
+      "id": "dmshse01",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "1983d87c-899a-4a69-a30e-c394971b57cb",
+          "offsets": [
+            -0.23,
+            -1.43,
+            -1.43,
+            -0.57,
+            -1.59,
+            -1.59,
+            -1.12,
+            -0.95,
+            -0.95,
+            -1.26,
+            -0.67,
+            -0.67
+          ],
+          "rotations": [
+            252.06300,
+            256.04100,
+            306.45700,
+            306.27700
+          ],
+          "sizes": [
+            0.096,
+            0.093,
+            0.070,
+            0.069
+          ],
+          "routes": [
+            {
+              "id": "202202162326181895653044",
+              "name": "Ronin Closet"
+            }
+          ]
+        },
+        {
+          "id": "70cb2da6-4fee-4f65-b42b-b9ac82bdbe0f",
+          "offsets": [
+            -0.23,
+            -1.43,
+            -1.43,
+            -0.57,
+            -1.59,
+            -1.59
+          ],
+          "rotations": [
+            252.06300,
+            256.04100
+          ],
+          "sizes": [
+            0.096,
+            0.093
+          ],
+          "routes": [
+            {
+              "id": "202203061133151665924670",
+              "name": "2-point Route Test"
+            }
+          ]
+        },
+        {
+          "id": "29243c5c-dfd2-4c7e-975d-84fa2ba87112",
+          "offsets": [
+            -0.54,
+            -0.72,
+            -0.72,
+            -0.53,
+            -0.38,
+            -0.38
+          ],
+          "rotations": [
+            335.37100,
+            335.34100
+          ],
+          "sizes": [
+            0.109,
+            0.085
+          ],
+          "routes": [
+            {
+              "id": "202202181707478860576327",
+              "name": "Sons room"
+            }
+          ]
+        },
+        {
+          "id": "207f8688-cbb7-4bf0-9def-00ac495ffa72",
+          "offsets": [
+            -4.86,
+            2.74,
+            2.74,
+            -0.11,
+            0.40,
+            0.40
+          ],
+          "rotations": [
+            170.87100,
+            217.13800
+          ],
+          "sizes": [
+            0.132,
+            0.056
+          ],
+          "routes": [
+            {
+              "id": "202202180230011642507496",
+              "name": "Rella’s Room"
+            }
+          ]
+        },
+        {
+          "id": "f61f266d-4e70-4284-9c58-8df4821c831d",
+          "offsets": [
+            -0.60,
+            -0.32,
+            -0.32
+          ],
+          "rotations": [
+            321.76500
+          ],
+          "sizes": [
+            0.075
+          ],
+          "routes": [
+            {
+              "id": "202204010332330290081592",
+              "name": "Front door"
+            }
+          ]
+        },
+        {
+          "id": "5a29873d-a60c-400b-89e3-a453f4a4e089",
+          "offsets": [
+            -1.01,
+            -1.48,
+            -1.48
+          ],
+          "rotations": [
+            275.88200
+          ],
+          "sizes": [
+            0.137
+          ],
+          "routes": [
+            {
+              "id": "202301202240000744121869",
+              "name": "Frozen Nuggets"
+            }
+          ]
+        },
+        {
+          "id": "f3c74406-92e4-44e6-b113-94df0409c6c7",
+          "offsets": [
+            -0.17,
+            -1.22,
+            -1.22
+          ],
+          "rotations": [
+            205.98430
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302231732126464872676",
+              "name": "Table"
+            },
+            {
+              "id": "202302231732244265568488",
+              "name": "Bar"
+            },
+            {
+              "id": "202302231732352593672906",
+              "name": "Kitchen"
+            }
+          ]
+        },
+        {
+          "id": "f9413ea5-2908-410d-af89-764892e0bb72",
+          "offsets": [
+            -0.42,
+            0.49,
+            -1.98
+          ],
+          "rotations": [
+            9.46350
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": []
+        }
+      ],
+      "_rid": "icRZANX8hKUQAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUQAAAAAAAAAA==/",
+      "_etag": "\"d901897f-0000-0700-0000-6414a4690000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679074409
+    },
+    {
+      "id": "TgtHills00",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "5e746bfb-069b-4f91-9fd2-9505d552e130",
+          "offsets": [
+            0.46,
+            -1.02,
+            -1.02
+          ],
+          "rotations": [
+            269.769
+          ],
+          "sizes": [
+            0.157
+          ],
+          "routes": [
+            {
+              "id": "202204140200569370465766",
+              "name": "Ronin Play Room"
+            }
+          ]
+        },
+        {
+          "id": "c2c9806b-7e7a-486b-bddf-86e3d611a40b",
+          "offsets": [
+            0.10,
+            -0.82,
+            -0.82
+          ],
+          "rotations": [
+            16.438
+          ],
+          "sizes": [
+            0.157
+          ],
+          "routes": [
+            {
+              "id": "202204140208446966490013",
+              "name": "Kitchen"
+            }
+          ]
+        },
+        {
+          "id": "fad17d25-820d-4c97-8cdd-135054038aaa",
+          "offsets": [
+            -0.16,
+            -0.88,
+            -0.88
+          ],
+          "rotations": [
+            292.862
+          ],
+          "sizes": [
+            0.168
+          ],
+          "routes": [
+            {
+              "id": "202204190137151835938906",
+              "name": "Rellas Room"
+            }
+          ]
+        },
+        {
+          "id": "202562e1-5180-420c-8ab8-676ff2a9eb1e",
+          "offsets": [
+            0.11,
+            -0.76,
+            -0.76
+          ],
+          "rotations": [
+            186.839
+          ],
+          "sizes": [
+            0.156
+          ],
+          "routes": [
+            {
+              "id": "202204190140132085979849",
+              "name": "Fireplace"
+            }
+          ]
+        },
+        {
+          "id": "035a1111-808a-42d3-829b-0224b8754db4",
+          "offsets": [
+            -0.50,
+            -0.84,
+            -0.84
+          ],
+          "rotations": [
+            141.305
+          ],
+          "sizes": [
+            0.151
+          ],
+          "routes": [
+            {
+              "id": "202211142035232018273544",
+              "name": "Guest room"
+            }
+          ]
+        },
+        {
+          "id": "f2c169af-d1f7-41a0-b4ca-5d6029ad9721",
+          "offsets": [
+            0.26,
+            -1.69,
+            -1.69
+          ],
+          "rotations": [
+            102.477
+          ],
+          "sizes": [
+            0.106
+          ],
+          "routes": [
+            {
+              "id": "202211142041350395279063",
+              "name": " Master bath"
+            }
+          ]
+        },
+        {
+          "id": "b63f146f-e787-4653-a4aa-a61de4a702c2",
+          "offsets": [
+            0.08,
+            -1.05,
+            -1.05
+          ],
+          "rotations": [
+            344.092
+          ],
+          "sizes": [
+            0.137
+          ],
+          "routes": [
+            {
+              "id": "202301250250395030408456",
+              "name": "Garage Fridge"
+            }
+          ]
+        },
+        {
+          "id": "f35deaae-30c8-485f-9872-0d0df7942592",
+          "offsets": [
+            0.92,
+            -2.00,
+            7.36
+          ],
+          "rotations": [
+            43.183
+          ],
+          "sizes": [
+            2.258
+          ],
+          "routes": [
+            {
+              "id": "202302111808089343942335",
+              "name": "Playroom2"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKURAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKURAAAAAAAAAA==/",
+      "_etag": "\"93018d8e-0000-0700-0000-63e7da080000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676139016
+    },
+    {
+      "id": "TgtHills01",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "ff2881ad-92de-4056-b87e-401e63d77922",
+          "offsets": [
+            -0.60,
+            -0.97,
+            -0.97
+          ],
+          "rotations": [
+            10.069
+          ],
+          "sizes": [
+            0.031
+          ],
+          "routes": [
+            {
+              "id": "202211102044215940103433",
+              "name": "Bedroom"
+            }
+          ]
+        },
+        {
+          "id": "035a1111-808a-42d3-829b-0224b8754db4",
+          "offsets": [
+            -1.95,
+            -0.69,
+            -0.69
+          ],
+          "rotations": [
+            277.786
+          ],
+          "sizes": [
+            0.108
+          ],
+          "routes": [
+            {
+              "id": "202211142035232018273544",
+              "name": "Guest room"
+            }
+          ]
+        },
+        {
+          "id": "b98124b8-a198-4853-ae99-d3ea53b37f77",
+          "offsets": [
+            -0.95,
+            -1.05,
+            -0.75
+          ],
+          "rotations": [
+            356.782
+          ],
+          "sizes": [
+            0.103
+          ],
+          "routes": [
+            {
+              "id": "202211170324470348798572",
+              "name": "Ronins Bedroom"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKUSAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUSAAAAAAAAAA==/",
+      "_etag": "\"9d03da82-0000-0700-0000-6375a9e90000\"",
+      "_attachments": "attachments/",
+      "_ts": 1668655593
+    },
+    {
+      "id": "TgtHills02",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "f2c169af-d1f7-41a0-b4ca-5d6029ad9721",
+          "offsets": [
+            -0.18,
+            -0.57,
+            -0.57
+          ],
+          "rotations": [
+            5.985
+          ],
+          "sizes": [
+            0.102
+          ],
+          "routes": [
+            {
+              "id": "202211142041350395279063",
+              "name": " Master bath"
+            }
+          ]
+        },
+        {
+          "id": "75cc1e48-04c6-4465-95af-f08413be297f",
+          "offsets": [
+            -0.30,
+            -0.90,
+            -0.90
+          ],
+          "rotations": [
+            100.478
+          ],
+          "sizes": [
+            0.073
+          ],
+          "routes": [
+            {
+              "id": "202212031754581057249321",
+              "name": "Fishing Poles"
+            }
+          ]
+        },
+        {
+          "id": "36d6800a-0c13-4b7f-86ea-8f29e1245cef",
+          "offsets": [
+            0.51,
+            -1.03,
+            -1.03
+          ],
+          "rotations": [
+            299.718
+          ],
+          "sizes": [
+            0.089
+          ],
+          "routes": [
+            {
+              "id": "202212031807332264497136",
+              "name": "Bike Helmets"
+            }
+          ]
+        },
+        {
+          "id": "e49fe546-1c4b-46b8-b945-b5f41ee306a6",
+          "offsets": [
+            0.13,
+            -1.05,
+            -1.05
+          ],
+          "rotations": [
+            30.026
+          ],
+          "sizes": [
+            0.090
+          ],
+          "routes": [
+            {
+              "id": "202212031823122825559701",
+              "name": "Step ladders"
+            }
+          ]
+        },
+        {
+          "id": "949d2926-68af-4310-b9f6-f833dd4a4598",
+          "offsets": [
+            -0.18,
+            -1.06,
+            -1.06
+          ],
+          "rotations": [
+            307.974
+          ],
+          "sizes": [
+            0.093
+          ],
+          "routes": [
+            {
+              "id": "202212031832190796102396",
+              "name": "Electronics-TV"
+            }
+          ]
+        },
+        {
+          "id": "5a29873d-a60c-400b-89e3-a453f4a4e089",
+          "offsets": [
+            -1.31,
+            -1.39,
+            -1.39
+          ],
+          "rotations": [
+            288.019
+          ],
+          "sizes": [
+            0.131
+          ],
+          "routes": [
+            {
+              "id": "202301202240000744121869",
+              "name": "Frozen Nuggets"
+            }
+          ]
+        },
+        {
+          "id": "ff2881ad-92de-4056-b87e-401e63d77922",
+          "offsets": [
+            -0.68,
+            -2.38,
+            -2.38
+          ],
+          "rotations": [
+            182.867
+          ],
+          "sizes": [
+            0.169
+          ],
+          "routes": [
+            {
+              "id": "202211102044215940103433",
+              "name": "Bedroom"
+            }
+          ]
+        },
+        {
+          "id": "1390f88d-6d57-47ad-a5b0-87c8a547c845",
+          "offsets": [
+            -0.48,
+            -2.19,
+            -2.19
+          ],
+          "rotations": [
+            250.412
+          ],
+          "sizes": [
+            0.131
+          ],
+          "routes": [
+            {
+              "id": "202302110458343118964145",
+              "name": "Rella bathroom"
+            }
+          ]
+        },
+        {
+          "id": "cb3bee94-1064-44ee-a952-8d7d3b494b78",
+          "offsets": [
+            -0.45,
+            -0.89,
+            -0.89
+          ],
+          "rotations": [
+            306.543
+          ],
+          "sizes": [
+            0.132
+          ],
+          "routes": [
+            {
+              "id": "202302110513078160730640",
+              "name": "Ronin Room 2"
+            }
+          ]
+        },
+        {
+          "id": "1e6a5d26-4c69-43a8-a08b-ae3d9c4a3223",
+          "offsets": [
+            -0.69,
+            -1.07,
+            -1.07
+          ],
+          "rotations": [
+            337.928
+          ],
+          "sizes": [
+            0.131
+          ],
+          "routes": [
+            {
+              "id": "202302111755124887201293",
+              "name": "Fireplace"
+            }
+          ]
+        },
+        {
+          "id": "f35deaae-30c8-485f-9872-0d0df7942592",
+          "offsets": [
+            0.11,
+            -1.08,
+            -1.08
+          ],
+          "rotations": [
+            49.671
+          ],
+          "sizes": [
+            0.133
+          ],
+          "routes": [
+            {
+              "id": "202302111808089343942335",
+              "name": "Playroom2"
+            }
+          ]
+        },
+        {
+          "id": "b26b5574-57d4-4d6a-9d8f-5f3ca690351c",
+          "offsets": [
+            -0.10,
+            -1.04,
+            -1.04
+          ],
+          "rotations": [
+            338.572
+          ],
+          "sizes": [
+            0.137
+          ],
+          "routes": [
+            {
+              "id": "202302111815452190551152",
+              "name": "Downstairs Bath"
+            }
+          ]
+        },
+        {
+          "id": "8516b04e-c68e-4ab1-b9ef-ccfc8abbb831",
+          "offsets": [
+            -1.28,
+            -0.41,
+            -0.41
+          ],
+          "rotations": [
+            106.266
+          ],
+          "sizes": [
+            0.132
+          ],
+          "routes": [
+            {
+              "id": "202302111820013871731842",
+              "name": "Dimas Bedroom 2Z"
+            }
+          ]
+        },
+        {
+          "id": "2fe0425c-a332-4715-aeb4-0e1e53b6edce",
+          "offsets": [
+            -0.03,
+            -0.91,
+            -0.91
+          ],
+          "rotations": [
+            178.733
+          ],
+          "sizes": [
+            0.069
+          ],
+          "routes": [
+            {
+              "id": "202302230401004298956977",
+              "name": "Shelf"
+            }
+          ]
+        },
+        {
+          "id": "9c564dff-ec8a-40a2-a0d8-aad232187981",
+          "offsets": [
+            0.07,
+            -0.91,
+            -0.91
+          ],
+          "rotations": [
+            175.586
+          ],
+          "sizes": [
+            0.070
+          ],
+          "routes": [
+            {
+              "id": "202302230405044288039082",
+              "name": "Bathroom"
+            }
+          ]
+        },
+        {
+          "id": "80d13a76-c1e0-4832-99cf-a1d9526b1f88",
+          "offsets": [
+            0.08,
+            -0.68,
+            -0.68
+          ],
+          "rotations": [
+            180.740
+          ],
+          "sizes": [
+            0.067
+          ],
+          "routes": [
+            {
+              "id": "202302241445116494801976",
+              "name": "Front door"
+            }
+          ]
+        },
+        {
+          "id": "0cae5b4d-2fe9-4180-981c-37e95eda8dfd",
+          "offsets": [
+            -0.19,
+            -0.74,
+            -0.74
+          ],
+          "rotations": [
+            185.111
+          ],
+          "sizes": [
+            0.067
+          ],
+          "routes": [
+            {
+              "id": "202302281954216592408285",
+              "name": "Pantry"
+            }
+          ]
+        },
+        {
+          "id": "c0564816-156d-4998-9eef-bde96887e610",
+          "offsets": [
+            0.00,
+            -0.72,
+            -0.72
+          ],
+          "rotations": [
+            183.123
+          ],
+          "sizes": [
+            0.068
+          ],
+          "routes": [
+            {
+              "id": "202302281957409126273812",
+              "name": "Cone"
+            }
+          ]
+        },
+        {
+          "id": "7568a8df-91a0-4d56-acd9-47911aecdaf2",
+          "offsets": [
+            0.00,
+            -0.72,
+            -0.72
+          ],
+          "rotations": [
+            7.336
+          ],
+          "sizes": [
+            0.135
+          ],
+          "routes": [
+            {
+              "id": "202303051931031526442763",
+              "name": "Road end"
+            }
+          ]
+        },
+        {
+          "id": "40554b86-c1a0-4bc5-a8e9-6a7c49552f54",
+          "offsets": [
+            -0.07,
+            -0.84,
+            -0.84
+          ],
+          "rotations": [
+            2.607
+          ],
+          "sizes": [
+            0.070
+          ],
+          "routes": [
+            {
+              "id": "202303181155476281083527",
+              "name": "Bhaiya room"
+            }
+          ]
+        },
+        {
+          "id": "d3b47820-98e4-491d-84eb-ed268b66e64a",
+          "offsets": [
+            -0.29,
+            -0.59,
+            -0.59
+          ],
+          "rotations": [
+            343.637
+          ],
+          "sizes": [
+            0.070
+          ],
+          "routes": [
+            {
+              "id": "202303190718195131379789",
+              "name": "Bedroom Balcony "
+            }
+          ]
+        },
+        {
+          "id": "f5cd556e-27d1-4031-a444-62ecf1fd5d43",
+          "offsets": [
+            -0.12,
+            -1.17,
+            -0.64
+          ],
+          "rotations": [
+            359.557
+          ],
+          "sizes": [
+            0.072
+          ],
+          "routes": [
+            {
+              "id": "202303190910522907610677",
+              "name": "Balcony 1"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKUTAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUTAAAAAAAAAA==/",
+      "_etag": "\"37025729-0000-0700-0000-6416d2850000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679217285
+    },
+    {
+      "id": "romefco00",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUXAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUXAAAAAAAAAA==/",
+      "_etag": "\"38008c48-0000-0700-0000-63dcd6000000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417088
+    },
+    {
+      "id": "romefco01",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUYAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUYAAAAAAAAAA==/",
+      "_etag": "\"38008249-0000-0700-0000-63dcd60b0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417099
+    },
+    {
+      "id": "romefco02",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUZAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUZAAAAAAAAAA==/",
+      "_etag": "\"3800d249-0000-0700-0000-63dcd60f0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417103
+    },
+    {
+      "id": "romefco03",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUaAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUaAAAAAAAAAA==/",
+      "_etag": "\"3800974a-0000-0700-0000-63dcd6170000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417111
+    },
+    {
+      "id": "romefco04",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUbAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUbAAAAAAAAAA==/",
+      "_etag": "\"3800414b-0000-0700-0000-63dcd61c0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417116
+    },
+    {
+      "id": "romefco05",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUcAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUcAAAAAAAAAA==/",
+      "_etag": "\"3800b060-0000-0700-0000-63dcd6ee0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417326
+    },
+    {
+      "id": "romefco06",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUdAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUdAAAAAAAAAA==/",
+      "_etag": "\"38004961-0000-0700-0000-63dcd6f30000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417331
+    },
+    {
+      "id": "romefco07",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUeAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUeAAAAAAAAAA==/",
+      "_etag": "\"3800ae61-0000-0700-0000-63dcd6f90000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417337
+    },
+    {
+      "id": "romefco08",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUfAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUfAAAAAAAAAA==/",
+      "_etag": "\"38001562-0000-0700-0000-63dcd6ff0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417343
+    },
+    {
+      "id": "romefco09",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUgAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUgAAAAAAAAAA==/",
+      "_etag": "\"38008562-0000-0700-0000-63dcd7040000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417348
+    },
+    {
+      "id": "romefco10",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUhAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUhAAAAAAAAAA==/",
+      "_etag": "\"3800ee62-0000-0700-0000-63dcd70a0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417354
+    },
+    {
+      "id": "romefco11",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUiAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUiAAAAAAAAAA==/",
+      "_etag": "\"38004b63-0000-0700-0000-63dcd70f0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417359
+    },
+    {
+      "id": "romefco12",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUjAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUjAAAAAAAAAA==/",
+      "_etag": "\"3800ac63-0000-0700-0000-63dcd7130000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417363
+    },
+    {
+      "id": "romefco13",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUkAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUkAAAAAAAAAA==/",
+      "_etag": "\"38004564-0000-0700-0000-63dcd7190000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417369
+    },
+    {
+      "id": "romefco14",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUlAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUlAAAAAAAAAA==/",
+      "_etag": "\"3800b664-0000-0700-0000-63dcd71e0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417374
+    },
+    {
+      "id": "romefco15",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUmAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUmAAAAAAAAAA==/",
+      "_etag": "\"38002c65-0000-0700-0000-63dcd7230000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417379
+    },
+    {
+      "id": "romefco16",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUnAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUnAAAAAAAAAA==/",
+      "_etag": "\"3800ac65-0000-0700-0000-63dcd7290000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417385
+    },
+    {
+      "id": "romefco17",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUoAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUoAAAAAAAAAA==/",
+      "_etag": "\"38008366-0000-0700-0000-63dcd7340000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417396
+    },
+    {
+      "id": "romefco18",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUpAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUpAAAAAAAAAA==/",
+      "_etag": "\"38003467-0000-0700-0000-63dcd73a0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417402
+    },
+    {
+      "id": "romefco19",
+      "locId": "romefco",
+      "part": "none",
+      "_rid": "icRZANX8hKUqAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUqAAAAAAAAAA==/",
+      "_etag": "\"38001968-0000-0700-0000-63dcd7430000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417411
+    },
+    {
+      "id": "sixtmun00",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUrAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUrAAAAAAAAAA==/",
+      "_etag": "\"38005d75-0000-0700-0000-63dcd7bf0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417535
+    },
+    {
+      "id": "sixtmun01",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUsAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUsAAAAAAAAAA==/",
+      "_etag": "\"3800bc75-0000-0700-0000-63dcd7c20000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417538
+    },
+    {
+      "id": "sixtmun02",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUtAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUtAAAAAAAAAA==/",
+      "_etag": "\"38001f77-0000-0700-0000-63dcd7d10000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417553
+    },
+    {
+      "id": "sixtmun03",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUuAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUuAAAAAAAAAA==/",
+      "_etag": "\"38008a77-0000-0700-0000-63dcd7d60000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417558
+    },
+    {
+      "id": "sixtmun04",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUvAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUvAAAAAAAAAA==/",
+      "_etag": "\"38000f78-0000-0700-0000-63dcd7dc0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417564
+    },
+    {
+      "id": "sixtmun05",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUwAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUwAAAAAAAAAA==/",
+      "_etag": "\"38006378-0000-0700-0000-63dcd7e00000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417568
+    },
+    {
+      "id": "sixtmun07",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUxAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUxAAAAAAAAAA==/",
+      "_etag": "\"3800db78-0000-0700-0000-63dcd7e50000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417573
+    },
+    {
+      "id": "sixtmun08",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUyAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUyAAAAAAAAAA==/",
+      "_etag": "\"38002779-0000-0700-0000-63dcd7e90000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417577
+    },
+    {
+      "id": "sixtmun09",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKUzAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKUzAAAAAAAAAA==/",
+      "_etag": "\"38009479-0000-0700-0000-63dcd7ed0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417581
+    },
+    {
+      "id": "sixtmun10",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU0AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU0AAAAAAAAAA==/",
+      "_etag": "\"3800147a-0000-0700-0000-63dcd7f10000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417585
+    },
+    {
+      "id": "sixtmun11",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU1AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU1AAAAAAAAAA==/",
+      "_etag": "\"3800777a-0000-0700-0000-63dcd7f40000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417588
+    },
+    {
+      "id": "sixtmun12",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU2AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU2AAAAAAAAAA==/",
+      "_etag": "\"3800947b-0000-0700-0000-63dcd7f80000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417592
+    },
+    {
+      "id": "sixtmun13",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU3AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU3AAAAAAAAAA==/",
+      "_etag": "\"3800f47b-0000-0700-0000-63dcd7fd0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417597
+    },
+    {
+      "id": "sixtmun14",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU4AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU4AAAAAAAAAA==/",
+      "_etag": "\"3800327c-0000-0700-0000-63dcd8010000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417601
+    },
+    {
+      "id": "sixtmun15",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU5AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU5AAAAAAAAAA==/",
+      "_etag": "\"3800727c-0000-0700-0000-63dcd8040000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417604
+    },
+    {
+      "id": "sixtmun16",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU6AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU6AAAAAAAAAA==/",
+      "_etag": "\"3800d97c-0000-0700-0000-63dcd8080000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417608
+    },
+    {
+      "id": "sixtmun17",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU7AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU7AAAAAAAAAA==/",
+      "_etag": "\"38001f7d-0000-0700-0000-63dcd80c0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417612
+    },
+    {
+      "id": "sixtmun18",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU8AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU8AAAAAAAAAA==/",
+      "_etag": "\"3800757d-0000-0700-0000-63dcd8100000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417616
+    },
+    {
+      "id": "sixtmun19",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU9AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU9AAAAAAAAAA==/",
+      "_etag": "\"3800d97d-0000-0700-0000-63dcd8130000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417619
+    },
+    {
+      "id": "sixtmun06",
+      "locId": "sixt_munich_airport",
+      "part": "none",
+      "_rid": "icRZANX8hKU+AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU+AAAAAAAAAA==/",
+      "_etag": "\"3800c280-0000-0700-0000-63dcd82a0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1675417642
+    },
+    {
+      "id": "gnutest",
+      "locId": "gnutek_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "024ca381-66ef-48dd-92c4-c3efa0f661cd",
+          "offsets": [
+            -0.58,
+            -0.60,
+            -2.08
+          ],
+          "rotations": [
+            198.17330
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302101803276503040524",
+              "name": "T1"
+            },
+            {
+              "id": "202302101803379410226065",
+              "name": "T2"
+            },
+            {
+              "id": "202302101803481429004543",
+              "name": "T3"
+            },
+            {
+              "id": "202302101815041519616326",
+              "name": "D1"
+            },
+            {
+              "id": "202302101815145731268344",
+              "name": "D2"
+            },
+            {
+              "id": "202302101833146187480432",
+              "name": "Pt1"
+            },
+            {
+              "id": "202302101833327953005507",
+              "name": "Pt2"
+            },
+            {
+              "id": "202302101833449522423374",
+              "name": "Pt3"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKU-AAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKU-AAAAAAAAAA==/",
+      "_etag": "\"9c003a10-0000-0700-0000-63eb63390000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676370745
+    },
+    {
+      "id": "gnudesk",
+      "locId": "gnutek_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "024ca381-66ef-48dd-92c4-c3efa0f661cd",
+          "offsets": [
+            -1.00,
+            -0.63,
+            -1.67
+          ],
+          "rotations": [
+            212.72320
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302101803276503040524",
+              "name": "T1"
+            },
+            {
+              "id": "202302101803379410226065",
+              "name": "T2"
+            },
+            {
+              "id": "202302101803481429004543",
+              "name": "T3"
+            },
+            {
+              "id": "202302101815041519616326",
+              "name": "D1"
+            },
+            {
+              "id": "202302101815145731268344",
+              "name": "D2"
+            },
+            {
+              "id": "202302101833146187480432",
+              "name": "Pt1"
+            },
+            {
+              "id": "202302101833327953005507",
+              "name": "Pt2"
+            },
+            {
+              "id": "202302101833449522423374",
+              "name": "Pt3"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVAAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVAAAAAAAAAAA==/",
+      "_etag": "\"8400f3b7-0000-0700-0000-63eb88e20000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676380386
+    },
+    {
+      "id": "mucmunc03",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "cb3bee94-1064-44ee-a952-8d7d3b494b78",
+          "offsets": [
+            0.58,
+            -0.56,
+            -0.56
+          ],
+          "rotations": [
+            305.689
+          ],
+          "sizes": [
+            0.313
+          ],
+          "routes": [
+            {
+              "id": "202302110513078160730640",
+              "name": "Ronin Room 2"
+            }
+          ]
+        },
+        {
+          "id": "15f5d0bc-83bd-4b95-96d9-e90acfb4c6f6",
+          "offsets": [
+            0.49,
+            -0.84,
+            -0.84
+          ],
+          "rotations": [
+            315.202
+          ],
+          "sizes": [
+            0.347
+          ],
+          "routes": [
+            {
+              "id": "202302112114122973689770",
+              "name": "Master Window"
+            }
+          ]
+        },
+        {
+          "id": "35107170-10c2-4d9f-b244-ee1ff51e2701",
+          "offsets": [
+            -0.30,
+            -1.15,
+            -1.15
+          ],
+          "rotations": [
+            5.504
+          ],
+          "sizes": [
+            0.300
+          ],
+          "routes": [
+            {
+              "id": "202302122031367529147129",
+              "name": "E30"
+            }
+          ]
+        },
+        {
+          "id": "7a44a44f-f32f-41d5-b61e-9efd0c637676",
+          "offsets": [
+            -0.79,
+            0.23,
+            0.23,
+            0.06,
+            -3.54,
+            -3.54
+          ],
+          "rotations": [
+            33.206,
+            26.813
+          ],
+          "sizes": [
+            0.071,
+            0.070
+          ],
+          "routes": [
+            {
+              "id": "202302122051363898686002",
+              "name": "Vending Machine"
+            }
+          ]
+        },
+        {
+          "id": "00c6cc0f-9a86-42c9-88b8-559312d36c68",
+          "offsets": [
+            -0.23,
+            0.70,
+            0.70
+          ],
+          "rotations": [
+            148.405
+          ],
+          "sizes": [
+            0.082
+          ],
+          "routes": [
+            {
+              "id": "202302131542500784986635",
+              "name": "Stairs"
+            }
+          ]
+        },
+        {
+          "id": "75fe6288-4706-4809-8bd9-96f29bc32681",
+          "offsets": [
+            -0.26,
+            -0.89,
+            -0.89
+          ],
+          "rotations": [
+            292.670
+          ],
+          "sizes": [
+            0.083
+          ],
+          "routes": [
+            {
+              "id": "202302131546415909854313",
+              "name": "Dustin Chair"
+            }
+          ]
+        },
+        {
+          "id": "05982472-b92f-4343-befb-3ae5e7eadc20",
+          "offsets": [
+            0.00,
+            -1.50,
+            -1.42
+          ],
+          "rotations": [
+            213.517
+          ],
+          "sizes": [
+            0.063
+          ],
+          "routes": [
+            {
+              "id": "202302131617367608846640",
+              "name": "Platform 12"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVBAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVBAAAAAAAAAA==/",
+      "_etag": "\"f601f74a-0000-0700-0000-63ea63ab0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676305323
+    },
+    {
+      "id": "mucmunc02",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "942661ff-bc5f-4ab8-8fe4-9f5ef4aa9d79",
+          "offsets": [
+            -0.69,
+            -0.25,
+            -0.25,
+            -0.74,
+            -1.06,
+            -0.85
+          ],
+          "rotations": [
+            92.259,
+            93.119
+          ],
+          "sizes": [
+            0.062,
+            0.047
+          ],
+          "routes": [
+            {
+              "id": "202302122039377329223957",
+              "name": "Mens restroom"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVCAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVCAAAAAAAAAA==/",
+      "_etag": "\"cb01ba31-0000-0700-0000-63e94f880000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676234632
+    },
+    {
+      "id": "sixtmcnt02",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "fa321fc3-b2ee-42d1-8d5d-0dc43c933a59",
+          "offsets": [
+            0.35,
+            -0.38,
+            -0.38
+          ],
+          "rotations": [
+            322.66500
+          ],
+          "sizes": [
+            0.049
+          ],
+          "routes": [
+            {
+              "id": "202302140740413264463087",
+              "name": "Agip parking"
+            }
+          ]
+        },
+        {
+          "id": "ee3a13a7-9f16-427b-b67a-bd58c51589ea",
+          "offsets": [
+            -0.85,
+            -0.69,
+            -1.42
+          ],
+          "rotations": [
+            352.14580
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303171608161754582001",
+              "name": "Main Door"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVDAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVDAAAAAAAAAA==/",
+      "_etag": "\"d401208b-0000-0700-0000-641493c10000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679070145
+    },
+    {
+      "id": "sixtmcnt04",
+      "locId": "sixt_munich_train_station",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "d279722e-ca91-4b2a-84f5-79a07a2af81a",
+          "offsets": [
+            0.46,
+            -1.05,
+            -0.76
+          ],
+          "rotations": [
+            251.761
+          ],
+          "sizes": [
+            0.047
+          ],
+          "routes": [
+            {
+              "id": "202302141123387315500419",
+              "name": "Parking"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVEAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVEAAAAAAAAAA==/",
+      "_etag": "\"93019ece-0000-0700-0000-63f0ed050000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676733701
+    },
+    {
+      "id": "sixtmcnt00",
+      "locId": "sixt_munich_train_station",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "fa321fc3-b2ee-42d1-8d5d-0dc43c933a59",
+          "offsets": [
+            1.1,
+            -1.61,
+            -1.61,
+            -2.16,
+            -0.69,
+            -0.69
+          ],
+          "rotations": [
+            287.872,
+            233.93
+          ],
+          "sizes": [
+            0.403,
+            0.048
+          ],
+          "routes": [
+            {
+              "id": "202302140740413264463087",
+              "name": "Agip parking"
+            }
+          ]
+        },
+        {
+          "id": "058ea133-05d9-41cc-97d8-edc72428b601",
+          "offsets": [
+            -0.93,
+            -0.73,
+            -0.59
+          ],
+          "rotations": [
+            45.555
+          ],
+          "sizes": [
+            0.042
+          ],
+          "routes": [
+            {
+              "id": "202302140818505114275647",
+              "name": "Seating area"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVFAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVFAAAAAAAAAA==/",
+      "_etag": "\"930140cf-0000-0700-0000-63f0ed0c0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676733708
+    },
+    {
+      "id": "sixtmcnt08",
+      "locId": "sixt_munich_train_station",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "fa321fc3-b2ee-42d1-8d5d-0dc43c933a59",
+          "offsets": [
+            0.09,
+            -0.36,
+            -0.36
+          ],
+          "rotations": [
+            323.269
+          ],
+          "sizes": [
+            0.059
+          ],
+          "routes": [
+            {
+              "id": "202302140740413264463087",
+              "name": "Agip parking"
+            }
+          ]
+        },
+        {
+          "id": "0dae69a8-3136-44ae-b5aa-de3fdf404a7f",
+          "offsets": [
+            -0.35,
+            -1.47,
+            -1.25
+          ],
+          "rotations": [
+            73.028
+          ],
+          "sizes": [
+            0.172
+          ],
+          "routes": [
+            {
+              "id": "202302141117371687698558",
+              "name": "Soxt fitness center"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVGAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVGAAAAAAAAAA==/",
+      "_etag": "\"9301f6cf-0000-0700-0000-63f0ed150000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676733717
+    },
+    {
+      "id": "sixtmcnt03",
+      "locId": "sixt_munich_train_station",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "a9b42865-e3c7-4ec5-9146-d7d9787c6681",
+          "offsets": [
+            0.32,
+            -0.96,
+            -1.22
+          ],
+          "rotations": [
+            357.493
+          ],
+          "sizes": [
+            0.04
+          ],
+          "routes": [
+            {
+              "id": "202302140954011401846170",
+              "name": "Spot 45"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVHAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVHAAAAAAAAAA==/",
+      "_etag": "\"9301b0d0-0000-0700-0000-63f0ed1d0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676733725
+    },
+    {
+      "id": "sixtmcnt06",
+      "locId": "sixt_munich_train_station",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "a3985f14-b9b7-4c56-8936-4565aab6c781",
+          "offsets": [
+            0.16,
+            -1.28,
+            -1.34
+          ],
+          "rotations": [
+            64.612
+          ],
+          "sizes": [
+            0.063
+          ],
+          "routes": [
+            {
+              "id": "202302140940507850593234",
+              "name": "45"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVIAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVIAAAAAAAAAA==/",
+      "_etag": "\"930169d1-0000-0700-0000-63f0ed270000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676733735
+    },
+    {
+      "id": "mucmunc00",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "44510df8-2abb-42c4-ab2a-dfd1805d991c",
+          "offsets": [
+            1.00,
+            -1.03,
+            -0.65
+          ],
+          "rotations": [
+            332.252
+          ],
+          "sizes": [
+            0.070
+          ],
+          "routes": [
+            {
+              "id": "202302150825522560607464",
+              "name": "Sixt Car Rental"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVJAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVJAAAAAAAAAA==/",
+      "_etag": "\"bf000881-0000-0700-0000-63eca11b0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676452123
+    },
+    {
+      "id": "fcorome08",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "14bc780b-7353-42cb-992e-9dca5d1db32d",
+          "offsets": [
+            -1.55,
+            -3.07,
+            -3.07,
+            -0.85,
+            -3.07,
+            -3.07,
+            -1.40,
+            -2.92,
+            -2.92
+          ],
+          "rotations": [
+            9.06745,
+            6.17475,
+            18.37915
+          ],
+          "sizes": [
+            0.000,
+            0.000,
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302151510156883950235",
+              "name": "D1"
+            },
+            {
+              "id": "202302151510263985168931",
+              "name": "2"
+            },
+            {
+              "id": "202302151531563665703637",
+              "name": "aqw1"
+            },
+            {
+              "id": "202302151542072885855432",
+              "name": "22"
+            },
+            {
+              "id": "202302151541588097763223",
+              "name": "11"
+            }
+          ]
+        },
+        {
+          "id": "ee3a13a7-9f16-427b-b67a-bd58c51589ea",
+          "offsets": [
+            -0.29,
+            -1.51,
+            -1.51
+          ],
+          "rotations": [
+            12.93564
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303171608161754582001",
+              "name": "Main Door"
+            },
+            {
+              "id": "202303171652037712171242",
+              "name": "Ashwani Test Door"
+            }
+          ]
+        },
+        {
+          "id": "7642c56d-9c0a-4ea4-8fee-7e7ff7b38ada",
+          "offsets": [
+            0.02,
+            -1.07,
+            -1.63
+          ],
+          "rotations": [
+            12.55279
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303172059292784891804",
+              "name": "Rella bathroom NM"
+            },
+            {
+              "id": "202303172059483226404381",
+              "name": "Ronin bed NM"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVKAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVKAAAAAAAAAA==/",
+      "_etag": "\"e50132c0-0000-0700-0000-6414d55c0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679086940
+    },
+    {
+      "id": "fcorome02",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "71dc459e-70c5-4bda-8d06-5b4aefd03510",
+          "offsets": [
+            0.27,
+            -0.01,
+            -0.01
+          ],
+          "rotations": [
+            33.820
+          ],
+          "sizes": [
+            0.091
+          ],
+          "routes": [
+            {
+              "id": "202302160911328662107868",
+              "name": "Bar"
+            }
+          ]
+        },
+        {
+          "id": "a6a4927a-4d81-4e57-973c-3cb0f68340ee",
+          "offsets": [
+            0.42,
+            -1.81,
+            -0.78
+          ],
+          "rotations": [
+            354.366
+          ],
+          "sizes": [
+            0.096
+          ],
+          "routes": [
+            {
+              "id": "202302181618119189182657",
+              "name": "456"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVLAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVLAAAAAAAAAA==/",
+      "_etag": "\"940137e5-0000-0700-0000-63f0fac20000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676737218
+    },
+    {
+      "id": "fcorome01",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "19b75d3a-a73b-4851-9949-6015e6d0a697",
+          "offsets": [
+            -0.20,
+            -1.08,
+            -1.27
+          ],
+          "rotations": [
+            354.048
+          ],
+          "sizes": [
+            0.074
+          ],
+          "routes": [
+            {
+              "id": "202302161219125220814785",
+              "name": "Screen"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVMAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVMAAAAAAAAAA==/",
+      "_etag": "\"1301ae16-0000-0700-0000-63ee1fbe0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1676550078
+    },
+    {
+      "id": "mucmunc01",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "d031168b-06fc-4624-a526-53df8affb6a0",
+          "offsets": [
+            -0.11,
+            -0.55,
+            -0.55
+          ],
+          "rotations": [
+            341.42200
+          ],
+          "sizes": [
+            0.080
+          ],
+          "routes": [
+            {
+              "id": "202302172250079879725319",
+              "name": "Toilet"
+            }
+          ]
+        },
+        {
+          "id": "e3d67979-ee52-4b27-b23a-89f2e8d20cfb",
+          "offsets": [
+            -0.67,
+            -2.17,
+            -2.17
+          ],
+          "rotations": [
+            266.45110
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302110527245471203637",
+              "name": "Luggage"
+            },
+            {
+              "id": "202302110527427247619335",
+              "name": "Bedroom"
+            }
+          ]
+        },
+        {
+          "id": "7642c56d-9c0a-4ea4-8fee-7e7ff7b38ada",
+          "offsets": [
+            -0.05,
+            -1.03,
+            -1.03
+          ],
+          "rotations": [
+            14.94298
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303172059292784891804",
+              "name": "Rella bathroom NM"
+            },
+            {
+              "id": "202303172059483226404381",
+              "name": "Ronin bed NM"
+            }
+          ]
+        },
+        {
+          "id": "2047b3bd-8468-4d62-8c1b-abc936b7abf2",
+          "offsets": [
+            -0.07,
+            -1.24,
+            -1.24,
+            -0.04,
+            -1.22,
+            -1.22,
+            -0.09,
+            -1.12,
+            -1.33
+          ],
+          "rotations": [
+            353.15990,
+            350.42210,
+            355.37110
+          ],
+          "sizes": [
+            0.000,
+            0.000,
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303172110078020284909",
+              "name": "Rella bathroom NM"
+            },
+            {
+              "id": "202303172110267038189802",
+              "name": "Ronin bed NM"
+            },
+            {
+              "id": "202303172154135213102175",
+              "name": "Bathroom NM"
+            },
+            {
+              "id": "202303172202335147787429",
+              "name": "Bathroom debug"
+            }
+          ]
+        },
+        {
+          "id": "ee5b13cb-359a-4675-ac5d-64fa3bd72fe5",
+          "offsets": [
+            0.83,
+            -0.99,
+            -0.99
+          ],
+          "rotations": [
+            4.65468
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303172159293349791995",
+              "name": "BR NM"
+            },
+            {
+              "id": "202303172159450991872823",
+              "name": "Ronin room NM"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVNAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVNAAAAAAAAAA==/",
+      "_etag": "\"e901ec03-0000-0700-0000-6414e3c80000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679090632
+    },
+    {
+      "id": "fcorome03",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "29cc1483-0bcf-45ef-bb4a-e6b1729bb573",
+          "offsets": [
+            -0.25,
+            -1.13,
+            -1.13
+          ],
+          "rotations": [
+            308.32700
+          ],
+          "sizes": [
+            0.098
+          ],
+          "routes": [
+            {
+              "id": "202302212116593708142160",
+              "name": "Broom rome"
+            }
+          ]
+        },
+        {
+          "id": "65bf405b-c190-4e33-a6b2-0ad78d511136",
+          "offsets": [
+            -0.11,
+            -0.48,
+            -0.48
+          ],
+          "rotations": [
+            355.64200
+          ],
+          "sizes": [
+            0.071
+          ],
+          "routes": [
+            {
+              "id": "202302230307331350817188",
+              "name": "Hass trst"
+            }
+          ]
+        },
+        {
+          "id": "e3d67979-ee52-4b27-b23a-89f2e8d20cfb",
+          "offsets": [
+            -1.20,
+            -2.47,
+            -2.47,
+            -0.65,
+            -2.46,
+            -2.46,
+            -0.63,
+            -2.55,
+            -2.55
+          ],
+          "rotations": [
+            272.75500,
+            267.06810,
+            270.33270
+          ],
+          "sizes": [
+            0.000,
+            0.000,
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202302110527245471203637",
+              "name": "Luggage"
+            },
+            {
+              "id": "202302110527427247619335",
+              "name": "Bedroom"
+            },
+            {
+              "id": "202302232141177987643561",
+              "name": "Sofa"
+            },
+            {
+              "id": "202302232141359234826545",
+              "name": "Guest bath"
+            },
+            {
+              "id": "202302232141504691135248",
+              "name": "Ronin bed"
+            },
+            {
+              "id": "202302232148143238183684",
+              "name": "Office door 2"
+            },
+            {
+              "id": "202302232148266071745379",
+              "name": "Laundry"
+            },
+            {
+              "id": "202302232148400661941772",
+              "name": "Room"
+            },
+            {
+              "id": "202302232151310396733104",
+              "name": "Door 2a"
+            },
+            {
+              "id": "202302232151465759582119",
+              "name": "Guest bath 2"
+            },
+            {
+              "id": "202302232152030830754977",
+              "name": "Ronin room2"
+            },
+            {
+              "id": "202303171616544177731479",
+              "name": "Bathroom NM"
+            },
+            {
+              "id": "202303171617083429650929",
+              "name": "Ronins room NM"
+            },
+            {
+              "id": "202303171642396712905412",
+              "name": "Dimas bedroom test "
+            }
+          ]
+        },
+        {
+          "id": "50eced6c-0597-40eb-8c8b-321ed406386b",
+          "offsets": [
+            -0.44,
+            -0.87,
+            -0.87
+          ],
+          "rotations": [
+            51.43300
+          ],
+          "sizes": [
+            0.079
+          ],
+          "routes": [
+            {
+              "id": "202302250542402558820979",
+              "name": "Bedrooom test hassan"
+            }
+          ]
+        },
+        {
+          "id": "ee3a13a7-9f16-427b-b67a-bd58c51589ea",
+          "offsets": [
+            -0.80,
+            -0.99,
+            -0.99,
+            -0.75,
+            -0.37,
+            -2.47
+          ],
+          "rotations": [
+            9.62716,
+            15.91939
+          ],
+          "sizes": [
+            0.000,
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303171608161754582001",
+              "name": "Main Door"
+            },
+            {
+              "id": "202303171652037712171242",
+              "name": "Ashwani Test Door"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVOAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVOAAAAAAAAAA==/",
+      "_etag": "\"d8017a0d-0000-0700-0000-64149f8f0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679073167
+    },
+    {
+      "id": "atl01",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "233a7803-1bda-4db8-8482-ecfc7db6907f",
+          "offsets": [
+            0.25,
+            -0.80,
+            -0.80
+          ],
+          "rotations": [
+            354.959
+          ],
+          "sizes": [
+            0.096
+          ],
+          "routes": [
+            {
+              "id": "202303031552298525454047",
+              "name": "Clock Tower"
+            }
+          ]
+        },
+        {
+          "id": "ab86dc6b-e74d-4ecf-a6fe-9a18e120cf3f",
+          "offsets": [
+            0.18,
+            -1.45,
+            -1.45
+          ],
+          "rotations": [
+            339.361
+          ],
+          "sizes": [
+            0.129
+          ],
+          "routes": [
+            {
+              "id": "202303031713216252592484",
+              "name": "Off airport parking"
+            }
+          ]
+        },
+        {
+          "id": "77350198-dab2-4009-867f-c609cf4ca67a",
+          "offsets": [
+            0.43,
+            -0.80,
+            -0.80
+          ],
+          "rotations": [
+            346.428
+          ],
+          "sizes": [
+            0.102
+          ],
+          "routes": [
+            {
+              "id": "202303031741107419705328",
+              "name": "Fore extingusher"
+            }
+          ]
+        },
+        {
+          "id": "7c5339da-e593-4dbc-ac5b-0497c5757391",
+          "offsets": [
+            -0.28,
+            -1.26,
+            -1.25
+          ],
+          "rotations": [
+            348.153
+          ],
+          "sizes": [
+            0.132
+          ],
+          "routes": [
+            {
+              "id": "202303031857483816590457",
+              "name": "Ticketing"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVPAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVPAAAAAAAAAA==/",
+      "_etag": "\"bc043cbf-0000-0700-0000-6402442e0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1677870126
+    },
+    {
+      "id": "atl00",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "4287dbd6-383e-4cc9-8a3c-c8545ce72f1f",
+          "offsets": [
+            -0.25,
+            -1.27,
+            -1.27
+          ],
+          "rotations": [
+            112.896
+          ],
+          "sizes": [
+            0.098
+          ],
+          "routes": [
+            {
+              "id": "202303031659198595002847",
+              "name": "Sky train"
+            }
+          ]
+        },
+        {
+          "id": "ab86dc6b-e74d-4ecf-a6fe-9a18e120cf3f",
+          "offsets": [
+            0.34,
+            -1.71,
+            -1.71
+          ],
+          "rotations": [
+            350.475
+          ],
+          "sizes": [
+            0.118
+          ],
+          "routes": [
+            {
+              "id": "202303031713216252592484",
+              "name": "Off airport parking"
+            }
+          ]
+        },
+        {
+          "id": "f897ad07-caea-45f1-9223-061f541281ba",
+          "offsets": [
+            0.44,
+            -1.20,
+            0.79
+          ],
+          "rotations": [
+            8.114
+          ],
+          "sizes": [
+            0.121
+          ],
+          "routes": [
+            {
+              "id": "202303031843361645195730",
+              "name": "Baggage carousel 5"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVQAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVQAAAAAAAAAA==/",
+      "_etag": "\"bb04a86d-0000-0700-0000-6402417a0000\"",
+      "_attachments": "attachments/",
+      "_ts": 1677869434
+    },
+    {
+      "id": "dmshse00",
+      "locId": "dimas_home",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "11907f21-8c7a-4997-acd4-9baa8d733ac7",
+          "offsets": [
+            -0.03,
+            -1.13,
+            -1.13
+          ],
+          "rotations": [
+            11.30708
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303162249362909645943",
+              "name": "Kitchen table NM"
+            },
+            {
+              "id": "202303162249558773968540",
+              "name": "Kitchen island NM"
+            },
+            {
+              "id": "202303162250095344511024",
+              "name": "Sofa NM"
+            },
+            {
+              "id": "202303162250218013193179",
+              "name": "Garage NM"
+            },
+            {
+              "id": "202303162252152562981882",
+              "name": "Kitchen NM"
+            },
+            {
+              "id": "202303162252301194565182",
+              "name": "Kitchen NM Island"
+            }
+          ]
+        },
+        {
+          "id": "ee3a13a7-9f16-427b-b67a-bd58c51589ea",
+          "offsets": [
+            0.57,
+            -1.11,
+            -1.11
+          ],
+          "rotations": [
+            345.81540
+          ],
+          "sizes": [
+            0.000
+          ],
+          "routes": [
+            {
+              "id": "202303171608161754582001",
+              "name": "Main Door"
+            },
+            {
+              "id": "202303171652037712171242",
+              "name": "Ashwani Test Door"
+            }
+          ]
+        },
+        {
+          "id": "abd2fe5a-ebef-4657-9a12-5cd1f48892f1",
+          "offsets": [
+            -0.86,
+            -0.68,
+            -0.68,
+            -0.13,
+            -1.34,
+            -1.65
+          ],
+          "rotations": [
+            328.96190,
+            325.73310
+          ],
+          "sizes": [
+            0.000,
+            0.000
+          ],
+          "routes": []
+        }
+      ],
+      "_rid": "icRZANX8hKVRAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVRAAAAAAAAAA==/",
+      "_etag": "\"d901a4c4-0000-0700-0000-6414a5620000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679074658
+    },
+    {
+      "id": "mucmunc04",
+      "part": "none",
+      "anchors": [
+        {
+          "id": "344f07c8-1863-4c09-8608-2b43c50fb629",
+          "offsets": [
+            -0.26,
+            -1.30,
+            -0.91
+          ],
+          "rotations": [
+            8.935
+          ],
+          "sizes": [
+            0.083
+          ],
+          "routes": [
+            {
+              "id": "202303172150083360207881",
+              "name": "Dimas bedroom 3/17"
+            }
+          ]
+        }
+      ],
+      "_rid": "icRZANX8hKVSAAAAAAAAAA==",
+      "_self": "dbs/icRZAA==/colls/icRZANX8hKU=/docs/icRZANX8hKVSAAAAAAAAAA==/",
+      "_etag": "\"e8012071-0000-0700-0000-6414e1120000\"",
+      "_attachments": "attachments/",
+      "_ts": 1679089938
+    }
+  ],
+  "_count": 68
+}

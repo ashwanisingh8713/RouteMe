@@ -9,23 +9,11 @@
         android:id="@+id/FirstFragment_N"
         android:name="com.route.fragment.FirstFragment"
         tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_DocumentFragment"
             app:destination="@id/DocumentFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.route.fragment.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment_N" />
-    </fragment>
+
 
     <fragment
         android:id="@+id/DocumentFragment"

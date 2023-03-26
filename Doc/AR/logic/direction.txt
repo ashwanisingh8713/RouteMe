@@ -1,0 +1,21 @@
+
+To move up
+	y axis should be changed with +value
+
+To move down
+	y axis should be changed with -value
+
+To move right
+	x axis should be changed with +value
+
+To move left
+	x axis should be changed with -value
+
+To move forward
+	z axis should be changed with +value
+
+To move backward
+	z axis should be changed with -value
+
+
+Very Important : forward & backward must be interchanged with real life implementation.

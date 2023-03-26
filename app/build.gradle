@@ -113,8 +113,14 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
-    // Ruler
-//    implementation project(":library")
+    // ARCore (Google Play Services for AR) library.
+    implementation 'com.google.ar:core:1.36.0'
+
+    // Obj - a simple Wavefront OBJ file loader
+    // https://github.com/javagl/Obj
+    implementation 'de.javagl:obj:0.3.0'
+
+    implementation 'com.google.code.gson:gson:2.9.0'
 
 
 

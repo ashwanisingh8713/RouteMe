@@ -1,0 +1,21 @@
+PlaneRenderer.java :- This class is responsible to create Plane Graph
+
+	// Without this Plane is rendered in white surface
+      shader.setMat4("u_Model", modelMatrix);
+
+      // Without this Plane graph is not rendered only dots points shows
+      shader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix);
+
+// 	If we remove this, Anchor positioning does not work properly
+      shader.setMat2("u_PlaneUvMatrix", planeAngleUvMatrix);
+      shader.setVec3("u_Normal", normalVector);
+
+
+PlaneRenderer.java
+	- calculateDistanceToPlane()
+
+
+
+HelloArRenderer.kt :- This class is responsible to draw Anchor on Plane Graph
+      - 
+	

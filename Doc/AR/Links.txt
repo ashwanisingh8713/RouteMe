@@ -5,3 +5,17 @@ Understand how anchors and Cloud Anchors work.
 
 Fundamentals
         https://developers.google.com/ar/develop/fundamentals
+
+
+        ARCore – Session, Frame, Camera and Pose
+            https://stackoverflow.com/questions/51763412/arcore-session-frame-camera-and-pose
+
+        ARCore OpenGL ES Moving Object using onScroll
+            https://stackoverflow.com/questions/49141613/arcore-opengl-es-moving-object-using-onscroll
+            https://github.com/heremaps/here-android-sdk-examples/tree/master/route-tta
+
+        ARScene Doc sample
+            https://flexiple.com/android/build-your-first-android-ar-app-using-arcore-and-sceneform/
+
+        Measuring distance with ARCore ****
+            https://shibuiyusuke.medium.com/measuring-distance-with-arcore-6eb15bf38a8f

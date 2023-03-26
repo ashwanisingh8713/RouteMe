@@ -5,17 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.route.modal.RoutesBean;
-import com.route.modal.RoutesDocuments;
 import com.route.modal.ktM2.Anchor;
 import com.route.modal.ktM2.Route;
 import com.route.routeme.R;
 import com.route.routeme.RouteArPath_v2;
-import com.route.routeme.RouteDetail;
 
 import java.util.ArrayList;
 import java.util.List;

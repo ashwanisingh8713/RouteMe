@@ -1,0 +1,116 @@
+Consolidated Distance:: 8.366991
+
++++++ Added Anchor Count :: 1
+Distance From Start Anchor :: 0.3415589
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 129.27031587675268
+Angle Between Added Anchor and Next Anchor :: 107.16594771741792
+================================================== ::
++++++ Added Anchor Count :: 2
+Distance From Start Anchor :: 0.3415589
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 132.18340747115076
+Angle Between Added Anchor and Next Anchor :: 107.16594771741792
+================================================== ::
++++++ Added Anchor Count :: 3
+Distance From Start Anchor :: 0.71924925
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 34.077391949522614
+Angle Between Added Anchor and Next Anchor :: 32.84443658351227
+================================================== ::
++++++ Added Anchor Count :: 4
+Distance From Start Anchor :: 1.0990188
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 34.378971423172636
+Angle Between Added Anchor and Next Anchor :: 6.209215759076022
+================================================== ::
++++++ Added Anchor Count :: 5
+Distance From Start Anchor :: 1.4720638
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 19.15617810964353
+Angle Between Added Anchor and Next Anchor :: 3.590308980779292
+================================================== ::
++++++ Added Anchor Count :: 6
+Distance From Start Anchor :: 1.8551514
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 21.420061433528662
+Angle Between Added Anchor and Next Anchor :: 0.37616501138593117
+================================================== ::
++++++ Added Anchor Count :: 7
+Distance From Start Anchor :: 2.2320218
+Direction For Next Anchor :: LEFT_BACKWARD
+Angle Between Added Anchor and Camera :: 23.72289541952339
+Angle Between Added Anchor and Next Anchor :: 2.9629423179585195
+================================================== ::
++++++ Added Anchor Count :: 8
+Distance From Start Anchor :: 2.603253
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 22.354307414066707
+Angle Between Added Anchor and Next Anchor :: 4.094902991175946
+================================================== ::
++++++ Added Anchor Count :: 9
+Distance From Start Anchor :: 2.984058
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 16.287853056410505
+Angle Between Added Anchor and Next Anchor :: 6.05947257955894
+================================================== ::
++++++ Added Anchor Count :: 10
+Distance From Start Anchor :: 3.3650844
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 11.541963698281004
+Angle Between Added Anchor and Next Anchor :: 8.201282307906164
+================================================== ::
++++++ Added Anchor Count :: 11
+Distance From Start Anchor :: 3.7452984
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 6.687108903324908
+Angle Between Added Anchor and Next Anchor :: 7.58871849772194
+================================================== ::
++++++ Added Anchor Count :: 12
+Distance From Start Anchor :: 4.123658
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 5.579989216542778
+Angle Between Added Anchor and Next Anchor :: 4.86195431390314
+================================================== ::
++++++ Added Anchor Count :: 13
+Distance From Start Anchor :: 4.502241
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 7.023142781325566
+Angle Between Added Anchor and Next Anchor :: 2.3420437054899765
+================================================== ::
++++++ Added Anchor Count :: 14
+Distance From Start Anchor :: 4.883046
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 10.105242740879387
+Angle Between Added Anchor and Next Anchor :: 1.7600486570741252
+================================================== ::
++++++ Added Anchor Count :: 15
+Distance From Start Anchor :: 5.2587204
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 13.467165667173106
+Angle Between Added Anchor and Next Anchor :: 0.8964706142872132
+================================================== ::
++++++ Added Anchor Count :: 16
+Distance From Start Anchor :: 5.63849
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 15.18440913113448
+Angle Between Added Anchor and Next Anchor :: 0.6568188149154595
+================================================== ::
++++++ Added Anchor Count :: 17
+Distance From Start Anchor :: 6.018704
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 17.202174645085275
+Angle Between Added Anchor and Next Anchor :: 0.11230794997870902
+================================================== ::
++++++ Added Anchor Count :: 18
+Distance From Start Anchor :: 6.2752433
+Direction For Next Anchor :: RIGHT_BACKWARD
+Angle Between Added Anchor and Camera :: 17.44849976206921
+Angle Between Added Anchor and Next Anchor :: 0.05159258452903359
+================================================== ::
++++++ Added Anchor Count :: 19
+Distance From Start Anchor :: 0.0
+Direction For Next Anchor :: UNIDENTIFIED
+Angle Between Added Anchor and Camera :: 18.21821341445173
+Angle Between Added Anchor and Next Anchor :: 0.0
+================================================== ::

@@ -1,0 +1,61 @@
+
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 107.16594702833547
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 32.84443403556714
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 6.209207933613626
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 3.5902779144535826
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 0.37611635483959605
+======================
+2D RadiansAngle :: 0.0
+2D AngleDegree :: -0.0
+3D vectorAngle :: 2.9629757922015387
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 4.094870757830346
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 6.059450179634288
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 8.20129487299803
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 7.588723204985379
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 4.86194015067981
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 2.3419574293022944
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 1.7600807984398055
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 0.8962649154369566
+======================
+2D RadiansAngle :: 3.141592653589793
+2D AngleDegree :: 0.0
+3D vectorAngle :: 0.656726373188166
+======================
