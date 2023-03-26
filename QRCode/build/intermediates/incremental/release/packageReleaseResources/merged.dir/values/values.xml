@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="quickie_accent_fallback">#03dac5</color>
+    <color name="quickie_gray">#dadce0</color>
+    <color name="quickie_transparent">#00000000</color>
+    <color name="quickie_white">#ffffff</color>
+    <string name="quickie_please_wait">Please wait…</string>
+    <string name="quickie_scan_qr_code">Hover your camera over the code</string>
+    <style name="QuickieScannerActivity" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/quickie_transparent</item>
+    <item name="android:navigationBarColor">@color/quickie_transparent</item>
+  </style>
+</resources>

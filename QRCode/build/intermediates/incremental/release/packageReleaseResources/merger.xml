@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res"/><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/build/generated/res/rs/release"/><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/build/generated/res/resValues/release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res"><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values-v27/themes.xml" qualifiers="v27"><style name="QuickieScannerActivity" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/quickie_transparent</item>
+    <item name="android:navigationBarColor">@color/quickie_transparent</item>
+    
+    <item name="android:windowLightStatusBar">false</item>
+    
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="android:navigationBarDividerColor">@color/quickie_transparent</item>
+    <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+  </style></file><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values-v29/themes.xml" qualifiers="v29"><style name="QuickieScannerActivity" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/quickie_transparent</item>
+    <item name="android:navigationBarColor">@color/quickie_transparent</item>
+    
+    <item name="android:windowLightStatusBar">false</item>
+    
+    <item name="android:windowLightNavigationBar">false</item>
+    <item name="android:navigationBarDividerColor">@color/quickie_transparent</item>
+    <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    
+    <item name="android:enforceNavigationBarContrast">false</item>
+    <item name="android:enforceStatusBarContrast">false</item>
+  </style></file><file name="quickie_ic_torch" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/drawable/quickie_ic_torch.xml" qualifiers="" type="drawable"/><file name="quickie_bg_round" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/drawable/quickie_bg_round.xml" qualifiers="" type="drawable"/><file name="quickie_ic_close" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/drawable/quickie_ic_close.xml" qualifiers="" type="drawable"/><file name="quickie_ic_qrcode" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/drawable/quickie_ic_qrcode.xml" qualifiers="" type="drawable"/><file name="quickie_scanner_activity" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/layout/quickie_scanner_activity.xml" qualifiers="" type="layout"/><file name="quickie_overlay_view" path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/layout/quickie_overlay_view.xml" qualifiers="" type="layout"/><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values/colors.xml" qualifiers=""><color name="quickie_gray">#dadce0</color><color name="quickie_white">#ffffff</color><color name="quickie_transparent">#00000000</color><color name="quickie_accent_fallback">#03dac5</color></file><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values/themes.xml" qualifiers=""><style name="QuickieScannerActivity" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/quickie_transparent</item>
+    <item name="android:navigationBarColor">@color/quickie_transparent</item>
+  </style></file><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values/public.xml" qualifiers=""><public/></file><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values/strings.xml" qualifiers=""><string name="quickie_scan_qr_code">Hover your camera over the code</string><string name="quickie_please_wait">Please wait…</string></file><file path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/res/values-v23/themes.xml" qualifiers="v23"><style name="QuickieScannerActivity" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:statusBarColor">@color/quickie_transparent</item>
+    <item name="android:navigationBarColor">@color/quickie_transparent</item>
+    
+    <item name="android:windowLightStatusBar">false</item>
+  </style></file></source><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/build/generated/res/rs/release"/><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/build/generated/res/resValues/release"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="release" generated-set="release$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/ashwani/AndroidSample/RouteMe/QRCode/src/release/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"/><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"/><mergedItems/></merger>

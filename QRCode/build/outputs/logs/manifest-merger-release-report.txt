@@ -1,0 +1,51 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:2:1-25:12
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:2:1-25:12
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:2:1-25:12
+	package
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:2:1-25:12
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:2:11-69
+uses-feature#android.hardware.camera
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:4:5-6:35
+	android:required
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:6:9-33
+	android:name
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:5:9-47
+uses-permission#android.permission.CAMERA
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:8:5-64
+	android:name
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:8:22-62
+application
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:11:5-23:19
+activity#io.github.g00fy2.quickie.QRScannerActivity
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:13:9-16:60
+	android:screenOrientation
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:15:13-47
+	android:theme
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:16:13-58
+	android:name
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:14:13-46
+meta-data#com.google.mlkit.vision.DEPENDENCIES
+ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:19:9-21:38
+	android:value
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:21:13-36
+	android:name
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml:20:13-64
+uses-sdk
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+		ADDED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml
+		INJECTED from /Users/ashwani/AndroidSample/RouteMe/QRCode/src/main/AndroidManifest.xml

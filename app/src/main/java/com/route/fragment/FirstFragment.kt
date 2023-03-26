@@ -1,11 +1,13 @@
 package com.route.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +20,9 @@ import com.route.routeme.RouteArPath_v2
 import com.route.routeme.databinding.FragmentFirstBinding
 import com.route.viewmodel.RoutesDataViewModel
 import io.github.g00fy2.quickie.QRResult
+import io.github.g00fy2.quickie.ScanCustomCode
 import io.github.g00fy2.quickie.ScanQRCode
+import io.github.g00fy2.quickie.config.ScannerConfig
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -27,7 +31,7 @@ import io.reactivex.disposables.CompositeDisposable
 class FirstFragment:Fragment() {
 
 
-    private val scanQrCode = registerForActivityResult(ScanQRCode(), ::listenBarCodeResult)
+    private val scanCustomCode = registerForActivityResult(ScanCustomCode(), ::listenBarCodeResult)
     private lateinit var binding: FragmentFirstBinding
     private lateinit var model: RoutesDataViewModel
 
@@ -38,12 +42,6 @@ class FirstFragment:Fragment() {
     ): View {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    private fun openRouteScreen() {
-        val intent = Intent(requireActivity(), RouteArPath_v2::class.java)
-        intent.putExtra("id", "202204190137151835938906")
-        startActivity(intent)
     }
 
 
@@ -57,8 +55,20 @@ class FirstFragment:Fragment() {
 //        navController.navigate(R.id.action_FirstFragment_to_DocumentFragment, bundleOf("Url" to "https://rtme.pl/TgtHills02") )
 //        binding.title.text = "List of Routes"
 
+
+        scanCustomCode.launch(
+            ScannerConfig.build {
+            setOverlayStringRes(R.string.scan_barcode) // string resource used for the scanner overlay
+            setHapticSuccessFeedback(false) // enable (default) or disable haptic feedback when a barcode was detected
+            setShowTorchToggle(false) // show or hide (default) torch/flashlight toggle button
+            setShowCloseButton(true) // show or hide (default) close button
+            setHorizontalFrameRatio(1.0f) // set the horizontal overlay ratio (default is 1 / square frame)
+            setUseFrontCamera(false) // use the front camera
+        }
+        )
+
         binding.barcodeBtn.setOnClickListener{
-            scanQrCode.launch(null)
+            scanCustomCode.launch(null)
         }
 
         binding.databaseBtn.setOnClickListener {
@@ -125,6 +135,7 @@ class FirstFragment:Fragment() {
 
             }
             QRResult.QRUserCanceled -> {
+                requireActivity().finish()
                 showSnackBar("User canceled")
             }
             QRResult.QRMissingPermission -> {

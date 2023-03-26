@@ -30,7 +30,7 @@
         android:id="@+id/barcodeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click to Scanner the Barcode"
+        android:text="Scanner the Barcode"
         android:layout_margin="20dp"
         android:gravity="center"
         android:textAllCaps="false"
