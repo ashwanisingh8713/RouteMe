@@ -43,11 +43,10 @@ public class DocumentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         model = new ViewModelProvider(requireActivity()).get(DocumentDataViewModel.class);
-        mAdapter = new DocumentRecyclerAdapter();
+
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
-        binding.recyclerView.setAdapter(mAdapter);
 
         showToast("Send request to Server");
         // Older - 1
@@ -61,7 +60,13 @@ public class DocumentFragment extends Fragment {
             binding.progressBar.setVisibility(View.GONE);
         });*/
 
-        model.loadAppClipCodesDocument(mUrl);
+        if(mAdapter ==null) {
+            mAdapter = new DocumentRecyclerAdapter();
+            model.loadAppClipCodesDocument(mUrl);
+        } else if(mAdapter.getItemCount() == 0){
+            model.loadAppClipCodesDocument(mUrl);
+        }
+        binding.recyclerView.setAdapter(mAdapter);
         model.getRoutesDocument().observe(requireActivity(), routesData -> {
             // update UI
             Log.i("", "");

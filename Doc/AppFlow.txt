@@ -1,0 +1,4 @@
+Scan the code
+Launch app clip
+Launch camera with a message/toast saying “hover your camera over the code”
+Show destinations

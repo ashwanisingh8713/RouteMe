@@ -2,18 +2,27 @@ package com.route.viewmodel;
 
 
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.gson.JsonElement;
 import com.route.apis.ApiManager;
+import com.route.data.UpdatedPoints;
 import com.route.modal.RoutesData;
+import com.route.modal.RoutesDocuments;
+import com.route.modal.ktM2.Anchor;
+import com.route.modal.ktM2.Document;
 
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Headers;
 
 public class RoutesDataViewModel extends ViewModel {
     protected final CompositeDisposable mDisposable = new CompositeDisposable();
@@ -67,6 +76,7 @@ public class RoutesDataViewModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(value->{
+                    Log.i("", "");
                     routesDocument.postValue(value);
                 }, throwable -> {
                     error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
@@ -74,6 +84,29 @@ public class RoutesDataViewModel extends ViewModel {
 
                 }));
     }
+
+    public void getDocumentAppClipRouteIdBody() {
+        mDisposable.add(ApiManager.getDocumentAppClipRouteIdBody()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(value->{
+                    Log.i("", "");
+                    int code = value.response().code();
+                    JsonElement body = value.response().body();
+                    Headers headers = value.response().raw().request().headers();
+
+                    Log.i("Ashwanis", "Code :: "+code);
+                    Log.i("Ashwanis", "Headers :: "+headers);
+                    Log.i("Ashwanis", "Body :: "+body);
+
+                }, throwable -> {
+                    error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
+                }, () -> {
+
+                }));
+    }
+
+
 
     public void loadRoutesDocumentJson() {
         mDisposable.add(ApiManager.getDocumentJson()

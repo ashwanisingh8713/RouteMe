@@ -34,11 +34,11 @@ public class RouteArPath_v2 extends AppCompatActivity  {
         binding = ActivityRouteArPathV2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         model = new ViewModelProvider(this).get(RoutesDataViewModel.class);
+        String id = getIntent().getExtras().getString("id");
 
         // Init Making API Request
-        model.loadRoutesDocument();
-
-        String id = getIntent().getExtras().getString("id");
+//        model.loadRoutesDocument();
+        model.getDocumentAppClipRouteIdBody();
 
         model.getRoutesDocument().observe(this, routesData -> {
             List<RoutesDocuments> allRoutes = routesData.getDocuments();

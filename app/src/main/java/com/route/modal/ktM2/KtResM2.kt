@@ -10,15 +10,15 @@ data class KtResM2(
 )
 
 data class Document(
-    val _attachments: String,
-    val _etag: String,
-    val _rid: String,
-    val _self: String,
-    val _ts: Int,
-    val anchors: List<Anchor>,
-    val id: String,
-    val locId: String,
-    val part: String
+    val _attachments: String = "",
+    val _etag: String = "",
+    val _rid: String = "",
+    val _self: String = "",
+    val _ts: Int = 0,
+    val anchors: List<Anchor> = emptyList(),
+    var id: String = "",
+    val locId: String = "",
+    val part: String = ""
 )
 
 data class Anchor(
