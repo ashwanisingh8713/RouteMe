@@ -1,8 +1,12 @@
 package com.route.routeme;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +31,36 @@ public class RouteArPath_v2 extends AppCompatActivity  {
 
     private RoutesDataViewModel model;
 
+    private String routeId = "";
+
+    static float sPixelDensity = -1f;
+    private int meterToPixel(float meter) {
+        // 1 meter = 39.37 inches, 1 inch = 160 dp.
+        return Math.round(dpToPixel(meter * 39.37f * 160));
+    }
+
+    private float dpToPixel(float dp) {
+        return sPixelDensity * dp;
+    }
+
+    protected Handler mHandler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            int margin = msg.what;
+            float rulerWidthX = binding.ruler.getX();
+            int rulerWidth = binding.ruler.getWidth();
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)binding.manGuide.getLayoutParams();
+            params.leftMargin = rulerWidth-margin;
+            binding.manGuide.setLayoutParams(params);
+        }
+    };
+
+    private void moveManGuide() {
+        mHandler.sendEmptyMessageDelayed(100, 3000);
+//        mHandler.sendEmptyMessage(200);
+    }
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +68,13 @@ public class RouteArPath_v2 extends AppCompatActivity  {
         binding = ActivityRouteArPathV2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         model = new ViewModelProvider(this).get(RoutesDataViewModel.class);
-        String id = getIntent().getExtras().getString("id");
+
+        if(getIntent().getExtras() != null) {
+            routeId = getIntent().getExtras().getString("id");
+        }
+
+
+
 
         // Init Making API Request
 //        model.loadRoutesDocument();
@@ -45,7 +85,7 @@ public class RouteArPath_v2 extends AppCompatActivity  {
             // Making selected route object to find
             // the particular route index from RouteList Data (allRoutes)
             final RoutesDocuments routesItem = new RoutesDocuments();
-            routesItem.id = id;
+            routesItem.id = routeId;
 
             final int index = allRoutes.indexOf(routesItem);
             if(index != -1) {
@@ -89,6 +129,8 @@ public class RouteArPath_v2 extends AppCompatActivity  {
             binding.progressBar.setVisibility(View.GONE);
             ErrorDialog.showErrorDialog(getSupportFragmentManager(), "Error!", "Kindly try again");
         });
+
+        moveManGuide();
 
     }
 

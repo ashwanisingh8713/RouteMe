@@ -68,7 +68,16 @@ class FirstFragment:Fragment() {
         )
 
         binding.barcodeBtn.setOnClickListener{
-            scanCustomCode.launch(null)
+            scanCustomCode.launch(
+                ScannerConfig.build {
+                    setOverlayStringRes(R.string.scan_barcode) // string resource used for the scanner overlay
+                    setHapticSuccessFeedback(false) // enable (default) or disable haptic feedback when a barcode was detected
+                    setShowTorchToggle(false) // show or hide (default) torch/flashlight toggle button
+                    setShowCloseButton(true) // show or hide (default) close button
+                    setHorizontalFrameRatio(1.0f) // set the horizontal overlay ratio (default is 1 / square frame)
+                    setUseFrontCamera(false) // use the front camera
+                }
+            )
         }
 
         binding.databaseBtn.setOnClickListener {

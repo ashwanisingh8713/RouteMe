@@ -56,6 +56,8 @@ public class DocumentDataViewModel extends ViewModel {
 
 
     public void loadAppClipCodesDocument(String url) {
+        Log.i("Ashwani", " =================================== ");
+        Log.i("Ashwani", "QR Scanned Url is :: "+url);
         mDisposable.add(ApiManager.loadAppClipCodesDocument()
                 .subscribeOn(Schedulers.io())
                 .map(value -> {

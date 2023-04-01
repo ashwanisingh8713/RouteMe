@@ -34,7 +34,7 @@ public class DepthSettings {
   public void onCreate(Context context) {
     sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_ID, Context.MODE_PRIVATE);
     useDepthForOcclusion =
-        sharedPreferences.getBoolean(SHARED_PREFERENCES_USE_DEPTH_FOR_OCCLUSION, false);
+        sharedPreferences.getBoolean(SHARED_PREFERENCES_USE_DEPTH_FOR_OCCLUSION, true);
   }
 
   /** Retrieves whether depth-based occlusion is enabled. */

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.ar.navigation.ArRenderingActivity;
 import com.route.modal.ktM2.Anchor;
 import com.route.modal.ktM2.Route;
 import com.route.routeme.R;
@@ -37,6 +39,7 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
 
         holder.itemView.setOnClickListener(click->{
             Intent intent = new Intent(holder.itemView.getContext(), RouteArPath_v2.class);
+//            Intent intent = new Intent(holder.itemView.getContext(), ArRenderingActivity.class);
             intent.putExtra("id", route.getId());
             holder.itemView.getContext().startActivity(intent);
 

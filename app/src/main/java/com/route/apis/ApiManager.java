@@ -109,15 +109,6 @@ public class ApiManager {
         String generate = ApiPathUtil.generate2("post", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
 
-                /*@Header("content-type") String contentType,
-                @Header("accept") String accept,
-                @Header("Authorization") String authorization,
-                @Header("x-ms-date") String date,
-                @Header("x-ms-version") String xms_version,
-                @Header("x-ms-documentdb-isquery") String isquery,
-                @Header("x-ms-documentdb-partitionkey") JsonElement partition,
-                @Body JsonObject json);*/
-
         Map<String, String> header = new HashMap<>();
         header.put("Accept", "application/json");
         header.put("Content-Type", "application/query+json");

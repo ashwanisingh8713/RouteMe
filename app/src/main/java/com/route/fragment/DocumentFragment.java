@@ -60,12 +60,9 @@ public class DocumentFragment extends Fragment {
             binding.progressBar.setVisibility(View.GONE);
         });*/
 
-        if(mAdapter ==null) {
-            mAdapter = new DocumentRecyclerAdapter();
-            model.loadAppClipCodesDocument(mUrl);
-        } else if(mAdapter.getItemCount() == 0){
-            model.loadAppClipCodesDocument(mUrl);
-        }
+        mAdapter = new DocumentRecyclerAdapter();
+        model.loadAppClipCodesDocument(mUrl);
+
         binding.recyclerView.setAdapter(mAdapter);
         model.getRoutesDocument().observe(requireActivity(), routesData -> {
             // update UI
