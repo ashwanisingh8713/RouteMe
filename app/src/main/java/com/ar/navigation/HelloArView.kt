@@ -20,6 +20,7 @@ class HelloArView(
 ) : DefaultLifecycleObserver {
     val root = View.inflate(activity, R.layout.activity_ar_renderer, null)
     val mSurfaceView = root.findViewById<GLSurfaceView>(R.id.surfaceview)
+    
 
     val session
         get() = activity.arCoreSessionHelper.session

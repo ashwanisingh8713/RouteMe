@@ -1,7 +1,12 @@
 package com.ar.navigation
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
+import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ar.common.helpers.*
@@ -11,6 +16,7 @@ import com.google.ar.core.Config.InstantPlacementMode
 import com.google.ar.core.Session
 import com.google.ar.core.examples.navigation.helpers.ARCoreSessionLifecycleHelper
 import com.google.ar.core.exceptions.*
+import com.route.routeme.databinding.ActivityArRendererBinding
 
 /**
  * Created by Ashwani Kumar Singh on 11,March,2023.
@@ -22,28 +28,28 @@ import com.google.ar.core.exceptions.*
  * plane to place a 3D model.
  */
 class ArRenderingActivity : AppCompatActivity() {
-  companion object {
-    private const val TAG = "HelloArActivity"
-  }
+
+  val snackbarHelper = SnackbarHelper()
 
   lateinit var arCoreSessionHelper: ARCoreSessionLifecycleHelper
-  lateinit var view: HelloArView
-  lateinit var renderer: HelloArRenderer
-
-  val instantPlacementSettings = InstantPlacementSettings()
+//  lateinit var view: HelloArView
+  private lateinit var renderer: HelloArRenderer
+  private lateinit var binding: ActivityArRendererBinding
+  private var mRulerWidth : Int = 0
+  private val instantPlacementSettings = InstantPlacementSettings()
   val depthSettings = DepthSettings()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     instantPlacementSettings.onCreate(this)
+    binding = ActivityArRendererBinding.inflate(layoutInflater)
 
     // Setup ARCore session lifecycle helper and configuration.
     arCoreSessionHelper = ARCoreSessionLifecycleHelper(this)
     // If Session creation or Session.resume() fails, display a message and log detailed
     // information.
-    arCoreSessionHelper.exceptionCallback =
-      { exception ->
+    arCoreSessionHelper.exceptionCallback = { exception ->
         val message =
           when (exception) {
             is UnavailableUserDeclinedInstallationException ->
@@ -54,8 +60,7 @@ class ArRenderingActivity : AppCompatActivity() {
             is CameraNotAvailableException -> "Camera not available. Try restarting the app."
             else -> "Failed to create AR session: $exception"
           }
-        Log.e(TAG, "ARCore threw an exception", exception)
-        view.snackbarHelper.showError(this, message)
+        snackbarHelper.showError(this, message)
       }
 
     // Configure session features, including: Lighting Estimation, Depth mode, Instant Placement.
@@ -67,19 +72,19 @@ class ArRenderingActivity : AppCompatActivity() {
     lifecycle.addObserver(renderer)
 
     // Set up Hello AR UI.
-    view = HelloArView(this, instantPlacementSettings)
-    lifecycle.addObserver(view)
-    setContentView(view.root)
+    setContentView(binding.root)
 
     // Sets up an example renderer using our HelloARRenderer.
-    SampleRender(view.mSurfaceView, renderer, assets)
+    SampleRender(binding.surfaceview, renderer, assets)
 
     depthSettings.onCreate(this)
+
+    binding.ruler.postDelayed({mRulerWidth = binding.ruler.width}, 2000)
 
   }
 
   // Configure the session, using Lighting Estimation, and Depth mode.
-  fun configureSession(session: Session) {
+  private fun configureSession(session: Session) {
     session.configure(
       session.config.apply {
         lightEstimationMode = Config.LightEstimationMode.ENVIRONMENTAL_HDR
@@ -125,6 +130,66 @@ class ArRenderingActivity : AppCompatActivity() {
     super.onWindowFocusChanged(hasFocus)
     FullScreenHelper.setFullScreenOnWindowFocusChanged(this, hasFocus)
   }
+
+  fun showProgressBar() {
+    runOnUiThread{binding.progressBar.visibility = View.VISIBLE}
+
+  }
+
+  fun hideProgressBar() {
+    runOnUiThread { binding.progressBar.visibility = View.GONE }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+  ////               Distance Calculation       ////////////////////////////////
+  companion object {
+    const val DESTINATION = 1
+  }
+
+  var totalDistanceCM = 840   // In CM
+  fun coveredDistanceMtr(coveredDistanceMtr: Float) {
+    val bundle = Bundle()
+    bundle.putFloat("mtr", coveredDistanceMtr)
+    val msg = Message()
+    msg.data = bundle
+    msg.what = DESTINATION
+    mHandler.sendMessage(msg)
+  }
+
+
+  private var mHandler = object : Handler(Looper.getMainLooper()) {
+    override fun handleMessage(msg: Message) {
+      when(msg.what) {
+        DESTINATION ->{
+          destinationMove(msg.data)
+        }
+      }
+
+    }
+  }
+
+  /**
+   * It moves Avatar on Ruler,
+   * calculate margin based on destination.
+   */
+  private fun destinationMove(bundle: Bundle) {
+    val coveredDistanceMtr = bundle.getFloat("mtr")
+    val coveredDistanceCM = coveredDistanceMtr*100 // Converting in CM
+
+    if(mRulerWidth <= 0 || coveredDistanceCM <= 0.00001 ) {
+      return
+    }
+    val margin = (mRulerWidth/totalDistanceCM)*coveredDistanceCM
+
+    if(margin >= mRulerWidth-100) {
+      return
+    }
+    val params = binding.manGuide.layoutParams as FrameLayout.LayoutParams
+    params.leftMargin = margin.toInt()
+    binding.manGuide.layoutParams = params
+    hideProgressBar()
+  }
+
 
 
 }

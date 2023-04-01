@@ -310,6 +310,7 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
         val message: String? = when {
             camera.trackingState == TrackingState.PAUSED && camera.trackingFailureReason == TrackingFailureReason.NONE -> {
 //                mDisplayedAnchors.clear()
+                activity.showProgressBar()
                 "Searching for surfaces..."
             }
             camera.trackingState == TrackingState.PAUSED ->
@@ -317,15 +318,19 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
             session.hasTrackingPlane() && mHoldingAnchors.isEmpty() -> {
                 loadAllAnchors(session)
                 addDisplayAnchor(camera.displayOrientedPose)
+                activity.hideProgressBar()
                 "Tap on a surface to place an object."
             }
             session.hasTrackingPlane() && mDisplayedAnchors.isNotEmpty() -> null
-            else -> "Searching for surfaces..."
+            else -> {
+                activity.showProgressBar()
+                "Searching for surfaces..."
+            }
         }
         if (message == null) {
-            activity.view.snackbarHelper.hide(activity)
+            activity.snackbarHelper.hide(activity)
         } else {
-            activity.view.snackbarHelper.showMessage(activity, message)
+            activity.snackbarHelper.showMessage(activity, message)
         }
 
         // -- Draw background
@@ -402,11 +407,11 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
 
 
     private fun showError(errorMessage: String) {
-        activity.view.snackbarHelper.showError(activity, errorMessage)
+        activity.snackbarHelper.showError(activity, errorMessage)
     }
 
     private fun showMsg(errorMessage: String) {
-        activity.view.snackbarHelper.showMsg(activity, errorMessage)
+        activity.snackbarHelper.showMsg(activity, errorMessage)
     }
 
     // It holds displayed Anchors
@@ -432,6 +437,7 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
             return
         }
         if (mHoldingAnchors.size < mDisplayedAnchors.size) {
+            cameraCoverDestination(cameraPose)
             return
         }
         if (mDisplayedAnchors.size == 0) {
@@ -469,11 +475,12 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
 
 
         } else {
+            cameraCoverDestination(cameraPose)
             if(mAllAnchors <= mDisplayedAnchorCount-1) {
                 return
             }
-            val distanceCoveredByCamera = KotlinUtil.calculateDistance(cameraPose, mHoldingAnchors[0].anchor!!.pose)*constantReduction()
-            Log.i("Ashwani", "distanceCoveredByCamera :: $distanceCoveredByCamera")
+
+
 
 //            if (mDistanceFromStartAnchor <= distanceCoveredByCamera)
             if (mDistanceFromStartAnchor <= 100)
@@ -514,6 +521,12 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
         }
 
 
+    }
+
+    private fun cameraCoverDestination(cameraPose: Pose) {
+        val distanceCoveredByCamera = KotlinUtil.calculateDistance(cameraPose, mHoldingAnchors[0].anchor!!.pose)*constantReduction()
+        Log.i("AshwaniDesti", "distanceCoveredByCamera :: $distanceCoveredByCamera")
+        activity.coveredDistanceMtr(distanceCoveredByCamera)
     }
 
     /**

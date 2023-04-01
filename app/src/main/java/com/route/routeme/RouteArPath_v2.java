@@ -60,8 +60,6 @@ public class RouteArPath_v2 extends AppCompatActivity  {
 //        mHandler.sendEmptyMessage(200);
     }
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
