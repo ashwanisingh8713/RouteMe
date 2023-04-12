@@ -33,32 +33,6 @@ public class RouteArPath_v2 extends AppCompatActivity  {
 
     private String routeId = "";
 
-    static float sPixelDensity = -1f;
-    private int meterToPixel(float meter) {
-        // 1 meter = 39.37 inches, 1 inch = 160 dp.
-        return Math.round(dpToPixel(meter * 39.37f * 160));
-    }
-
-    private float dpToPixel(float dp) {
-        return sPixelDensity * dp;
-    }
-
-    protected Handler mHandler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(Message msg) {
-            int margin = msg.what;
-            float rulerWidthX = binding.ruler.getX();
-            int rulerWidth = binding.ruler.getWidth();
-            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams)binding.manGuide.getLayoutParams();
-            params.leftMargin = rulerWidth-margin;
-            binding.manGuide.setLayoutParams(params);
-        }
-    };
-
-    private void moveManGuide() {
-        mHandler.sendEmptyMessageDelayed(100, 3000);
-//        mHandler.sendEmptyMessage(200);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,11 +46,11 @@ public class RouteArPath_v2 extends AppCompatActivity  {
         }
 
 
-
+        Log.i("AshwaniS", "RouteId :: "+routeId);
 
         // Init Making API Request
 //        model.loadRoutesDocument();
-        model.getDocumentAppClipRouteIdBody();
+        model.getDocumentAppClipRouteIdBody(routeId);
 
         model.getRoutesDocument().observe(this, routesData -> {
             List<RoutesDocuments> allRoutes = routesData.getDocuments();
@@ -128,7 +102,6 @@ public class RouteArPath_v2 extends AppCompatActivity  {
             ErrorDialog.showErrorDialog(getSupportFragmentManager(), "Error!", "Kindly try again");
         });
 
-        moveManGuide();
 
     }
 

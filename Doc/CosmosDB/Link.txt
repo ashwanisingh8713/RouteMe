@@ -1,0 +1,2 @@
+CosmosDB Auth Gen
+https://mulesy.com/2-generate-auth-token-while-call-cosmos-db-sql-rest-apis/

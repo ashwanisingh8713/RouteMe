@@ -85,8 +85,8 @@ public class RoutesDataViewModel extends ViewModel {
                 }));
     }
 
-    public void getDocumentAppClipRouteIdBody() {
-        mDisposable.add(ApiManager.getDocumentAppClipRouteIdBody()
+    public void getDocumentAppClipRouteIdBody(String routeId) {
+        mDisposable.add(ApiManager.getDocumentAppClipRouteIdBody(routeId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(value->{

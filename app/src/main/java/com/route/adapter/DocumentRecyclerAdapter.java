@@ -38,8 +38,8 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
         holder.title.setText(route.getName());
 
         holder.itemView.setOnClickListener(click->{
-            Intent intent = new Intent(holder.itemView.getContext(), RouteArPath_v2.class);
-//            Intent intent = new Intent(holder.itemView.getContext(), ArRenderingActivity.class);
+//            Intent intent = new Intent(holder.itemView.getContext(), RouteArPath_v2.class);
+            Intent intent = new Intent(holder.itemView.getContext(), ArRenderingActivity.class);
             intent.putExtra("id", route.getId());
             holder.itemView.getContext().startActivity(intent);
 

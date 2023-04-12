@@ -28,8 +28,9 @@
             android:name="com.google.ar.core"
             android:value="required" />
 
+        <!--            android:name="com.ar.navigation.ArRenderingActivity"-->
         <activity
-            android:name="com.ar.navigation.ArRenderingActivity"
+            android:name="com.route.routeme.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:visibleToInstantApps="true">
@@ -62,9 +63,9 @@
             android:name=".RouteArPath_v2"
             android:exported="true" />
 
-        <!--<activity
+       <activity
             android:name="com.ar.navigation.ArRenderingActivity"
-            android:exported="true" />-->
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

@@ -209,7 +209,8 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
                     Texture.WrapMode.CLAMP_TO_EDGE,
                     Texture.ColorFormat.LINEAR
                 )
-            virtualObjectMesh = Mesh.createFromAsset(render, "models/pawn.obj")
+//            virtualObjectMesh = Mesh.createFromAsset(render, "models/pawn.obj")
+            virtualObjectMesh = Mesh.createFromAsset(render, "models/arrow.obj")
             virtualObjectShader =
                 Shader.createFromAssets(
                     render,

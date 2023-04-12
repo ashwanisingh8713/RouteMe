@@ -1,0 +1,45 @@
+Flow - 14 March 2023
+    1. Launch the Instant aapp by scaning the QR code.
+    2. Capture the URL attachced with the QR code
+    3. List of path
+    4. Customer select the destination from step 2. (edited)
+    5. Scan the lady image and create initial anchor
+    6. Load the points and display arrow on points (edited)
+
+
+26th March 2023
+    There is some issue with removing surface graph I am working on this.
+    Currently I am able to calculate and get
+        - Distance of start Anchor to end Anchor and distance between sequential two Anchor.
+        - Distance of camera with respect to start Anchor.
+        - Angle between three Anchors.
+        - Direction calculation between sequential two Anchor.
+    Here Today my brother and me were trying to make more path but Maker app is throwing error.
+    relevant error video is also attached.
+    I request to kindly fix Maker app issue.
+    Next I will work to fix, "acnchor points empty" issue.
+    And next I will move on:
+        - ARPath screen, with live data and distance & duration update.
+        - Angle mapping for upcoming Anchor.  (I will check iOS & take assistance from my brother)
+        - Direction mapping for upcoming Anchor. (I will check iOS & take assistance from my brother) (edited)
+
+
+6th April 2023
+    Status is below:
+        - Added user & path info UI on top of AR screen.
+        - On Camera move moving avatar icon on Ruler Img.
+    still I am using mock data.
+
+    Currently you are using two separate barcodes.
+        1st, To Launch Instant App
+        2nd, To get the RouteList
+
+    In next update we will make one barcode to Launch & get the RouteList.
+
+    Kindly Find the attached barcode imgs.
+
+    In previous status update only "distance" update is done.
+
+    New Instant App build is published in Playstore, kindly use attached image "Android_InstantApp_Launch" to launch.
+
+

@@ -25,8 +25,10 @@ public class ApiPathUtil {
 
     private static final int COSMOS_PORT_NUM = 443;
     private static final String COSMOS_DB_URL = "https://routeme.documents.azure.com";
+    // Old Key
     public static final String PRIMARY_KEY = "zGZVcvEnFSvNKa61Yr3UeofdlVhYhQlMIIGHkWaMJZnghohRYcv5l1h18JnKS8VixLrKaVcxPLbMxn0xvZuVkQ==";
-//    public static final String PRIMARY_KEY = "s7ZB1PnsAFxkpdIVgS4sUZE6W9rt3xPxF1Yq819mU3GERy5f6OyxlCFpvvpfjiSqS1Qopt5Zj6smjfPB0uEOTg==";
+    // New Key
+//    public static final String PRIMARY_KEY = "yEFIdn7I6/fDWOrr20EjreK1GHDxMIWdrq/Uj2F+nwk=";
 
     public static final String CONNECTION_HOST = COSMOS_DB_URL + ":" + COSMOS_PORT_NUM;  // https://routeme.documents.azure.com:443/
 
