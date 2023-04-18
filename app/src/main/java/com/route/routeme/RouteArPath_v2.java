@@ -53,6 +53,7 @@ public class RouteArPath_v2 extends AppCompatActivity  {
         model.getDocumentAppClipRouteIdBody(routeId);
 
         model.getRoutesDocument().observe(this, routesData -> {
+
             List<RoutesDocuments> allRoutes = routesData.getDocuments();
             // Making selected route object to find
             // the particular route index from RouteList Data (allRoutes)

@@ -16,6 +16,7 @@ import com.ar.navigation.pathmodel.RouteAnchor
 import com.ar.navigation.util.KotlinUtil
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.core.exceptions.NotYetAvailableException
+import com.route.modal.RoutesData
 import java.io.IOException
 import java.nio.ByteBuffer
 
@@ -25,7 +26,7 @@ import java.nio.ByteBuffer
 
 
 /** Renders the HelloAR application using our example Renderer. */
-class HelloArRenderer(val activity: ArRenderingActivity) :
+class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: RoutesData) :
     SampleRender.Renderer, DefaultLifecycleObserver {
     companion object {
         val TAG = "HelloArRenderer"
@@ -209,8 +210,7 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
                     Texture.WrapMode.CLAMP_TO_EDGE,
                     Texture.ColorFormat.LINEAR
                 )
-//            virtualObjectMesh = Mesh.createFromAsset(render, "models/pawn.obj")
-            virtualObjectMesh = Mesh.createFromAsset(render, "models/arrow.obj")
+            virtualObjectMesh = Mesh.createFromAsset(render, "models/pawn.obj")
             virtualObjectShader =
                 Shader.createFromAssets(
                     render,
@@ -534,7 +534,7 @@ class HelloArRenderer(val activity: ArRenderingActivity) :
      * Loads all Anchors of the Path
      */
     private fun loadAllAnchors(session: Session) {
-        val pair = KotlinUtil.getRouteAnchors(session)
+        val pair = KotlinUtil.getRouteAnchorsFromServerResponse(session, routeData)
         mHoldingAnchors = pair.first//.subList(1, 18)
         mConsolidatedDistance = pair.second
         mAllAnchors = mHoldingAnchors.size

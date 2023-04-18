@@ -1,22 +1,23 @@
 package com.ar.navigation
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
 import android.util.Log
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.ar.common.helpers.*
 import com.ar.common.samplerender.SampleRender
+import com.ar.navigation.helpers.ARCoreSessionLifecycleHelper
+import com.ar.navigation.util.KotlinUtil
 import com.google.ar.core.Config
 import com.google.ar.core.Config.InstantPlacementMode
 import com.google.ar.core.Session
-import com.google.ar.core.examples.navigation.helpers.ARCoreSessionLifecycleHelper
 import com.google.ar.core.exceptions.*
 import com.route.routeme.databinding.ActivityArRendererBinding
+import com.route.viewmodel.RoutePointViewModel
+import kotlin.math.roundToInt
 
 /**
  * Created by Ashwani Kumar Singh on 11,March,2023.
@@ -39,11 +40,42 @@ class ArRenderingActivity : AppCompatActivity() {
   private val instantPlacementSettings = InstantPlacementSettings()
   val depthSettings = DepthSettings()
 
+  private lateinit var model: RoutePointViewModel
+
+  private var routeId = ""
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     instantPlacementSettings.onCreate(this)
     binding = ActivityArRendererBinding.inflate(layoutInflater)
+
+    model = ViewModelProvider(this@ArRenderingActivity)[RoutePointViewModel::class.java]
+
+    if (intent.extras != null) {
+      routeId = intent.extras!!.getString("id")!!
+    }
+
+    // Init Making API Request
+//        model.loadRoutesDocument();
+    model.getDocumentAppClipRouteIdBody(routeId)
+
+    model.routesDocument.observe(this, Observer {routesData->
+      Log.i("", "$routesData")
+
+      // Set up the Hello AR renderer.
+      renderer = HelloArRenderer(this, routesData)
+      lifecycle.addObserver(renderer)
+
+      // Set up Hello AR UI.
+      setContentView(binding.root)
+
+      // Sets up an example renderer using our HelloARRenderer.
+      SampleRender(binding.surfaceview, renderer, assets)
+
+      depthSettings.onCreate(this)
+
+    })
 
     // Setup ARCore session lifecycle helper and configuration.
     arCoreSessionHelper = ARCoreSessionLifecycleHelper(this)
@@ -67,19 +99,7 @@ class ArRenderingActivity : AppCompatActivity() {
     arCoreSessionHelper.beforeSessionResume = ::configureSession
     lifecycle.addObserver(arCoreSessionHelper)
 
-    // Set up the Hello AR renderer.
-    renderer = HelloArRenderer(this)
-    lifecycle.addObserver(renderer)
 
-    // Set up Hello AR UI.
-    setContentView(binding.root)
-
-    // Sets up an example renderer using our HelloARRenderer.
-    SampleRender(binding.surfaceview, renderer, assets)
-
-    depthSettings.onCreate(this)
-
-    binding.ruler.postDelayed({mRulerWidth = binding.ruler.width}, 2000)
 
   }
 
@@ -148,47 +168,12 @@ class ArRenderingActivity : AppCompatActivity() {
 
   var totalDistanceCM = 840   // In CM
   fun coveredDistanceMtr(coveredDistanceMtr: Float) {
-    val bundle = Bundle()
-    bundle.putFloat("mtr", coveredDistanceMtr)
-    val msg = Message()
-    msg.data = bundle
-    msg.what = DESTINATION
-    mHandler.sendMessage(msg)
+
   }
 
 
-  private var mHandler = object : Handler(Looper.getMainLooper()) {
-    override fun handleMessage(msg: Message) {
-      when(msg.what) {
-        DESTINATION ->{
-          destinationMove(msg.data)
-        }
-      }
 
-    }
-  }
 
-  /**
-   * It moves Avatar on Ruler,
-   * calculate margin based on destination.
-   */
-  private fun destinationMove(bundle: Bundle) {
-    val coveredDistanceMtr = bundle.getFloat("mtr")
-    val coveredDistanceCM = coveredDistanceMtr*100 // Converting in CM
-
-    if(mRulerWidth <= 0 || coveredDistanceCM <= 0.00001 ) {
-      return
-    }
-    val margin = (mRulerWidth/totalDistanceCM)*coveredDistanceCM
-
-    if(margin >= mRulerWidth-100) {
-      return
-    }
-    val params = binding.manGuide.layoutParams as FrameLayout.LayoutParams
-    params.leftMargin = margin.toInt()
-    binding.manGuide.layoutParams = params
-    hideProgressBar()
-  }
 
 
 

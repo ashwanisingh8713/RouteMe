@@ -86,32 +86,17 @@ public class ApiManager {
     }
 
     public static Observable<Result<JsonElement>> getDocumentAppClipRouteIdBody(String routeId) {
-
-//        routeId = "202303190718195131379789";
-
         String XMS_VERSION = "2015-12-16";
-//        String query = "Select * FROM Data WHERE Data.id = 202303190718195131379789 AND (NOT(IsDefined(Data.DELETED)) OR (Data.DELETED != true))";
         String query = "Select * FROM Data WHERE Data.id = \'"+routeId+"\'  AND (NOT(IsDefined(Data.DELETED)) OR (Data.DELETED != " +
                 true +
                 "))";
-
-//        String query = "Select * FROM Data WHERE (Data.id = '"+routeId+"')";
-
         JsonArray parameters = new JsonArray();
 
         JsonObject object = new JsonObject();
         object.addProperty("query", query);
         object.add("parameters", parameters);
 
-        Gson gson = new Gson();
-
-        ArrayList<String> arrayList= new ArrayList<>();
-        arrayList.add("none");
-//        JsonArray partition = gson.toJsonTree(arrayList);
-
         final String UTCstring = ApiPathUtil.headerDate();
-        /*String generate = ApiPathUtil.generate2("post", "docs", "dbs/RouteMeData/colls/AppClipCodesData",
-                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);*/
 
         String generate = ApiPathUtil.generate2("post", "docs", "dbs/RouteMeData/colls/RoutesData",
                 ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
@@ -119,7 +104,6 @@ public class ApiManager {
         Map<String, String> header = new HashMap<>();
         header.put("x-ms-documentdb-isquery", "True");
         header.put("x-ms-date", UTCstring);
-//        header.put("x-ms-date", "Sun, 09 Apr 2023 13:16:54 GMT");
         header.put("authorization", generate);
         header.put("x-ms-version", XMS_VERSION);
         header.put("x-ms-query-enable-crosspartition", "True");
@@ -130,8 +114,42 @@ public class ApiManager {
         header.put("Content-Length", "50");
 
         return ServiceFactory.getServiceAPIs()
-//                .getDocumentAppClipRouteIdBody(ApiPathUtil.DATABASE_NAME, "AppClipCodesData",
                 .getDocumentAppClipRouteIdBody(ApiPathUtil.DATABASE_NAME, "RoutesData",
+                        header, object)
+                .subscribeOn(Schedulers.newThread())
+                .map(value-> value);
+    }
+
+    public static Observable<RoutesData> getDocumentAppClipRouteIdBody2(String routeId) {
+        String XMS_VERSION = "2015-12-16";
+        String query = "Select * FROM Data WHERE Data.id = \'"+routeId+"\'  AND (NOT(IsDefined(Data.DELETED)) OR (Data.DELETED != " +
+                true +
+                "))";
+        JsonArray parameters = new JsonArray();
+
+        JsonObject object = new JsonObject();
+        object.addProperty("query", query);
+        object.add("parameters", parameters);
+
+        final String UTCstring = ApiPathUtil.headerDate();
+
+        String generate = ApiPathUtil.generate2("post", "docs", "dbs/RouteMeData/colls/RoutesData",
+                ApiPathUtil.PRIMARY_KEY, "master", "1.0", UTCstring);
+
+        Map<String, String> header = new HashMap<>();
+        header.put("x-ms-documentdb-isquery", "True");
+        header.put("x-ms-date", UTCstring);
+        header.put("authorization", generate);
+        header.put("x-ms-version", XMS_VERSION);
+        header.put("x-ms-query-enable-crosspartition", "True");
+        header.put("Accept", "application/json");
+        header.put("Content-Type", "application/query+json");
+        header.put("Host", "routeme.documents.azure.com");
+        header.put("x-ms-documentdb-partitionkey", "[\"none\"]");
+        header.put("Content-Length", "50");
+
+        return ServiceFactory.getServiceAPIs()
+                .getDocumentAppClipRouteIdBody2(ApiPathUtil.DATABASE_NAME, "RoutesData",
                         header, object)
                 .subscribeOn(Schedulers.newThread())
                 .map(value-> value);

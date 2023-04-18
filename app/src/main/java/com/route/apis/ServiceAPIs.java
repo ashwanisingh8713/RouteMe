@@ -83,4 +83,9 @@ public interface ServiceAPIs {
                                                                   @Path("collection") String collection, @HeaderMap Map<String, String> headers,
                                                                   @Body JsonObject json);
 
+    @POST("/dbs/{database}/colls/{collection}/docs")
+    Observable<RoutesData> getDocumentAppClipRouteIdBody2(@Path("database") String database,
+                                                                  @Path("collection") String collection, @HeaderMap Map<String, String> headers,
+                                                                  @Body JsonObject json);
+
 }

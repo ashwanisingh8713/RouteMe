@@ -7,6 +7,7 @@ import com.google.ar.core.Session
 import com.ar.navigation.pathmodel.RawJson
 import com.ar.navigation.pathmodel.RouteAnchor
 import com.ar.navigation.pathmodel.RouteDirection
+import com.route.modal.RoutesData
 import kotlin.collections.ArrayList
 import kotlin.math.*
 
@@ -108,9 +109,9 @@ object KotlinUtil {
     }
 
 
-    fun getRouteAnchors(session: Session): Pair<MutableList<RouteAnchor>, Float> {
+    fun getRouteAnchorsFromStaticData(session: Session): Pair<MutableList<RouteAnchor>, Float> {
         var consolidatedDistance: Float = 0f
-        val routeAnchorList = makeAnchorsFromPathModel()
+        val routeAnchorList = makeAnchorsFromStaticData()
         val routeListSize = routeAnchorList.size-1
         for (i in 0 until routeListSize ) {
             val routeAnchor1 = routeAnchorList[i]
@@ -179,11 +180,139 @@ object KotlinUtil {
         return Pair(routeAnchorList, consolidatedDistance)
     }
 
-    private fun makeAnchorsFromPathModel(): MutableList<RouteAnchor> {
+    private fun makeAnchorsFromStaticData(): MutableList<RouteAnchor> {
         // Initialisation of RouteAnchor List
         val routeAnchorList: MutableList<RouteAnchor> = ArrayList()
         val pathModel = RawJson.getPathModel()
         val document = pathModel.Documents[0]
+
+        // Updating Anchor axis
+        val ud = document.ud
+        val updatedPoints = FloatArray(document.pts.size)
+        for ((count, axis) in document.pts.withIndex()) {
+            val temp = axis * ud
+            val roundTemp = (temp * 100).roundToInt() / 100f
+            updatedPoints[count] = roundTemp
+        }
+
+        val arPoints: FloatArray = updatedPoints
+        val totalVertex = arPoints.size / 3
+        var index = 0
+
+        for (i in 0 until totalVertex) {
+            val temp = index + 3
+            val x = arPoints[temp - 3]
+            val y = 0f//arPoints[temp - 2]
+//            val y = arPoints[temp - 2]
+            var z = arPoints[temp - 1]
+
+            // To set axis
+            val axisArray = FloatArray(3)
+            axisArray[0] = x
+            axisArray[1] = y
+            axisArray[2] = z
+
+            val tempAxisArray = FloatArray(3) // To handle duplicate axis position
+            if (tempAxisArray[0] == axisArray[0] && tempAxisArray[1] == axisArray[1] && tempAxisArray[2] == axisArray[2]) {
+                // This is written to avoid duplicate axis anchors
+                // Don't make and don't add
+            } else {
+                val routeAnchor = if (i == 0) {
+                    RouteAnchor(x, y, z, anchorAxis = axisArray)
+                }
+                else  {
+                    RouteAnchor(x, y, -z, anchorAxis = axisArray)
+                }
+
+                routeAnchorList.add(routeAnchor)
+            }
+            // This is written to avoid duplicate axis anchors
+            tempAxisArray[0] = x
+            tempAxisArray[1] = y
+            tempAxisArray[2] = z
+
+            index = temp
+        }
+
+
+        return routeAnchorList
+
+    }
+
+    fun getRouteAnchorsFromServerResponse(session: Session, routeData: RoutesData): Pair<MutableList<RouteAnchor>, Float> {
+        var consolidatedDistance: Float = 0f
+        val routeAnchorList = makeAnchorsFromServerResponse(routeData)
+        val routeListSize = routeAnchorList.size-1
+        for (i in 0 until routeListSize ) {
+            val routeAnchor1 = routeAnchorList[i]
+            val routeAnchor2 = routeAnchorList[i + 1]
+
+            // Direction
+            val direction = getDirection(routeAnchor1, routeAnchor2)
+
+            // Create Anchor -1
+            val position1 = floatArrayOf(
+                routeAnchor1.X,
+                routeAnchor1.Y,
+                routeAnchor1.Z
+            ) //  { x, y, z } position
+            val rotation1 = floatArrayOf(0f, 0f, 0f, 1f)
+            val anchor1: Anchor = session.createAnchor(Pose(position1, rotation1))
+
+            // Create Anchor -2
+            val position2 = floatArrayOf(
+                routeAnchor2.X,
+                routeAnchor2.Y,
+                routeAnchor2.Z
+            ) //  { x, y, z } position
+            val rotation2 = floatArrayOf(0f, 0f, 0f, 1f)
+            val anchor2: Anchor = session.createAnchor(Pose(position2, rotation2))
+
+            // Get Pose -1               // Get Pose -2
+            val pose1 = anchor1.pose;
+            val pose2 = anchor2.pose
+
+            // Distance
+            val distance = calculateDistance(pose1, pose2)
+
+            var vectorAngle = 0.0
+            // Create Anchor -3 For 3d Angle Calculation
+            if(routeListSize < i + 1) {
+                val routeAnchor3 = routeAnchorList[i + 2]
+                var position3 = floatArrayOf(
+                    routeAnchor3.X,
+                    routeAnchor3.Y,
+                    routeAnchor3.Z
+                ) //  { x, y, z } position
+
+                // Calculating Angle Between two 3D Coordinates
+                vectorAngle = vectorAngle(position1, position2, position3)
+            }
+
+
+            // Assigning anchor
+            if (i == 0) {
+                routeAnchor1.anchor = anchor1
+                routeAnchor2.anchor = anchor2
+            } else {
+                routeAnchor2.anchor = anchor2
+            }
+            consolidatedDistance += distance
+
+            routeAnchorList[i].distanceCovered = consolidatedDistance
+            routeAnchorList[i].distanceToNext = distance
+            routeAnchorList[i].directionToNext = direction
+            routeAnchorList[i].angle = vectorAngle
+
+        }
+
+//        routeAnchorList.reverse()
+        return Pair(routeAnchorList, consolidatedDistance)
+    }
+    private fun makeAnchorsFromServerResponse(routeData: RoutesData): MutableList<RouteAnchor> {
+        // Initialisation of RouteAnchor List
+        val routeAnchorList: MutableList<RouteAnchor> = ArrayList()
+        val document = routeData.documents[0]
 
         // Updating Anchor axis
         val ud = document.ud
