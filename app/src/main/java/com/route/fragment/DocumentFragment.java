@@ -26,6 +26,14 @@ public class DocumentFragment extends Fragment {
 
     private String mUrl;
 
+    public static DocumentFragment getInstance(String url) {
+        DocumentFragment fragment = new DocumentFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("Url", url);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle bundle) {
         super.onCreate(bundle);
