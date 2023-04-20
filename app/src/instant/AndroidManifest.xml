@@ -37,7 +37,7 @@
             android:value="required" />
 
         <activity
-            android:name="com.route.routeme.MainActivity"
+            android:name="com.route.routeme.InstantMainActivity"
             android:exported="true"
             android:visibleToInstantApps="true">
             <intent-filter>
@@ -47,7 +47,6 @@
 
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 

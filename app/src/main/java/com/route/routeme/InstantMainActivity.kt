@@ -20,7 +20,7 @@ import io.github.g00fy2.quickie.config.ScannerConfig
 /**
  * Created by Ashwani Kumar Singh on 18,April,2023.
  */
-class MainActivity:AppCompatActivity() {
+class InstantMainActivity:AppCompatActivity() {
 
     private var binding: ActivityMainBinding? = null
 
@@ -32,7 +32,8 @@ class MainActivity:AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        getDeeplinkUrl(intent)
+        // RouteList Fragment
+        addRouteListFragment("https://rtme.pl/TgtHills02")
 
         // set Windows Flags to Full Screen
         // using setFlags function
@@ -48,29 +49,7 @@ class MainActivity:AppCompatActivity() {
     }
 
 
-    /**
-     * Deeplink/Applink Url
-     */
-    private fun getDeeplinkUrl(intent: Intent) {
-        FirebaseDynamicLinks.getInstance()
-            .getDynamicLink(intent)
-            .addOnSuccessListener(this,
-                OnSuccessListener { pendingDynamicLinkData ->
-                    Log.i("", "")
-                    if (pendingDynamicLinkData == null) {
-                        launchScanner()
-                        return@OnSuccessListener
-                    }
-                    val uri = pendingDynamicLinkData.link
-                    addRouteListFragment(uri.toString())
 
-                })
-            .addOnFailureListener(
-                this
-            ) {
-                launchScanner()
-            }
-    }
 
     /**
      * Callback to get scanned Url
@@ -114,17 +93,5 @@ class MainActivity:AppCompatActivity() {
         fragmentTransaction.replace(R.id.fragment_container, documentFragment).commit()
     }
 
-    private fun launchScanner() {
-        scanCustomCode.launch(
-            ScannerConfig.build {
-                setOverlayStringRes(R.string.scan_barcode) // string resource used for the scanner overlay
-                setHapticSuccessFeedback(false) // enable (default) or disable haptic feedback when a barcode was detected
-                setShowTorchToggle(false) // show or hide (default) torch/flashlight toggle button
-                setShowCloseButton(true) // show or hide (default) close button
-                setHorizontalFrameRatio(1.0f) // set the horizontal overlay ratio (default is 1 / square frame)
-                setUseFrontCamera(false) // use the front camera
-            }
-        )
-    }
 
 }

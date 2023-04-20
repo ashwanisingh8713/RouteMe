@@ -32,8 +32,8 @@ android {
     flavorDimensions "RouteExperience"
     productFlavors {
         instant {
-            versionCode 310
-            versionName "instant_310"
+            versionCode 312
+            versionName "instant_312"
         }
         installed {
             versionCode 3026
@@ -45,7 +45,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            debuggable false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

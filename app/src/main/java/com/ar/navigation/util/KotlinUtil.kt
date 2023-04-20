@@ -330,8 +330,8 @@ object KotlinUtil {
         for (i in 0 until totalVertex) {
             val temp = index + 3
             val x = arPoints[temp - 3]
-            val y = 0f//arPoints[temp - 2]
 //            val y = arPoints[temp - 2]
+            val y = 0f
             var z = arPoints[temp - 1]
 
             // To set axis

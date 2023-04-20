@@ -49,14 +49,6 @@ public class RoutePointViewModel extends ViewModel {
                 .subscribe(value->{
                     Log.i("", "");
                     routesDocument.postValue(value);
-//                    int code = value.response().code();
-//                    JsonElement body = value.response().body();
-//                    Headers headers = value.response().raw().request().headers();
-
-//                    Log.i("Ashwanis", "Code :: "+code);
-//                    Log.i("Ashwanis", "Headers :: "+headers);
-                    Log.i("Ashwanis", "Body :: ");
-
                 }, throwable -> {
                     error.postValue("Failed to load Routes Document :: "+throwable.getMessage());
                 }, () -> {

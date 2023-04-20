@@ -56,12 +56,10 @@ class ArRenderingActivity : AppCompatActivity() {
       routeId = intent.extras!!.getString("id")!!
     }
 
-    // Init Making API Request
-//        model.loadRoutesDocument();
+    // Making API Request
     model.getDocumentAppClipRouteIdBody(routeId)
 
     model.routesDocument.observe(this, Observer {routesData->
-      Log.i("", "$routesData")
 
       // Set up the Hello AR renderer.
       renderer = HelloArRenderer(this, routesData)
@@ -98,8 +96,6 @@ class ArRenderingActivity : AppCompatActivity() {
     // Configure session features, including: Lighting Estimation, Depth mode, Instant Placement.
     arCoreSessionHelper.beforeSessionResume = ::configureSession
     lifecycle.addObserver(arCoreSessionHelper)
-
-
 
   }
 
