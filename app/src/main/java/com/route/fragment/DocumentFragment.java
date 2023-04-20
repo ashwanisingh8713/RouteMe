@@ -52,21 +52,10 @@ public class DocumentFragment extends Fragment {
 
         model = new ViewModelProvider(requireActivity()).get(DocumentDataViewModel.class);
 
-
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         showToast("Send request to Server");
-        // Older - 1
-        /*model.loadQRCodesDocument();
-        model.getQRCodesDocument().observe(requireActivity(), routesBeans -> {
-            // update UI
-            showToast("Success Count :: "+routesBeans.size());
-            FileUtil.writeFile("Success :: Request from Server :: Response Count is :: "+routesBeans.size());
-            mAdapter.setDocumentList(routesBeans);
-            mAdapter.notifyDataSetChanged();
-            binding.progressBar.setVisibility(View.GONE);
-        });*/
 
         mAdapter = new DocumentRecyclerAdapter();
         model.loadAppClipCodesDocument(mUrl);

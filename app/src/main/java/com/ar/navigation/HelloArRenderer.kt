@@ -16,6 +16,7 @@ import com.ar.navigation.pathmodel.RouteAnchor
 import com.ar.navigation.util.KotlinUtil
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.core.exceptions.NotYetAvailableException
+import com.google.ar.core.exceptions.SessionPausedException
 import com.route.modal.RoutesData
 import java.io.IOException
 import java.nio.ByteBuffer
@@ -263,6 +264,9 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
             } catch (e: CameraNotAvailableException) {
                 Log.e(TAG, "Camera not available during onDrawFrame", e)
                 showError("Camera not available. Try restarting the app.")
+                return
+            } catch (e: SessionPausedException) {
+                Log.e(TAG, "Session is Paused, during onDrawFrame", e)
                 return
             }
 

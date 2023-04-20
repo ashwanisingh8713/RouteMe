@@ -42,8 +42,6 @@ public class DocumentRecyclerAdapter extends RecyclerView.Adapter<DocumentRecycl
             Intent intent = new Intent(holder.itemView.getContext(), ArRenderingActivity.class);
             intent.putExtra("id", route.getId());
             holder.itemView.getContext().startActivity(intent);
-
-
         });
     }
 
