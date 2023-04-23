@@ -36,8 +36,8 @@ android {
             versionName "instant_312"
         }
         installed {
-            versionCode 3026
-            versionName "installed_3026"
+            versionCode 3027
+            versionName "installed_3027"
         }
     }
 
@@ -45,7 +45,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            debuggable true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

@@ -81,11 +81,14 @@ public class DocumentDataViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
 
                 .subscribe(value -> {
-                    Log.i("", "");
-                    routesDocument.postValue(value);
+                    if(value.size() == 0) {
+                        error.postValue("It seems barcode is wrong or broken. \nClick here to scan another.");
+                    } else {
+                        routesDocument.postValue(value);
+                    }
 
                 }, throwable -> {
-                    error.postValue("Failed to load Routes Document :: " + throwable.getMessage());
+                    error.postValue("Failed to load Routes Document. \nClick here to scan again." );
                 }, () -> {
 
                 }));

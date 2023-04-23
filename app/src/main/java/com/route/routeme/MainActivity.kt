@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.ar.navigation.util.KotlinUtil
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
@@ -45,6 +46,13 @@ class MainActivity:AppCompatActivity() {
 //        )
 
 
+
+    }
+
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+//        launchScanner()
     }
 
 
@@ -125,6 +133,26 @@ class MainActivity:AppCompatActivity() {
                 setUseFrontCamera(false) // use the front camera
             }
         )
+    }
+
+    private fun testDistanceVariation() {
+        /*val p1 = FloatArray(3)
+        p1[0]= -0.08f
+        p1[1]= 0.0f
+        p1[2]= -0.28f
+
+        *//*p1[0]= -0.23f
+        p1[1]= 0.0f
+        p1[2]= -0.15f*//*
+
+        val p2 = FloatArray(3)
+        p2[0]= p1[0]+2.0f
+        p2[1]= p1[1]
+        p2[2]= p1[2]
+
+        var distance = KotlinUtil.calculateDistance(p1, p2)
+
+        Log.i("2Meter", "Distance :: $distance")*/
     }
 
 }

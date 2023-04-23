@@ -330,8 +330,8 @@ object KotlinUtil {
         for (i in 0 until totalVertex) {
             val temp = index + 3
             val x = arPoints[temp - 3]
-//            val y = arPoints[temp - 2]
-            val y = 0f
+            val y = arPoints[temp - 2]
+//            val y = 0f
             var z = arPoints[temp - 1]
 
             // To set axis
@@ -422,7 +422,7 @@ object KotlinUtil {
     }
 
     // distance = √[(x1 - x2)² + (y1 - y2)² + (z1 - z2)²]
-    private fun calculateDistance(x: Float, y: Float, z: Float): Float {
+    fun calculateDistance(x: Float, y: Float, z: Float): Float {
         return sqrt(x.pow(2) + y.pow(2) + z.pow(2))
     }
 
@@ -435,5 +435,13 @@ object KotlinUtil {
         }
     }
 
+
+    fun calculateDistance(p1: FloatArray, p2: FloatArray): Float {
+        return calculateDistance(
+            p1[0] - p2[0],
+            p1[1] - p2[1],
+            p1[2] - p2[2]
+        )
+    }
 
 }
