@@ -14,7 +14,7 @@ import com.route.routeme.R
  */
 
 /** Contains UI elements for Hello AR. */
-class HelloArView(
+class RouteArView(
     val activity: ArRenderingActivity,
     private val instantPlacementSettings: InstantPlacementSettings
 ) : DefaultLifecycleObserver {

@@ -1,0 +1,6 @@
+Left should be minus (-)
+Right should be plus (+)
+
+
+As here I am realising there is variation in coordinates, which are being served in Android.
+

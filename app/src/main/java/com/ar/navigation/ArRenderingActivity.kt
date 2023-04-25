@@ -1,7 +1,6 @@
 package com.ar.navigation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,14 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.ar.common.helpers.*
 import com.ar.common.samplerender.SampleRender
 import com.ar.navigation.helpers.ARCoreSessionLifecycleHelper
-import com.ar.navigation.util.KotlinUtil
 import com.google.ar.core.Config
 import com.google.ar.core.Config.InstantPlacementMode
 import com.google.ar.core.Session
 import com.google.ar.core.exceptions.*
 import com.route.routeme.databinding.ActivityArRendererBinding
 import com.route.viewmodel.RoutePointViewModel
-import kotlin.math.roundToInt
 
 /**
  * Created by Ashwani Kumar Singh on 11,March,2023.
@@ -34,7 +31,7 @@ class ArRenderingActivity : AppCompatActivity() {
 
   lateinit var arCoreSessionHelper: ARCoreSessionLifecycleHelper
 //  lateinit var view: HelloArView
-  private lateinit var renderer: HelloArRenderer
+  private lateinit var renderer: RouteArRenderer
   private lateinit var binding: ActivityArRendererBinding
   private var mRulerWidth : Int = 0
   private val instantPlacementSettings = InstantPlacementSettings()
@@ -62,7 +59,7 @@ class ArRenderingActivity : AppCompatActivity() {
     model.routesDocument.observe(this, Observer {routesData->
 
       // Set up the Hello AR renderer.
-      renderer = HelloArRenderer(this, routesData)
+      renderer = RouteArRenderer(this, routesData)
       lifecycle.addObserver(renderer)
 
       // Set up Hello AR UI.

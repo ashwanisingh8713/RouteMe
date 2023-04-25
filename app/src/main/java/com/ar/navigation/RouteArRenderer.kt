@@ -13,7 +13,7 @@ import com.ar.common.samplerender.arcore.PlaneRenderer
 import com.ar.common.samplerender.arcore.SpecularCubemapFilter
 import com.google.ar.core.*
 import com.ar.navigation.pathmodel.RouteAnchor
-import com.ar.navigation.util.KotlinUtil
+import com.ar.navigation.util.AnchorPointsUtil
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.core.exceptions.NotYetAvailableException
 import com.google.ar.core.exceptions.SessionPausedException
@@ -27,7 +27,7 @@ import java.nio.ByteBuffer
 
 
 /** Renders the HelloAR application using our example Renderer. */
-class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: RoutesData) :
+class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: RoutesData) :
     SampleRender.Renderer, DefaultLifecycleObserver {
     companion object {
         val TAG = "HelloArRenderer"
@@ -451,7 +451,7 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
             mDisplayedAnchors.add(routeAnchor)
 
             val anchorPose = routeAnchor.anchor!!.pose
-            val distanceOfCameraNdAnchor = KotlinUtil.calculateDistance(cameraPose, anchorPose)
+            val distanceOfCameraNdAnchor = AnchorPointsUtil.calculateDistance(cameraPose, anchorPose)
             mCoveredDistanceByCamera += distanceOfCameraNdAnchor
 
             mDistanceFromStartAnchor = routeAnchor.distanceCovered
@@ -463,7 +463,7 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
                     mHoldingAnchors[mDisplayedAnchorCount - 2]
                 val previousAnchorPose = previousRouteAnchor.anchor!!.pose
                 angleBtwAnchorCamera =
-                    KotlinUtil.vectorAngle(previousAnchorPose, cameraPose, anchorPose)
+                    AnchorPointsUtil.vectorAngle(previousAnchorPose, cameraPose, anchorPose)
             }
 
             mDisplayedAnchorCount++
@@ -504,20 +504,20 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
                         mHoldingAnchors[mDisplayedAnchorCount - 2]
                     val previousAnchorPose = previousRouteAnchor.anchor!!.pose
                     angleBtwAnchorCamera =
-                        KotlinUtil.vectorAngle(previousAnchorPose, cameraPose, anchorPose)
+                        AnchorPointsUtil.vectorAngle(previousAnchorPose, cameraPose, anchorPose)
                 }
 
                 mDisplayedAnchorCount++
 
                 // Logs
-                Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
-                Log.i("Ashwani", "Distance From Start Anchor :: $mDistanceFromStartAnchor")
-                Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
-                Log.i("Ashwani", "Angle Between Added Anchor and Camera :: $angleBtwAnchorCamera")
-                Log.i("Ashwani", "Angle Between Added Anchor and Next Anchor :: ${routeAnchor.angle}")
-                Log.i("Ashwani", "Anchor Axis :: ${routeAnchor.anchorAxis.contentToString()}")
-                Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
-                Log.i("Ashwani", "================================================== :: ")
+//                Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
+//                Log.i("Ashwani", "Distance From Start Anchor :: $mDistanceFromStartAnchor")
+//                Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
+                Log.i("AshwaniS", "Angle Between Added Anchor and Camera :: $angleBtwAnchorCamera")
+                Log.i("AshwaniS", "Angle Between Added Anchor and Next Anchor :: ${routeAnchor.angle}")
+//                Log.i("Ashwani", "Anchor Axis :: ${routeAnchor.anchorAxis.contentToString()}")
+//                Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
+//                Log.i("Ashwani", "================================================== :: ")
 
             } else {
 //                Log.i("Ashwani", "ELSE ****************** :: false")
@@ -529,7 +529,7 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
     }
 
     private fun cameraCoverDestination(cameraPose: Pose) {
-        val distanceCoveredByCamera = KotlinUtil.calculateDistance(cameraPose, mHoldingAnchors[0].anchor!!.pose)*constantReduction()
+        val distanceCoveredByCamera = AnchorPointsUtil.calculateDistance(cameraPose, mHoldingAnchors[0].anchor!!.pose)*constantReduction()
         Log.i("AshwaniDesti", "distanceCoveredByCamera :: $distanceCoveredByCamera")
         activity.coveredDistanceMtr(distanceCoveredByCamera)
     }
@@ -538,7 +538,7 @@ class HelloArRenderer(val activity: ArRenderingActivity, private val routeData: 
      * Loads all Anchors of the Path
      */
     private fun loadAllAnchors(session: Session) {
-        val pair = KotlinUtil.getRouteAnchorsFromServerResponse(session, routeData)
+        val pair = AnchorPointsUtil.getRouteAnchorsFromServerResponse(session, routeData)
         mHoldingAnchors = pair.first//.subList(1, 18)
         mConsolidatedDistance = pair.second
         mAllAnchors = mHoldingAnchors.size

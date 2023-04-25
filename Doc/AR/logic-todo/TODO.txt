@@ -1,3 +1,8 @@
 - When Plane connection is lost, it should start rendering onwards upcoming Anchors.
 - Each Anchor should be rendered with respect to Camera position.
 -
+
+25th April 2023
+- Need to check z with +/- value
+- need to find start left and right direction
+- need to calculate turn.
