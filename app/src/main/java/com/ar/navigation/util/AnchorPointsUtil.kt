@@ -4,7 +4,6 @@ import android.util.Log
 import com.google.ar.core.Anchor
 import com.google.ar.core.Pose
 import com.google.ar.core.Session
-import com.ar.navigation.pathmodel.RawJson
 import com.ar.navigation.pathmodel.RouteAnchor
 import com.ar.navigation.pathmodel.RouteDirection
 import com.route.modal.RoutesData
@@ -110,10 +109,11 @@ object AnchorPointsUtil {
 
 
 
-    fun getRouteAnchorsFromServerResponse(session: Session, routeData: RoutesData): Pair<MutableList<RouteAnchor>, Float> {
+    fun getRouteAnchorsFromServerResponse(session: Session, routeAnchorList: MutableList<RouteAnchor>): Pair<MutableList<RouteAnchor>, Float> {
         var consolidatedDistance: Float = 0f
         // Making server points
-        val routeAnchorList = makeAnchorsFromServerResponse(routeData)
+//        val routeAnchorList = makeAnchorsFromServerResponse(routeData)
+//        val routes = Route.SimplifyPath(routeAnchorList, 1.0f)
         val routeListSize = routeAnchorList.size-1
         for (i in 0 until routeListSize ) {
             val routeAnchor1 = routeAnchorList[i]
@@ -124,18 +124,18 @@ object AnchorPointsUtil {
 
             // Create Anchor -1
             val position1 = floatArrayOf(
-                routeAnchor1.X,
-                routeAnchor1.Y,
-                routeAnchor1.Z
+                routeAnchor1.x,
+                routeAnchor1.y,
+                routeAnchor1.z
             ) //  { x, y, z } position
             val rotation1 = floatArrayOf(0f, 0f, 0f, 1f)
             val anchor1: Anchor = session.createAnchor(Pose(position1, rotation1))
 
             // Create Anchor -2
             val position2 = floatArrayOf(
-                routeAnchor2.X,
-                routeAnchor2.Y,
-                routeAnchor2.Z
+                routeAnchor2.x,
+                routeAnchor2.y,
+                routeAnchor2.z
             ) //  { x, y, z } position
             val rotation2 = floatArrayOf(0f, 0f, 0f, 1f)
             val anchor2: Anchor = session.createAnchor(Pose(position2, rotation2))
@@ -152,9 +152,9 @@ object AnchorPointsUtil {
             if(routeListSize > i + 1) {
                 val routeAnchor3 = routeAnchorList[i + 2]
                 var position3 = floatArrayOf(
-                    routeAnchor3.X,
-                    routeAnchor3.Y,
-                    routeAnchor3.Z
+                    routeAnchor3.x,
+                    routeAnchor3.y,
+                    routeAnchor3.z
                 ) //  { x, y, z } position
 
                 // Calculating Angle Between two 3D Coordinates
@@ -187,75 +187,50 @@ object AnchorPointsUtil {
     /**
      * Make Anchors from Server Response
      */
-    private fun makeAnchorsFromServerResponse(routeData: RoutesData): MutableList<RouteAnchor> {
+    fun makeAnchorsFromServerResponse(routeData: RoutesData): MutableList<RouteAnchor> {
         // Initialisation of RouteAnchor List
         val routeAnchorList: MutableList<RouteAnchor> = ArrayList()
+
         val document = routeData.documents[0]
 
         // Updating Anchor axis
         val ud = document.ud
         val updatedPoints = FloatArray(document.pts.size)
         for ((count, axis) in document.pts.withIndex()) {
-            val temp = (axis-2) * ud
+//            val temp = (axis-2) * ud  // Here I am reducing 2
+            val temp = (axis) * ud
             val roundTemp = (temp * 100).roundToInt() / 100f
             updatedPoints[count] = roundTemp
         }
 
-        val arPoints: FloatArray = updatedPoints
-        val totalVertex = arPoints.size / 3
+        val totalVertex = updatedPoints.size / 3
         var index = 0
-
-        var count = 0
-        var x2nd = 0.0f
-
         for (i in 0 until totalVertex) {
             val temp = index + 3
-            var x = arPoints[temp - 3]// - 2.2f
-
-            count++
-            /*if(count == 2) {
-                x2nd = x
-            }
-
-            if(count > 2) {
-                x = x2nd
-            }*/
-
-//            if(count > 20) {
-//                break
-//            }
-
-            val y = arPoints[temp - 2]
-            var z = arPoints[temp - 1]
+            var x = updatedPoints[temp - 3]
+            val y = updatedPoints[temp - 2]
+            var z = -(updatedPoints[temp - 1]) // Here, Doing - with z axis to make in reverse
 
             // To set axis
             val axisArray = FloatArray(3)
             axisArray[0] = x
             axisArray[1] = y
-            if(i==0) {
-                axisArray[2] = z
-            }
-            else {
-                axisArray[2] = -z
-//                axisArray[2] = z
+            axisArray[2] = z
+
+            val routeAnchor = RouteAnchor().apply {
+                this.x = x
+                this.y = y
+                this.z = z
             }
 
-            val routeAnchor = if (i == 0) {
-                RouteAnchor(x, y, z, anchorAxis = axisArray)
-            }
-            else  {
-                RouteAnchor(x, y, -z, anchorAxis = axisArray)
-//                RouteAnchor(x, y, z, anchorAxis = axisArray)
-            }
+            // Anchor is start point or not
+            routeAnchor.isStartPoint = i == 0
 
             routeAnchorList.add(routeAnchor)
-
-            index = temp
+            index = temp//
         }
 
-
         return routeAnchorList
-
     }
 
     private fun getDirection(previous: RouteAnchor, next: RouteAnchor): RouteDirection {
@@ -268,12 +243,12 @@ object AnchorPointsUtil {
         // move forward, Z axis should be changed with +value   (z1<z2)
         // move backward, Z axis should be changed with -value  (z1>z2)
 
-        val x1 = previous.X;
-        val x2 = next.X
-        val y1 = previous.Y;
-        val y2 = next.Y
-        val z1 = previous.Z;
-        val z2 = next.Z
+        val x1 = previous.x;
+        val x2 = next.x
+        val y1 = previous.y;
+        val y2 = next.y
+        val z1 = previous.z;
+        val z2 = next.z
 
         if (x1 < x2 && z1 < z2) {
             return RouteDirection.RIGHT_FORWARD

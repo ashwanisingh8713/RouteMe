@@ -18,32 +18,46 @@ import com.google.ar.core.Anchor
 #To move backward, Z axis should be changed with -value
  // This Anchor should be calculated with respect to Camera Position
  */
-data class RouteAnchor(var X: Float, var Y: Float, var Z: Float,
-                       var distanceToNext: Float = 0f,
-                       var distanceCovered: Float = 0f,
-                       var anchorAxis: FloatArray,
-                       var directionToNext: RouteDirection = RouteDirection.UNIDENTIFIED,
-                       var makeVisible: Boolean = false,
-                       var anchor: Anchor? = null,
-                       var angle: Double = 0.0
-) {
+class RouteAnchor {
+
+    var imgType: String = ""
+    var x: Float = 0f
+    var y: Float = 0f
+    var z: Float = 0f
+    var distanceToNext: Float = 0f
+    var distanceCovered: Float = 0f
+//    var anchorAxis: FloatArray? = null
+    var directionToNext: RouteDirection = RouteDirection.UNIDENTIFIED
+    var makeVisible: Boolean = false
+    var anchor: Anchor? = null
+    var angle: Double = 0.0
+    var isStartPoint = false
+
+    var nodePrev: RouteAnchor? = null
+    var nodeNext: RouteAnchor? = null
+    var childNode = mutableListOf<RouteAnchor>()
+
+    fun addChildNode(node: RouteAnchor) {
+        childNode.add(node)
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
         other as RouteAnchor
 
-        if (X != other.X) return false
-        if (Y != other.Y) return false
-        if (Z != other.Z) return false
+        if (x != other.x) return false
+        if (y != other.y) return false
+        if (z != other.z) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = X.hashCode()
-        result = 31 * result + Y.hashCode()
-        result = 31 * result + Z.hashCode()
+        var result = x.hashCode()
+        result = 31 * result + y.hashCode()
+        result = 31 * result + z.hashCode()
         return result
     }
 }

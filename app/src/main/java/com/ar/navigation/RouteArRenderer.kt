@@ -27,7 +27,7 @@ import java.nio.ByteBuffer
 
 
 /** Renders the HelloAR application using our example Renderer. */
-class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: RoutesData) :
+class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: MutableList<RouteAnchor>) :
     SampleRender.Renderer, DefaultLifecycleObserver {
     companion object {
         val TAG = "HelloArRenderer"
@@ -474,7 +474,6 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
             Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
             Log.i("Ashwani", "Angle Between Added Anchor and Camera :: $angleBtwAnchorCamera")
             Log.i("Ashwani", "Angle Between Added Anchor and Next Anchor :: ${routeAnchor.angle}")
-            Log.i("Ashwani", "Anchor Axis :: ${routeAnchor.anchorAxis.contentToString()}")
             Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
             Log.i("Ashwani", "================================================== :: ")
 

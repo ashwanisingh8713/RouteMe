@@ -2,7 +2,20 @@
 - Each Anchor should be rendered with respect to Camera position.
 -
 
+******* AR-ML Kit to labelled text
 25th April 2023
-- Need to check z with +/- value
+- Need to check z with +/- value in open space
 - need to find start left and right direction
 - need to calculate turn.
+
+Meeting queries:
+- Could you tell me exact coordinates index, which are being used for turn
+- Is that possible to get turn coordinate index or range which indicates turn from server.
+-
+
+150 pts,
+
+50 Anchors
+
+1 - 10 Anchors is straight\
+11th Anchor is taking left
