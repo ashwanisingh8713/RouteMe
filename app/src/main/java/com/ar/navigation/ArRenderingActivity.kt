@@ -34,8 +34,7 @@ class ArRenderingActivity : AppCompatActivity() {
   lateinit var arCoreSessionHelper: ARCoreSessionLifecycleHelper
 //  lateinit var view: HelloArView
   private lateinit var renderer: RouteArRenderer
-  private lateinit var binding: ActivityArRendererBinding
-  private var mRulerWidth : Int = 0
+  lateinit var binding: ActivityArRendererBinding
   private val instantPlacementSettings = InstantPlacementSettings()
   val depthSettings = DepthSettings()
 
@@ -75,7 +74,7 @@ class ArRenderingActivity : AppCompatActivity() {
       // Set up Hello AR UI.
       setContentView(binding.root)
 
-      // Sets up an example renderer using our HelloARRenderer.
+      // Sets up an example renderer using our RouteARRenderer.
       SampleRender(binding.surfaceview, renderer, assets)
 
       depthSettings.onCreate(this)
@@ -103,6 +102,12 @@ class ArRenderingActivity : AppCompatActivity() {
     // Configure session features, including: Lighting Estimation, Depth mode, Instant Placement.
     arCoreSessionHelper.beforeSessionResume = ::configureSession
     lifecycle.addObserver(arCoreSessionHelper)
+
+
+    // Testing purpose, to change the axis-values of anchor
+    binding.axisSubmit.setOnClickListener{
+      renderer.testAxisViewInit()
+    }
 
   }
 

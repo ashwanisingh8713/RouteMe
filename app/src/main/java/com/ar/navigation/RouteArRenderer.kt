@@ -33,36 +33,14 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
     companion object {
         val TAG = "HelloArRenderer"
 
-        // See the definition of updateSphericalHarmonicsCoefficients for an explanation of these
-        // constants.
-        private val sphericalHarmonicFactors =
-            floatArrayOf(
-                0.282095f,
-                -0.325735f,
-                0.325735f,
-                -0.325735f,
-                0.273137f,
-                -0.273137f,
-                0.078848f,
-                -0.273137f,
-                0.136569f
-            )
+
 
         private val Z_NEAR = 0.1f
 
             private val Z_FAR = 5f
 //        private val Z_FAR = 10.1f
 
-        // Assumed distance from the device camera to the surface on which user will try to place
-        // objects.
-        // This value affects the apparent scale of objects while the tracking method of the
-        // Instant Placement point is SCREENSPACE_WITH_APPROXIMATE_DISTANCE.
-        // Values in the [0.2, 2.0] meter range are a good choice for most AR experiences. Use lower
-        // values for AR experiences where users are expected to place objects on surfaces close to the
-        // camera. Use larger values for experiences where the user will likely be standing and trying
-        // to
-        // place an object on the ground or floor in front of them.
-        val APPROXIMATE_DISTANCE_METERS = 2.0f
+
 
         val CUBEMAP_RESOLUTION = 16
         val CUBEMAP_NUMBER_OF_IMPORTANCE_SAMPLES = 32
@@ -394,23 +372,13 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                 virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix)
 
                 virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture)
-                /*if(routeAnchor.directionToNext == RouteDirection.UNIDENTIFIED) {
-                    render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
-                } else {
-                    labelRenderer.draw(
-                        render,
-                        modelViewProjectionMatrix,
-                        anchor.pose,
-                        camera.pose,
-                        routeAnchor.directionToNext.name
-                    )
-                }*/
-                labelRenderer.draw(
+                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
+                /*labelRenderer.draw(
                     render,
                     modelViewProjectionMatrix,
                     anchor.pose,
                     camera.pose,
-                    routeAnchor.directionToNext.name)
+                    routeAnchor.directionToNext.name)*/
             } else {
 //                Log.i("Ashwani", "makeVisible :: false")
             }
@@ -483,13 +451,13 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
             mDisplayedAnchorCount++
 
             // Logs
-            Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
+            /*Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
             Log.i("Ashwani", "Distance From Start Anchor :: $mDistanceFromStartAnchor")
             Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
             Log.i("Ashwani", "Angle Between Added Anchor and Camera :: $angleBtwAnchorCamera")
             Log.i("Ashwani", "Angle Between Added Anchor and Next Anchor :: ${routeAnchor.angle}")
             Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
-            Log.i("Ashwani", "================================================== :: ")
+            Log.i("Ashwani", "================================================== :: ")*/
 
 
         } else {
@@ -523,14 +491,13 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                 mDisplayedAnchorCount++
 
                 // Logs
-//                Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
-//                Log.i("Ashwani", "Distance From Start Anchor :: $mDistanceFromStartAnchor")
-//                Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
+                /*Log.i("Ashwani", "+++++ Added Anchor Count :: $mDisplayedAnchorCount")
+                Log.i("Ashwani", "Distance From Start Anchor :: $mDistanceFromStartAnchor")
+                Log.i("Ashwani", "Direction For Next Anchor :: ${routeAnchor.directionToNext}")
                 Log.i("AshwaniS", "Angle Between Added Anchor and Camera :: $angleBtwAnchorCamera")
                 Log.i("AshwaniS", "Angle Between Added Anchor and Next Anchor :: ${routeAnchor.angle}")
-//                Log.i("Ashwani", "Anchor Axis :: ${routeAnchor.anchorAxis.contentToString()}")
-//                Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
-//                Log.i("Ashwani", "================================================== :: ")
+                Log.i("Ashwani", "Camera Axis :: ${cameraAxis.contentToString()}")
+                Log.i("Ashwani", "================================================== :: ")*/
 
             } else {
 //                Log.i("Ashwani", "ELSE ****************** :: false")
@@ -564,9 +531,40 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         return 4/3f
     }
 
-}
+    /**
+     * Testing purpose, to change the axis-values of anchor
+     */
+    fun testAxisViewInit() {
+        if(activity.binding.editViewX.text.isEmpty() || activity.binding.editViewY.text.isEmpty() ||
+            activity.binding.editViewZ.text.isEmpty() || activity.binding.editViewIndex.text.isEmpty() ) {
+            return
+        }
 
-/**
- * Associates an Anchor with the trackable it was attached to. This is used to be able to check
- * whether or not an Anchor originally was attached to an {@link InstantPlacementPoint}.
- */
+        var x = activity.binding.editViewX.text.toString().toFloat()
+        var y = activity.binding.editViewY.text.toString().toFloat()
+        var z = activity.binding.editViewZ.text.toString().toFloat()
+        var index = activity.binding.editViewIndex.text.toString().toInt()
+
+        if(index >=mDisplayedAnchorCount) {
+            return
+        }
+
+        var routeAnchor = mDisplayedAnchors[index]
+        routeAnchor.x = x
+        routeAnchor.y = y
+        routeAnchor.z = z
+
+        val position = floatArrayOf(
+            routeAnchor.x,
+            routeAnchor.y,
+            routeAnchor.z
+        )
+
+        val rotation = floatArrayOf(0f, 0f, 0f, 1f)
+        val anchor: Anchor = session!!.createAnchor(Pose(position, rotation))
+        routeAnchor.anchor = anchor
+
+
+    }
+
+}

@@ -244,6 +244,9 @@ object AnchorPointsUtil {
                     direction = getDirection(turnAnchor, p2)
                     turnAnchor.directionToNext = direction
                     Log.i("NewLogic", "Turn Anchor ${inSegmentAnchorSize-1} direction  :: ${newRouteAnchorList[inSegmentAnchorSize-1].directionToNext.name}")
+                } else {
+                    direction = RouteDirection.FORWARD
+                    routeAnchor.directionToNext = direction
                 }
 
                 newRouteAnchorList.add(routeAnchor)

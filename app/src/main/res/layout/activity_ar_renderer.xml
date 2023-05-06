@@ -23,4 +23,76 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <!-- Below is experimental Views for axis extries -->
+    <EditText
+        android:id="@+id/editView_x"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:hint="X Axis"
+        android:digits="0123456789."
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editView_y"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:hint="Y Axis"
+        android:digits="0123456789."
+        android:text="" />
+
+    <EditText
+        android:id="@+id/editView_z"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:hint="Z Axis"
+        android:digits="0123456789."
+        android:text="" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/axis_flow_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="editView_x,editView_y,editView_z"
+        app:flow_horizontalAlign="start"
+        app:flow_verticalGap="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <EditText
+        android:id="@+id/editView_index"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:hint="Anchor Index"
+        android:digits="0123456789"
+        android:text="" />
+
+    <Button
+        android:id="@+id/axis_submit"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Submit Axis" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="editView_index,axis_submit"
+        app:flow_horizontalAlign="start"
+        app:flow_verticalGap="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editView_x" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
