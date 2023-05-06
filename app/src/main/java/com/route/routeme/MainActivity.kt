@@ -1,8 +1,10 @@
 package com.route.routeme
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
@@ -31,18 +33,16 @@ class MainActivity:AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-        getDeeplinkUrl(intent)
+//        getDeeplinkUrl(intent)
 
-        // set Windows Flags to Full Screen
-        // using setFlags function
+        addRouteListFragment("https://rtme.pl/TgtHills02")
 
-        // set Windows Flags to Full Screen
-        // using setFlags function
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN
-//        )
-
+        //Turning on screen
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            this.setTurnScreenOn(true);
+        } else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+        }
 
 
     }

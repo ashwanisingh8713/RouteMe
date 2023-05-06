@@ -1,7 +1,9 @@
 package com.ar.navigation
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -43,6 +45,14 @@ class ArRenderingActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
+
+    //Turning on screen
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+      this.setTurnScreenOn(true);
+    } else {
+      window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+    }
 
     instantPlacementSettings.onCreate(this)
     binding = ActivityArRendererBinding.inflate(layoutInflater)

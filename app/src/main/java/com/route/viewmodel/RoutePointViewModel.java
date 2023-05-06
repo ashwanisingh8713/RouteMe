@@ -54,8 +54,8 @@ public class RoutePointViewModel extends ViewModel {
                         .map(value->{
                             List<RouteAnchor> routeAnchorList = AnchorPointsUtil.INSTANCE.makeAnchorsFromServerResponse(value);
                             List<RouteAnchor> routes = Route.SimplifyPath(routeAnchorList, 1.0f);
-                            Log.i("", "");
-                            // return routes;
+//                            Log.i("", "");
+//                             return routes;
                             return routeAnchorList;
                         })
                 .observeOn(AndroidSchedulers.mainThread())

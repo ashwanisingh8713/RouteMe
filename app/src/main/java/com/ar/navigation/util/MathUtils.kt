@@ -11,7 +11,7 @@ class MathUtils {
 
     companion object {
 
-        private fun pointDistance(point1: RouteAnchor, point2: RouteAnchor): Float {
+        fun pointDistance(point1: RouteAnchor, point2: RouteAnchor): Float {
             var result: Float = 0.0f
             var x = point2.x - point1.x
             var y = point2.y - point1.y

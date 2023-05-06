@@ -109,11 +109,9 @@ object AnchorPointsUtil {
 
 
 
-    fun getRouteAnchorsFromServerResponse(session: Session, routeAnchorList: MutableList<RouteAnchor>): Pair<MutableList<RouteAnchor>, Float> {
+    fun getRouteAnchorsFromServerResponse_V1(session: Session, routeAnchorList: MutableList<RouteAnchor>): Pair<MutableList<RouteAnchor>, Float> {
         var consolidatedDistance: Float = 0f
         // Making server points
-//        val routeAnchorList = makeAnchorsFromServerResponse(routeData)
-//        val routes = Route.SimplifyPath(routeAnchorList, 1.0f)
         val routeListSize = routeAnchorList.size-1
         for (i in 0 until routeListSize ) {
             val routeAnchor1 = routeAnchorList[i]
@@ -184,6 +182,84 @@ object AnchorPointsUtil {
         return Pair(routeAnchorList, consolidatedDistance)
     }
 
+    fun getRouteAnchorsFromServerResponse_V2(session: Session, routeAnchorList: MutableList<RouteAnchor>): Pair<MutableList<RouteAnchor>, Float> {
+        var consolidatedDistance = 0f
+
+        // Making server points
+        var routeListSize = routeAnchorList.size-1
+
+
+        val subPointDistance = 0.5f
+        var newRouteAnchorList = mutableListOf<RouteAnchor>()
+
+        var inSegmentAnchorSize = newRouteAnchorList.size
+
+        for (i in 0 until routeListSize ) {
+            inSegmentAnchorSize = newRouteAnchorList.size
+            var p1 = routeAnchorList[i]
+            var p2 = routeAnchorList[i + 1]
+
+            var direction = RouteDirection.UNIDENTIFIED
+            /*if(i<routeListSize-1) {
+                if(newRouteAnchorList.size > 0) {
+                    var lastTurnAcnhor = newRouteAnchorList[newRouteAnchorList.size - 1]
+                    direction = getDirection(lastTurnAcnhor, p2)
+                } else {
+                    direction = getDirection(p1, p2)
+                }
+                Log.i("NewLogic", "direction :: ${direction.name}")
+            }*/
+
+            var segmentLength = MathUtils.pointDistance(point1= p1, point2= p2)
+            var subPointsCount = (segmentLength / subPointDistance).toInt() + 1
+
+
+//            Log.i("NewLogic", "subPointsCount :: $subPointsCount")
+
+
+            for (sp in 0 until subPointsCount-1) {
+                var progress  = sp.toFloat() / subPointsCount.toFloat()
+
+                var dx = p2.x - p1.x
+                var dy = p2.y - p1.y
+                var dz = p2.z - p1.z
+                var routeAnchor = RouteAnchor()
+                routeAnchor.x = p1.x + dx * progress
+                routeAnchor.y = p1.y + dy * progress
+                routeAnchor.z = p1.z + dz * progress
+
+                val position = floatArrayOf(
+                    routeAnchor.x,
+                    routeAnchor.y,
+                    routeAnchor.z
+                )
+
+                val rotation = floatArrayOf(0f, 0f, 0f, 1f)
+                val anchor: Anchor = session.createAnchor(Pose(position, rotation))
+                routeAnchor.anchor = anchor
+
+
+                if(sp == subPointsCount-2 && i != 0) {
+                    var turnAnchor = newRouteAnchorList[inSegmentAnchorSize-1]
+                    direction = getDirection(turnAnchor, p2)
+                    turnAnchor.directionToNext = direction
+                    Log.i("NewLogic", "Turn Anchor ${inSegmentAnchorSize-1} direction  :: ${newRouteAnchorList[inSegmentAnchorSize-1].directionToNext.name}")
+                }
+
+                newRouteAnchorList.add(routeAnchor)
+            }
+
+
+
+
+            ///////////////////// Above is work in progress///////////////////////////////////////
+
+
+        }
+
+        return Pair(newRouteAnchorList, consolidatedDistance)
+    }
+
     /**
      * Make Anchors from Server Response
      */
@@ -243,14 +319,14 @@ object AnchorPointsUtil {
         // move forward, Z axis should be changed with +value   (z1<z2)
         // move backward, Z axis should be changed with -value  (z1>z2)
 
-        val x1 = previous.x;
-        val x2 = next.x
-        val y1 = previous.y;
-        val y2 = next.y
-        val z1 = previous.z;
-        val z2 = next.z
+        val x1 = previous.x.absoluteValue;
+        val x2 = next.x.absoluteValue
+        val y1 = previous.y.absoluteValue;
+        val y2 = next.y.absoluteValue
+        val z1 = previous.z.absoluteValue;
+        val z2 = next.z.absoluteValue
 
-        if (x1 < x2 && z1 < z2) {
+        /*if (x1 < x2 && z1 < z2) {
             return RouteDirection.RIGHT_FORWARD
         } else if (x1 < x2 && z1 > z2) {
             return RouteDirection.RIGHT_BACKWARD
@@ -258,7 +334,7 @@ object AnchorPointsUtil {
             return RouteDirection.LEFT_FORWARD
         } else if (x1 > x2 && z1 > z2) {
             return RouteDirection.LEFT_BACKWARD
-        } else if (x1 < x2) {
+        } else */if (x1 < x2) {
             return RouteDirection.RIGHT
         } else if (x1 > x2) {
             return RouteDirection.LEFT

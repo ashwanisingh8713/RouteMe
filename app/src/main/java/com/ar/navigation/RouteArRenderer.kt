@@ -13,11 +13,12 @@ import com.ar.common.samplerender.arcore.PlaneRenderer
 import com.ar.common.samplerender.arcore.SpecularCubemapFilter
 import com.google.ar.core.*
 import com.ar.navigation.pathmodel.RouteAnchor
+import com.ar.navigation.pathmodel.RouteDirection
 import com.ar.navigation.util.AnchorPointsUtil
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.core.exceptions.NotYetAvailableException
 import com.google.ar.core.exceptions.SessionPausedException
-import com.route.modal.RoutesData
+import com.route.lable_renderer.LabelRender
 import java.io.IOException
 import java.nio.ByteBuffer
 
@@ -71,6 +72,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
     lateinit var planeRenderer: PlaneRenderer
     lateinit var backgroundRenderer: BackgroundRenderer
     lateinit var virtualSceneFramebuffer: Framebuffer
+    val labelRenderer = LabelRender()
     var hasSetTextureNames = false
 
     // Point Cloud
@@ -99,11 +101,6 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
 
     private val modelViewProjectionMatrix = FloatArray(16) // projection x view x model
 
-    private val sphericalHarmonicsCoefficients = FloatArray(9 * 3)
-    private val viewInverseMatrix = FloatArray(16)
-    private val worldLightDirection = floatArrayOf(0.0f, 0.0f, 0.0f, 0.0f)
-    private val viewLightDirection = FloatArray(4) // view x world light direction
-
     val session
         get() = activity.arCoreSessionHelper.session
 
@@ -128,6 +125,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
             planeRenderer = PlaneRenderer(render)
             backgroundRenderer = BackgroundRenderer(render)
             virtualSceneFramebuffer = Framebuffer(render, /*width=*/ 1, /*height=*/ 1)
+            labelRenderer.onSurfaceCreated(render)
 
             cubemapFilter =
                 SpecularCubemapFilter(
@@ -396,7 +394,23 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                 virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix)
 
                 virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture)
-                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
+                /*if(routeAnchor.directionToNext == RouteDirection.UNIDENTIFIED) {
+                    render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
+                } else {
+                    labelRenderer.draw(
+                        render,
+                        modelViewProjectionMatrix,
+                        anchor.pose,
+                        camera.pose,
+                        routeAnchor.directionToNext.name
+                    )
+                }*/
+                labelRenderer.draw(
+                    render,
+                    modelViewProjectionMatrix,
+                    anchor.pose,
+                    camera.pose,
+                    routeAnchor.directionToNext.name)
             } else {
 //                Log.i("Ashwani", "makeVisible :: false")
             }
@@ -537,7 +551,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
      * Loads all Anchors of the Path
      */
     private fun loadAllAnchors(session: Session) {
-        val pair = AnchorPointsUtil.getRouteAnchorsFromServerResponse(session, routeData)
+        val pair = AnchorPointsUtil.getRouteAnchorsFromServerResponse_V2(session, routeData)
         mHoldingAnchors = pair.first//.subList(1, 18)
         mConsolidatedDistance = pair.second
         mAllAnchors = mHoldingAnchors.size
