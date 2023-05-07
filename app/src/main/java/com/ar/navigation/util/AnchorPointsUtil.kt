@@ -200,21 +200,9 @@ object AnchorPointsUtil {
             var p2 = routeAnchorList[i + 1]
 
             var direction = RouteDirection.UNIDENTIFIED
-            /*if(i<routeListSize-1) {
-                if(newRouteAnchorList.size > 0) {
-                    var lastTurnAcnhor = newRouteAnchorList[newRouteAnchorList.size - 1]
-                    direction = getDirection(lastTurnAcnhor, p2)
-                } else {
-                    direction = getDirection(p1, p2)
-                }
-                Log.i("NewLogic", "direction :: ${direction.name}")
-            }*/
 
             var segmentLength = MathUtils.pointDistance(point1= p1, point2= p2)
             var subPointsCount = (segmentLength / subPointDistance).toInt() + 1
-
-
-//            Log.i("NewLogic", "subPointsCount :: $subPointsCount")
 
 
             for (sp in 0 until subPointsCount-1) {

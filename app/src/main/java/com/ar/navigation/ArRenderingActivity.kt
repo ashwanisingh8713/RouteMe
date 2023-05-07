@@ -106,7 +106,11 @@ class ArRenderingActivity : AppCompatActivity() {
 
     // Testing purpose, to change the axis-values of anchor
     binding.axisSubmit.setOnClickListener{
-      renderer.testAxisViewInit()
+      renderer.setTestAxisViewInit()
+    }
+
+    binding.axisFetch.setOnClickListener{
+      renderer.fetchTestAxis()
     }
 
   }

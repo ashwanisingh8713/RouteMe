@@ -372,13 +372,20 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                 virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix)
 
                 virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture)
-                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
-                /*labelRenderer.draw(
+//                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
+                var lableName = when(routeAnchor.directionToNext) {
+                    RouteDirection.FORWARD -> "Move Ahead"
+                    RouteDirection.RIGHT -> "Take Right"
+                    RouteDirection.LEFT -> "Take Left"
+                    else -> ""
+                }
+
+                labelRenderer.draw(
                     render,
                     modelViewProjectionMatrix,
                     anchor.pose,
                     camera.pose,
-                    routeAnchor.directionToNext.name)*/
+                    lableName)
             } else {
 //                Log.i("Ashwani", "makeVisible :: false")
             }
@@ -534,7 +541,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
     /**
      * Testing purpose, to change the axis-values of anchor
      */
-    fun testAxisViewInit() {
+    fun setTestAxisViewInit() {
         if(activity.binding.editViewX.text.isEmpty() || activity.binding.editViewY.text.isEmpty() ||
             activity.binding.editViewZ.text.isEmpty() || activity.binding.editViewIndex.text.isEmpty() ) {
             return
@@ -563,6 +570,26 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         val rotation = floatArrayOf(0f, 0f, 0f, 1f)
         val anchor: Anchor = session!!.createAnchor(Pose(position, rotation))
         routeAnchor.anchor = anchor
+
+
+    }
+
+
+    fun fetchTestAxis() {
+        if(activity.binding.editViewIndex.text.isEmpty() ) {
+            return
+        }
+
+        var index = activity.binding.editViewIndex.text.toString().toInt()
+
+        if(index >=mDisplayedAnchorCount) {
+            return
+        }
+
+        var routeAnchor = mDisplayedAnchors[index]
+        activity.binding.editViewX.setText(routeAnchor.x.toString())
+        activity.binding.editViewY.setText(routeAnchor.y.toString())
+        activity.binding.editViewZ.setText(routeAnchor.z.toString())
 
 
     }

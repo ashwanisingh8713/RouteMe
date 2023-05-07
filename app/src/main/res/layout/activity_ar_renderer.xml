@@ -31,7 +31,7 @@
         android:layout_height="80dp"
         android:gravity="center"
         android:hint="X Axis"
-        android:digits="0123456789."
+        android:digits="0123456789.+-"
         android:text="" />
 
     <EditText
@@ -40,7 +40,7 @@
         android:layout_height="80dp"
         android:gravity="center"
         android:hint="Y Axis"
-        android:digits="0123456789."
+        android:digits="0123456789.+-"
         android:text="" />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_height="80dp"
         android:gravity="center"
         android:hint="Z Axis"
-        android:digits="0123456789."
+        android:digits="0123456789.+-"
         android:text="" />
 
     <androidx.constraintlayout.helper.widget.Flow
@@ -77,18 +77,27 @@
         android:text="" />
 
     <Button
+        android:id="@+id/axis_fetch"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Fetch Axis" />
+
+    <Button
         android:id="@+id/axis_submit"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:text="Submit Axis" />
 
+
+
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:constraint_referenced_ids="editView_index,axis_submit"
+        app:constraint_referenced_ids="editView_index,axis_fetch,axis_submit"
         app:flow_horizontalAlign="start"
         app:flow_verticalGap="8dp"
         app:layout_constraintEnd_toEndOf="parent"
