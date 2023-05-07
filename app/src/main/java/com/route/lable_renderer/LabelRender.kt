@@ -114,7 +114,7 @@ class LabelRender {
     shader
       .setMat4("u_ViewProjection", viewProjectionMatrix)
       .setVec3("u_LabelOrigin", labelOrigin)
-//      .setVec3("u_CameraPos", cameraPose.translation)
+      .setVec3("u_CameraPos", cameraPose.translation)
       .setTexture("uTexture", cache.get(render, label))
     render.draw(mesh, shader)
   }

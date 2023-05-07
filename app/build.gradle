@@ -36,8 +36,8 @@ android {
             versionName "instant_312"
         }
         installed {
-            versionCode 3027
-            versionName "installed_3027"
+            versionCode 3028
+            versionName "installed_3028"
         }
     }
 

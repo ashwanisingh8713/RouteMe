@@ -33,9 +33,8 @@ class MainActivity:AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-//        getDeeplinkUrl(intent)
-
-        addRouteListFragment("https://rtme.pl/TgtHills02")
+        getDeeplinkUrl(intent)
+//        addRouteListFragment("https://rtme.pl/TgtHills02")
 
         //Turning on screen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {

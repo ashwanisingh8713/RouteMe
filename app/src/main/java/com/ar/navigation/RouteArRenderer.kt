@@ -34,11 +34,24 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         val TAG = "HelloArRenderer"
 
 
+        // Camera Far should be lesser than Object Far
+        // Camera Near should be lesser than Object Near
 
-        private val Z_NEAR = 0.1f
+        private val CAMERA_Z_NEAR = 0.5f
+        private val CAMERA_Z_FAR = 5f
+        private val OBJ_Z_NEAR = 0.5f
+        private val OBJ_Z_FAR = 5f
 
-            private val Z_FAR = 5f
-//        private val Z_FAR = 10.1f
+
+        /*private val CAMERA_Z_NEAR = 1.0f
+        private val CAMERA_Z_FAR = 5f
+        private val OBJ_Z_NEAR = 1.0f
+        private val OBJ_Z_FAR = 10f*/
+
+//        private val Z_NEAR = 0.1f
+//            private val Z_FAR = 10f
+//            private val Z_FAR = 5f
+
 
 
 
@@ -213,6 +226,8 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         virtualSceneFramebuffer.resize(width, height)
     }
 
+    var assignCameraPosition = false
+
     override fun onDrawFrame(render: SampleRender) {
         val session = session ?: return
 
@@ -247,6 +262,9 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
             }
 
         val camera = frame.camera
+//        if(!assignCameraPosition) {
+//            camera.pose.tx = mDisplayedAnchors[0].x
+//        }
 
         // Update BackgroundRenderer state to match the depth settings.
         try {
@@ -323,7 +341,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         }
 
         // Get projection matrix.
-        camera.getProjectionMatrix(projectionMatrix, 0, Z_NEAR, Z_FAR)
+        camera.getProjectionMatrix(projectionMatrix, 0, CAMERA_Z_NEAR, CAMERA_Z_FAR)
 
         // Get camera matrix and draw.
         camera.getViewMatrix(viewMatrix, 0)
@@ -368,8 +386,8 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                 virtualObjectShader.setMat4("u_ModelViewProjection", modelViewProjectionMatrix)
 
                 virtualObjectShader.setTexture("u_AlbedoTexture", virtualObjectAlbedoTexture)
-//                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
-                var lableName = when(routeAnchor.directionToNext) {
+                render.draw(virtualObjectMesh, virtualObjectShader, virtualSceneFramebuffer)
+                /*var lableName = when(routeAnchor.directionToNext) {
                     RouteDirection.FORWARD -> "Move Ahead"
                     RouteDirection.RIGHT -> "Take Right"
                     RouteDirection.LEFT -> "Take Left"
@@ -381,14 +399,14 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
                     modelViewProjectionMatrix,
                     anchor.pose,
                     camera.pose,
-                    lableName)
+                    lableName)*/
             } else {
 //                Log.i("Ashwani", "makeVisible :: false")
             }
         }
 
         // Compose the virtual scene with the background.
-        backgroundRenderer.drawVirtualScene(render, virtualSceneFramebuffer, Z_NEAR, Z_FAR)
+        backgroundRenderer.drawVirtualScene(render, virtualSceneFramebuffer, OBJ_Z_NEAR, OBJ_Z_FAR)
     }
 
     /** Checks if we detected at least one plane. */
@@ -569,6 +587,8 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
 
 
     }
+
+
 
 
     fun fetchTestAxis() {

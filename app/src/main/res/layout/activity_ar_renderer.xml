@@ -32,7 +32,8 @@
         android:gravity="center"
         android:hint="X Axis"
         android:digits="0123456789.+-"
-        android:text="" />
+        android:text=""
+        />
 
     <EditText
         android:id="@+id/editView_y"
@@ -64,6 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         />
 
 
@@ -102,6 +104,7 @@
         app:flow_verticalGap="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editView_x" />
+        app:layout_constraintTop_toBottomOf="@id/editView_x"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
