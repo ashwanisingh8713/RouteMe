@@ -115,8 +115,10 @@ public class BackgroundRenderer {
    * Sets whether the background camera image should be replaced with a depth visualization instead.
    * This reloads the corresponding shader code, and must be called on the GL thread.
    */
-  public void setUseDepthVisualization(SampleRender render, boolean useDepthVisualization)
+  public void setUseDepthVisualization(SampleRender render)
       throws IOException {
+    boolean useDepthVisualization = false;
+
     if (backgroundShader != null) {
       if (this.useDepthVisualization == useDepthVisualization) {
         return;
@@ -125,7 +127,7 @@ public class BackgroundRenderer {
       backgroundShader = null;
       this.useDepthVisualization = useDepthVisualization;
     }
-    if (useDepthVisualization) {
+    /*if (useDepthVisualization) {
      depthColorPaletteTexture =
         Texture.createFromAsset(
             render,
@@ -137,12 +139,12 @@ public class BackgroundRenderer {
                   render,
                   "shaders/background_show_depth_color_visualization.vert",
                   "shaders/background_show_depth_color_visualization.frag",
-                  /*defines=*/ null)
+                  *//*defines=*//* null)
               .setTexture("u_CameraDepthTexture", cameraDepthTexture)
               .setTexture("u_ColorMap", depthColorPaletteTexture)
               .setDepthTest(false)
               .setDepthWrite(false);
-    } else {
+    } else */{
       backgroundShader =
           Shader.createFromAssets(
                   render,
@@ -159,7 +161,8 @@ public class BackgroundRenderer {
    * Sets whether to use depth for occlusion. This reloads the shader code with new {@code
    * #define}s, and must be called on the GL thread.
    */
-  public void setUseOcclusion(SampleRender render, boolean useOcclusion) throws IOException {
+  public void setUseOcclusion(SampleRender render) throws IOException {
+    boolean useOcclusion = true;
     if (occlusionShader != null) {
       if (this.useOcclusion == useOcclusion) {
         return;

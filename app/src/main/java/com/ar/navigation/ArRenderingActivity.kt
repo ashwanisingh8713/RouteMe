@@ -36,7 +36,6 @@ class ArRenderingActivity : AppCompatActivity() {
   private lateinit var renderer: RouteArRenderer
   lateinit var binding: ActivityArRendererBinding
   private val instantPlacementSettings = InstantPlacementSettings()
-  val depthSettings = DepthSettings()
 
   private lateinit var model: RoutePointViewModel
 
@@ -77,7 +76,6 @@ class ArRenderingActivity : AppCompatActivity() {
       // Sets up an example renderer using our RouteARRenderer.
       SampleRender(binding.surfaceview, renderer, assets)
 
-      depthSettings.onCreate(this)
 
     })
 

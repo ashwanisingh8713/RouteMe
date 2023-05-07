@@ -47,7 +47,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
     }
 
     lateinit var render: SampleRender
-    lateinit var planeRenderer: PlaneRenderer
+//    lateinit var planeRenderer: PlaneRenderer
     lateinit var backgroundRenderer: BackgroundRenderer
     lateinit var virtualSceneFramebuffer: Framebuffer
     val labelRenderer = LabelRender()
@@ -100,7 +100,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         // Prepare the rendering objects.
         // This involves reading shaders and 3D model files, so may throw an IOException.
         try {
-            planeRenderer = PlaneRenderer(render)
+//            planeRenderer = PlaneRenderer(render)
             backgroundRenderer = BackgroundRenderer(render)
             virtualSceneFramebuffer = Framebuffer(render, /*width=*/ 1, /*height=*/ 1)
             labelRenderer.onSurfaceCreated(render)
@@ -251,12 +251,10 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         // Update BackgroundRenderer state to match the depth settings.
         try {
             backgroundRenderer.setUseDepthVisualization(
-                render,
-                activity.depthSettings.depthColorVisualizationEnabled()
+                render
             )
             backgroundRenderer.setUseOcclusion(
-                render,
-                activity.depthSettings.useDepthForOcclusion()
+                render
             )
         } catch (e: IOException) {
             Log.e(TAG, "Failed to read a required asset file", e)
@@ -267,9 +265,7 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         // BackgroundRenderer.updateDisplayGeometry must be called every frame to update the coordinates
         // used to draw the background camera image.
         backgroundRenderer.updateDisplayGeometry(frame)
-        val shouldGetDepthImage =
-            activity.depthSettings.useDepthForOcclusion() ||
-                    activity.depthSettings.depthColorVisualizationEnabled()
+        val shouldGetDepthImage = true
         if (camera.trackingState == TrackingState.TRACKING && shouldGetDepthImage) {
             try {
                 val depthImage = frame.acquireDepthImage16Bits()
@@ -342,12 +338,12 @@ class RouteArRenderer(val activity: ArRenderingActivity, private val routeData: 
         }
 
         // Visualize planes.
-        planeRenderer.drawPlanes(
+        /*planeRenderer.drawPlanes(
             render,
             session.getAllTrackables<Plane>(Plane::class.java),
             camera.displayOrientedPose,
             projectionMatrix
-        )
+        )*/
 
         // Visualize anchors created by touch.
         render.clear(virtualSceneFramebuffer, 0f, 0f, 0f, 0f)
